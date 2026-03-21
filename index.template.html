@@ -218,8 +218,10 @@
 
         .hero-content {
             max-width: 900px;
-            opacity: 0;
-            animation: fadeUp .9s .3s forwards;
+        }
+
+        .hero-title, .hero-subtitle, .hero-cta {
+            visibility: hidden;
         }
 
         h1.hero-title {
@@ -624,29 +626,10 @@
 
         /* ── Reveal ── */
         .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: opacity .85s ease, transform .85s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+            visibility: hidden;
         }
 
         /* ── Keyframes ── */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes fadeIn {
             from {
                 opacity: 0
@@ -844,6 +827,8 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
         // ── Configuration ──
         const GOOGLE_SCRIPT_URL = '__GOOGLE_SCRIPT_URL__';
@@ -887,16 +872,50 @@
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
         });
 
-        // ── Reveal animations ──
-        const io = new IntersectionObserver(entries => {
-            entries.forEach((e, i) => {
-                if (e.isIntersecting) {
-                    setTimeout(() => e.target.classList.add('visible'), i * 80);
-                    io.unobserve(e.target);
+        // ── GSAP Animations ──
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Navbar
+        gsap.from("#navbar", {
+            y: "-100%",
+            autoAlpha: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        // Hero Section
+        const heroTl = gsap.timeline();
+        heroTl.fromTo(".hero-title", 
+            { autoAlpha: 0, y: 30 },
+            { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+        )
+        .fromTo(".hero-subtitle", 
+            { autoAlpha: 0, y: 20 },
+            { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, 
+            "-=0.6"
+        )
+        .fromTo(".hero-cta", 
+            { autoAlpha: 0, y: 20 },
+            { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, 
+            "-=0.6"
+        );
+
+        // Reveal Elements
+        gsap.utils.toArray('.reveal').forEach(reveal => {
+            gsap.fromTo(reveal, 
+                { autoAlpha: 0, y: 30 },
+                { 
+                    autoAlpha: 1, 
+                    y: 0, 
+                    duration: 0.85, 
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: reveal,
+                        start: "top 85%",
+                    }
                 }
-            });
-        }, { threshold: .1 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+            );
+        });
 
         // ── Modal ──
         const modalOverlay = document.getElementById('modalOverlay');
