@@ -281,7 +281,6 @@
         .marquee-track {
             display: flex;
             white-space: nowrap;
-            animation: marquee 22s linear infinite;
         }
 
         .marquee-track span {
@@ -442,14 +441,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            visibility: hidden;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity .3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: all;
         }
 
         .modal-content {
@@ -458,12 +451,6 @@
             max-width: 520px;
             padding: 50px 45px;
             position: relative;
-            transform: translateY(30px);
-            transition: transform .4s cubic-bezier(.16, 1, .3, 1);
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
         }
 
         .modal-close {
@@ -900,7 +887,32 @@
             "-=0.6"
         );
 
-        // Reveal Elements
+        // ── Section Transitions ──
+        gsap.to(".hero-content", {
+            yPercent: 40,
+            opacity: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".marquee-strip",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        gsap.to(".marquee-strip", {
+            yPercent: 20,
+            opacity: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top bottom",
+                end: "top 20%",
+                scrub: true
+            }
+        });
+
+        // ── Reveal Elements ──
         gsap.utils.toArray('.reveal').forEach(reveal => {
             gsap.fromTo(reveal, 
                 { autoAlpha: 0, y: 30 },
@@ -917,29 +929,78 @@
             );
         });
 
+        // ── Velocity Marquee ──
+        // Clone items for seamless loop
+        const marqueeTrack = document.querySelector('.marquee-track');
+        marqueeTrack.innerHTML += marqueeTrack.innerHTML;
+        
+        const marqueeTween = gsap.to(marqueeTrack, {
+            xPercent: -50,
+            repeat: -1,
+            duration: 20,
+            ease: "none"
+        });
+
+        ScrollTrigger.create({
+            start: 0,
+            end: "max",
+            onUpdate: (self) => {
+                let velocity = Math.abs(self.getVelocity());
+                let speed = 1 + velocity / 100;
+                gsap.to(marqueeTween, { timeScale: speed, duration: 0.3, overwrite: true });
+                gsap.to(marqueeTween, { timeScale: 1, duration: 1, delay: 0.3, overwrite: "auto" });
+            }
+        });
+
+        // ── Magnetic Buttons ──
+        const magnetBtns = [document.getElementById('navCta'), document.getElementById('heroCta'), document.getElementById('contactCta')];
+        magnetBtns.forEach(btn => {
+            if (!btn) return;
+            btn.addEventListener("mousemove", (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.4;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+                gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power2.out" });
+            });
+            btn.addEventListener("mouseleave", () => {
+                gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+            });
+        });
+
         // ── Modal ──
         const modalOverlay = document.getElementById('modalOverlay');
         const modalClose = document.getElementById('modalClose');
-        const navCta = document.getElementById('navCta');
-        const heroCta = document.getElementById('heroCta');
-        const contactCta = document.getElementById('contactCta');
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
+        let isModalOpen = false;
+
+        const modalTl = gsap.timeline({ paused: true });
+        modalTl.to(modalOverlay, { autoAlpha: 1, duration: 0.4, ease: "power2.out" })
+               .fromTo('.modal-content', 
+                   { y: 40, scale: 0.95 },
+                   { y: 0, scale: 1, duration: 0.5, ease: "power3.out" },
+                   "<"
+               )
+               .fromTo('.form-field, .form-submit', 
+                   { y: 20, autoAlpha: 0 },
+                   { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.05, ease: "power2.out" },
+                   "-=0.2"
+               );
 
         function openModal(e) {
             e.preventDefault();
-            modalOverlay.classList.add('active');
+            isModalOpen = true;
             document.body.classList.add('modal-open');
+            modalTl.timeScale(1).play();
         }
 
         function closeModal() {
-            modalOverlay.classList.remove('active');
+            isModalOpen = false;
             document.body.classList.remove('modal-open');
+            modalTl.timeScale(1.5).reverse();
         }
 
-        navCta.addEventListener('click', openModal);
-        heroCta.addEventListener('click', openModal);
-        contactCta.addEventListener('click', openModal);
+        magnetBtns.forEach(btn => btn?.addEventListener('click', openModal));
         modalClose.addEventListener('click', closeModal);
 
         modalOverlay.addEventListener('click', (e) => {
@@ -947,7 +1008,7 @@
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            if (e.key === 'Escape' && isModalOpen) {
                 closeModal();
             }
         });
