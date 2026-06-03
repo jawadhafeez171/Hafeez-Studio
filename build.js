@@ -16,5 +16,15 @@ html = html.replace('__GOOGLE_SCRIPT_URL__', googleScriptUrl);
 // Write the output file
 fs.writeFileSync(outputPath, html, 'utf8');
 
+// Process tutoring page
+const tutoringTemplatePath = path.join(__dirname, 'tutoring.template.html');
+const tutoringOutputPath = path.join(__dirname, 'tutoring.html');
+if (fs.existsSync(tutoringTemplatePath)) {
+    let tutoringHtml = fs.readFileSync(tutoringTemplatePath, 'utf8');
+    tutoringHtml = tutoringHtml.replace(/__GOOGLE_SCRIPT_URL__/g, googleScriptUrl);
+    fs.writeFileSync(tutoringOutputPath, tutoringHtml, 'utf8');
+    console.log('✅ Built tutoring.html');
+}
+
 console.log('✅ Build complete! Environment variables injected.');
 console.log(`   Google Script URL: ${googleScriptUrl.substring(0, 50)}...`);
