@@ -1759,6 +1759,7 @@
             btn.innerHTML = 'Sending...';
 
             const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
 
             try {
                 // Using the injected Google Script URL
@@ -1782,7 +1783,10 @@
                 await fetch(scriptURL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
                 });
 
                 msg.textContent = 'Thank you! We will get back to you shortly.';
