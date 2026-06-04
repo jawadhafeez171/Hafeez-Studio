@@ -38,9 +38,11 @@ const tutoringTemplatePath = path.join(__dirname, 'tutoring.template.html');
 const tutoringOutputPath = path.join(__dirname, 'tutoring.html');
 if (fs.existsSync(tutoringTemplatePath)) {
     let tutoringHtml = fs.readFileSync(tutoringTemplatePath, 'utf8');
-    tutoringHtml = tutoringHtml.replace(/__GOOGLE_SCRIPT_URL__/g, googleScriptUrl);
+    const googleScriptUrlTutor = process.env.GOOGLE_SCRIPT_URL_TUTOR || 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    tutoringHtml = tutoringHtml.replace(/__GOOGLE_SCRIPT_URL__/g, googleScriptUrlTutor);
     fs.writeFileSync(tutoringOutputPath, tutoringHtml, 'utf8');
     console.log('✅ Built tutoring.html');
+    console.log(`   Google Script URL (Tutor): ${googleScriptUrlTutor.substring(0, 50)}...`);
 }
 
 console.log('✅ Build complete! Environment variables injected.');
