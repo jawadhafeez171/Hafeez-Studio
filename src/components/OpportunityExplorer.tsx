@@ -9,8 +9,6 @@ import {
   Compass, 
   ArrowRight,
   Clock,
-  CheckCircle2,
-  HelpCircle
 } from 'lucide-react';
 
 interface OpportunityExplorerProps {
@@ -86,6 +84,7 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
               fontWeight: 800,
               letterSpacing: '-0.02em',
               marginBottom: '16px',
+              color: 'var(--text-primary)',
             }}
           >
             What is Slowing Your Team Down <span className="gradient-text-orange">the Most?</span>
@@ -117,7 +116,7 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
                   style={{
                     padding: '20px 22px',
                     borderRadius: 'var(--radius-md)',
-                    background: isSelected ? 'rgba(255, 107, 53, 0.12)' : 'var(--bg-card)',
+                    background: isSelected ? 'var(--badge-orange-bg)' : 'var(--bg-card)',
                     border: isSelected ? '1.5px solid var(--accent-orange)' : '1px solid var(--border-subtle)',
                     color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)',
                     textAlign: 'left',
@@ -126,7 +125,7 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
                     alignItems: 'flex-start',
                     gap: '16px',
                     transition: 'all 0.25s ease',
-                    boxShadow: isSelected ? '0 8px 24px -4px rgba(255, 107, 53, 0.25)' : 'var(--card-shadow)',
+                    boxShadow: isSelected ? '0 8px 24px -4px rgba(234, 88, 12, 0.25)' : 'var(--card-shadow)',
                   }}
                 >
                   <div
@@ -163,8 +162,8 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
             className="glass-card"
             style={{
               padding: '40px',
-              border: '1.5px solid rgba(255, 107, 53, 0.35)',
-              background: 'radial-gradient(circle at 50% 0%, rgba(255, 107, 53, 0.12) 0%, var(--bg-card) 70%)',
+              border: '1.5px solid var(--border-subtle)',
+              background: 'radial-gradient(circle at 50% 0%, var(--badge-orange-bg) 0%, var(--bg-card) 75%)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
@@ -213,7 +212,7 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
                 gap: '12px',
               }}
             >
-              <Clock size={20} style={{ color: '#34D399', flexShrink: 0 }} />
+              <Clock size={20} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>
                   Expected Impact

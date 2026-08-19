@@ -2702,8 +2702,7 @@ function Hero({ onOpenContact }) {
                 className: "glow-mesh-secondary",
                 style: {
                     top: '45%',
-                    left: '-10%',
-                    background: 'radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%)'
+                    left: '-10%'
                 }
             }, void 0, false, {
                 fileName: "[project]/src/components/Hero.tsx",
@@ -2765,7 +2764,8 @@ function Hero({ onOpenContact }) {
                                     fontWeight: 800,
                                     lineHeight: 1.12,
                                     letterSpacing: '-0.03em',
-                                    marginBottom: '26px'
+                                    marginBottom: '26px',
+                                    color: 'var(--text-primary)'
                                 },
                                 children: [
                                     "Empowering Your Business with ",
@@ -2774,7 +2774,7 @@ function Hero({ onOpenContact }) {
                                         children: "Intelligent AI Solutions"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 52,
+                                        lineNumber: 53,
                                         columnNumber: 43
                                     }, this),
                                     " & Human-First Craft."
@@ -2796,7 +2796,7 @@ function Hero({ onOpenContact }) {
                                 children: "We partner with forward-thinking teams to build bespoke AI agents, effortless workflow automations, and high-converting Next.js web applications that eliminate drudgery and multiply what you can achieve."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Hero.tsx",
-                                lineNumber: 56,
+                                lineNumber: 57,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2821,20 +2821,20 @@ function Hero({ onOpenContact }) {
                                                 children: "Let's Talk About Your Project"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 81,
+                                                lineNumber: 82,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                 size: 18
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 82,
+                                                lineNumber: 83,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 80,
+                                        lineNumber: 81,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2852,26 +2852,26 @@ function Hero({ onOpenContact }) {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 85,
+                                                lineNumber: 86,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "Explore ROI Estimator"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 86,
+                                                lineNumber: 87,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 85,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Hero.tsx",
-                                lineNumber: 70,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2896,25 +2896,25 @@ function Hero({ onOpenContact }) {
                                                 children: "10x - 20x"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     fontSize: '0.85rem',
                                                     color: 'var(--text-secondary)',
-                                                    fontWeight: 500
+                                                    fontWeight: 600
                                                 },
                                                 children: "Bandwidth Reclaimed"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 109,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 102,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2932,25 +2932,25 @@ function Hero({ onOpenContact }) {
                                                 children: "2 Weeks"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 114,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     fontSize: '0.85rem',
                                                     color: 'var(--text-secondary)',
-                                                    fontWeight: 500
+                                                    fontWeight: 600
                                                 },
                                                 children: "From Idea to Working MVP"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 119,
+                                                lineNumber: 120,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 113,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2968,25 +2968,25 @@ function Hero({ onOpenContact }) {
                                                 children: "24 / 7"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 124,
+                                                lineNumber: 125,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     fontSize: '0.85rem',
                                                     color: 'var(--text-secondary)',
-                                                    fontWeight: 500
+                                                    fontWeight: 600
                                                 },
                                                 children: "Always-On Intelligent Support"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 130,
+                                                lineNumber: 131,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 123,
+                                        lineNumber: 124,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3004,31 +3004,31 @@ function Hero({ onOpenContact }) {
                                                 children: "100%"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 136,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 style: {
                                                     fontSize: '0.85rem',
                                                     color: 'var(--text-secondary)',
-                                                    fontWeight: 500
+                                                    fontWeight: 600
                                                 },
                                                 children: "Human-Aligned & Private"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Hero.tsx",
-                                                lineNumber: 141,
+                                                lineNumber: 142,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Hero.tsx",
-                                        lineNumber: 134,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Hero.tsx",
-                                lineNumber: 91,
+                                lineNumber: 92,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -3047,8 +3047,7 @@ function Hero({ onOpenContact }) {
                             className: "glass-card",
                             style: {
                                 padding: '32px',
-                                border: '1px solid rgba(255, 107, 53, 0.3)',
-                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.55)'
+                                border: '1.5px solid var(--border-subtle)'
                             },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3107,7 +3106,7 @@ function Hero({ onOpenContact }) {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "font-mono",
                                                     style: {
-                                                        fontSize: '0.8rem',
+                                                        fontSize: '0.82rem',
                                                         color: 'var(--text-muted)',
                                                         marginLeft: '10px'
                                                     },
@@ -3159,7 +3158,7 @@ function Hero({ onOpenContact }) {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
-                                                background: 'rgba(255, 240, 225, 0.03)',
+                                                background: 'var(--bg-glass)',
                                                 border: '1px solid var(--border-subtle)',
                                                 borderRadius: 'var(--radius-md)',
                                                 padding: '18px'
@@ -3203,7 +3202,7 @@ function Hero({ onOpenContact }) {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     style: {
-                                                        fontSize: '0.8rem',
+                                                        fontSize: '0.82rem',
                                                         color: 'var(--text-secondary)',
                                                         lineHeight: 1.5
                                                     },
@@ -3221,8 +3220,8 @@ function Hero({ onOpenContact }) {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
-                                                background: 'rgba(255, 107, 53, 0.07)',
-                                                border: '1px solid rgba(255, 107, 53, 0.32)',
+                                                background: 'var(--badge-orange-bg)',
+                                                border: '1px solid var(--badge-orange-border)',
                                                 borderRadius: 'var(--radius-md)',
                                                 padding: '18px'
                                             },
@@ -3249,7 +3248,7 @@ function Hero({ onOpenContact }) {
                                                             style: {
                                                                 fontSize: '0.88rem',
                                                                 fontWeight: 700,
-                                                                color: '#FFB38A'
+                                                                color: 'var(--accent-orange)'
                                                             },
                                                             children: "2. AI Understanding"
                                                         }, void 0, false, {
@@ -3265,7 +3264,7 @@ function Hero({ onOpenContact }) {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     style: {
-                                                        fontSize: '0.8rem',
+                                                        fontSize: '0.82rem',
                                                         color: 'var(--text-secondary)',
                                                         lineHeight: 1.5
                                                     },
@@ -3283,8 +3282,8 @@ function Hero({ onOpenContact }) {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             style: {
-                                                background: 'rgba(16, 185, 129, 0.07)',
-                                                border: '1px solid rgba(16, 185, 129, 0.32)',
+                                                background: 'var(--badge-emerald-bg)',
+                                                border: '1px solid var(--badge-emerald-border)',
                                                 borderRadius: 'var(--radius-md)',
                                                 padding: '18px'
                                             },
@@ -3300,7 +3299,7 @@ function Hero({ onOpenContact }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bot$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bot$3e$__["Bot"], {
                                                             size: 16,
                                                             style: {
-                                                                color: '#34D399'
+                                                                color: 'var(--accent-emerald)'
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Hero.tsx",
@@ -3311,7 +3310,7 @@ function Hero({ onOpenContact }) {
                                                             style: {
                                                                 fontSize: '0.88rem',
                                                                 fontWeight: 700,
-                                                                color: '#6EE7B7'
+                                                                color: 'var(--accent-emerald)'
                                                             },
                                                             children: "3. Helpful Action"
                                                         }, void 0, false, {
@@ -3327,7 +3326,7 @@ function Hero({ onOpenContact }) {
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     style: {
-                                                        fontSize: '0.8rem',
+                                                        fontSize: '0.82rem',
                                                         color: 'var(--text-secondary)',
                                                         lineHeight: 1.5
                                                     },
@@ -3352,12 +3351,12 @@ function Hero({ onOpenContact }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Hero.tsx",
-                            lineNumber: 150,
+                            lineNumber: 151,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/Hero.tsx",
-                        lineNumber: 149,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, this)
                 ]
@@ -4209,25 +4208,25 @@ function OpportunityExplorer({ onOpenContact }) {
                                         size: 14
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 76,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Interactive Solution Finder"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                        lineNumber: 79,
+                                        lineNumber: 77,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                lineNumber: 77,
+                                lineNumber: 75,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                            lineNumber: 76,
+                            lineNumber: 74,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -4236,7 +4235,8 @@ function OpportunityExplorer({ onOpenContact }) {
                                 fontSize: 'clamp(2rem, 4vw, 3.2rem)',
                                 fontWeight: 800,
                                 letterSpacing: '-0.02em',
-                                marginBottom: '16px'
+                                marginBottom: '16px',
+                                color: 'var(--text-primary)'
                             },
                             children: [
                                 "What is Slowing Your Team Down ",
@@ -4245,13 +4245,13 @@ function OpportunityExplorer({ onOpenContact }) {
                                     children: "the Most?"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 90,
                                     columnNumber: 44
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                            lineNumber: 82,
+                            lineNumber: 80,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4263,13 +4263,13 @@ function OpportunityExplorer({ onOpenContact }) {
                             children: "Select your biggest operational bottleneck below to see how a simple, thoughtfully crafted AI solution can solve it."
                         }, void 0, false, {
                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                            lineNumber: 93,
+                            lineNumber: 92,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                    lineNumber: 75,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4296,7 +4296,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                     style: {
                                         padding: '20px 22px',
                                         borderRadius: 'var(--radius-md)',
-                                        background: isSelected ? 'rgba(255, 107, 53, 0.12)' : 'var(--bg-card)',
+                                        background: isSelected ? 'var(--badge-orange-bg)' : 'var(--bg-card)',
                                         border: isSelected ? '1.5px solid var(--accent-orange)' : '1px solid var(--border-subtle)',
                                         color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)',
                                         textAlign: 'left',
@@ -4305,7 +4305,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                         alignItems: 'flex-start',
                                         gap: '16px',
                                         transition: 'all 0.25s ease',
-                                        boxShadow: isSelected ? '0 8px 24px -4px rgba(255, 107, 53, 0.25)' : 'var(--card-shadow)'
+                                        boxShadow: isSelected ? '0 8px 24px -4px rgba(234, 88, 12, 0.25)' : 'var(--card-shadow)'
                                     },
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4321,12 +4321,12 @@ function OpportunityExplorer({ onOpenContact }) {
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                                lineNumber: 142,
+                                                lineNumber: 141,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 131,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4343,32 +4343,32 @@ function OpportunityExplorer({ onOpenContact }) {
                                                 children: item.question
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                                lineNumber: 145,
+                                                lineNumber: 144,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 143,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, item.id, true, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 113,
                                     columnNumber: 17
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                            lineNumber: 109,
+                            lineNumber: 108,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "glass-card",
                             style: {
                                 padding: '40px',
-                                border: '1.5px solid rgba(255, 107, 53, 0.35)',
-                                background: 'radial-gradient(circle at 50% 0%, rgba(255, 107, 53, 0.12) 0%, var(--bg-card) 70%)'
+                                border: '1.5px solid var(--border-subtle)',
+                                background: 'radial-gradient(circle at 50% 0%, var(--badge-orange-bg) 0%, var(--bg-card) 75%)'
                             },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4390,7 +4390,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                             children: "Recommended Solution"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 171,
+                                            lineNumber: 170,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4402,13 +4402,13 @@ function OpportunityExplorer({ onOpenContact }) {
                                             children: current.badge
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 181,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 170,
+                                    lineNumber: 169,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -4423,7 +4423,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                     children: current.solutionTitle
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 187,
+                                    lineNumber: 186,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4436,7 +4436,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                     children: current.howItWorks
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 199,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4454,12 +4454,12 @@ function OpportunityExplorer({ onOpenContact }) {
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
                                             size: 20,
                                             style: {
-                                                color: '#34D399',
+                                                color: 'var(--accent-emerald)',
                                                 flexShrink: 0
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 215,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4475,7 +4475,7 @@ function OpportunityExplorer({ onOpenContact }) {
                                                     children: "Expected Impact"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                                    lineNumber: 218,
+                                                    lineNumber: 217,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4487,19 +4487,19 @@ function OpportunityExplorer({ onOpenContact }) {
                                                     children: current.timeSaved
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                                    lineNumber: 221,
+                                                    lineNumber: 220,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 217,
+                                            lineNumber: 216,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 203,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4515,43 +4515,43 @@ function OpportunityExplorer({ onOpenContact }) {
                                             children: "Explore Implementing This Solution"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 231,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                             size: 16
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                            lineNumber: 233,
+                                            lineNumber: 232,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                                    lineNumber: 227,
+                                    lineNumber: 226,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                            lineNumber: 162,
+                            lineNumber: 161,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/OpportunityExplorer.tsx",
-                    lineNumber: 98,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/OpportunityExplorer.tsx",
-            lineNumber: 74,
+            lineNumber: 72,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/OpportunityExplorer.tsx",
-        lineNumber: 73,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }

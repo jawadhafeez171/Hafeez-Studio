@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ArrowRight, Bot, Cpu, Zap, CheckCircle2, HeartHandshake, Smile } from 'lucide-react';
+import { Sparkles, ArrowRight, Bot, Cpu, Zap, CheckCircle2 } from 'lucide-react';
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -25,7 +25,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
       />
       <div
         className="glow-mesh-secondary"
-        style={{ top: '45%', left: '-10%', background: 'radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%)' }}
+        style={{ top: '45%', left: '-10%' }}
       />
 
       <div className="container-custom" style={{ position: 'relative', zIndex: 10 }}>
@@ -47,6 +47,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               lineHeight: 1.12,
               letterSpacing: '-0.03em',
               marginBottom: '26px',
+              color: 'var(--text-primary)',
             }}
           >
             Empowering Your Business with <span className="gradient-text-orange">Intelligent AI Solutions</span> &amp; Human-First Craft.
@@ -105,7 +106,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 10x - 20x
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 Bandwidth Reclaimed
               </div>
             </div>
@@ -116,7 +117,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 2 Weeks
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 From Idea to Working MVP
               </div>
             </div>
@@ -127,7 +128,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 24 / 7
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 Always-On Intelligent Support
               </div>
             </div>
@@ -138,7 +139,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 100%
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                 Human-Aligned &amp; Private
               </div>
             </div>
@@ -151,8 +152,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
             className="glass-card"
             style={{
               padding: '32px',
-              border: '1px solid rgba(255, 107, 53, 0.3)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.55)',
+              border: '1.5px solid var(--border-subtle)',
             }}
           >
             {/* Terminal Header */}
@@ -172,7 +172,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10B981' }} />
                 <span
                   className="font-mono"
-                  style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginLeft: '10px' }}
+                  style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginLeft: '10px' }}
                 >
                   hafeez-studio-pipeline v2.4 • ready to assist
                 </span>
@@ -193,7 +193,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
             >
               <div
                 style={{
-                  background: 'rgba(255, 240, 225, 0.03)',
+                  background: 'var(--bg-glass)',
                   border: '1px solid var(--border-subtle)',
                   borderRadius: 'var(--radius-md)',
                   padding: '18px',
@@ -203,41 +203,41 @@ export default function Hero({ onOpenContact }: HeroProps) {
                   <Zap size={16} style={{ color: 'var(--accent-orange)' }} />
                   <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)' }}>1. Client Trigger</span>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                   Inbound customer message, lead form submission, email, or webhook event.
                 </p>
               </div>
 
               <div
                 style={{
-                  background: 'rgba(255, 107, 53, 0.07)',
-                  border: '1px solid rgba(255, 107, 53, 0.32)',
+                  background: 'var(--badge-orange-bg)',
+                  border: '1px solid var(--badge-orange-border)',
                   borderRadius: 'var(--radius-md)',
                   padding: '18px',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                   <Cpu size={16} style={{ color: 'var(--accent-orange)' }} />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#FFB38A' }}>2. AI Understanding</span>
+                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-orange)' }}>2. AI Understanding</span>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                   Grounded in your company guidelines, knowledge base, and precise business rules.
                 </p>
               </div>
 
               <div
                 style={{
-                  background: 'rgba(16, 185, 129, 0.07)',
-                  border: '1px solid rgba(16, 185, 129, 0.32)',
+                  background: 'var(--badge-emerald-bg)',
+                  border: '1px solid var(--badge-emerald-border)',
                   borderRadius: 'var(--radius-md)',
                   padding: '18px',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <Bot size={16} style={{ color: '#34D399' }} />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#6EE7B7' }}>3. Helpful Action</span>
+                  <Bot size={16} style={{ color: 'var(--accent-emerald)' }} />
+                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>3. Helpful Action</span>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                   Instant polite response, calendar appointment scheduled, and CRM seamlessly updated.
                 </p>
               </div>
