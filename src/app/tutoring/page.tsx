@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -9,6 +10,11 @@ import {
   MapPin, 
   MessageCircle, 
   ArrowRight,
+  Sparkles,
+  CheckCircle2,
+  Heart,
+  TrendingUp,
+  Award
 } from 'lucide-react';
 
 export default function TutoringPage() {
@@ -72,7 +78,7 @@ export default function TutoringPage() {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: 'Hafeez Home Tutor',
-            image: 'https://hafeezstudio.com/public/logo.webp',
+            image: 'https://hafeezstudio.com/tutoring_hero.jpg',
             url: 'https://hafeezstudio.com/tutoring',
             telephone: '+919902800693',
             address: {
@@ -103,11 +109,11 @@ export default function TutoringPage() {
         <div className="glow-mesh-tutoring" />
 
         <div className="container-custom" style={{ position: 'relative', zIndex: 10 }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto 50px', textAlign: 'center' }}>
             <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
               <span className="badge-emerald">
                 <GraduationCap size={15} />
-                <span>Warm &amp; Personalized 1-on-1 Home Tuition • Bangalore North &amp; Central</span>
+                <span>Personalized 1-on-1 Home Tuition • Bangalore North &amp; Central</span>
               </span>
             </div>
 
@@ -145,7 +151,7 @@ export default function TutoringPage() {
                 lineHeight: 1.65,
               }}
             >
-              Dedicated, patient, and encouraging home tutoring tailored for CBSE, ICSE, and IGCSE students. We replace subject anxiety with genuine curiosity, self-belief, and top academic scores.
+              Dedicated, patient, and encouraging home tutoring tailored for CBSE, ICSE, and IGCSE students in Bangalore. We replace subject anxiety with genuine curiosity, self-belief, and top academic scores.
             </p>
 
             {/* CTAs */}
@@ -156,7 +162,7 @@ export default function TutoringPage() {
                 gap: '16px',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginBottom: '50px',
+                marginBottom: '40px',
               }}
             >
               <button
@@ -179,42 +185,115 @@ export default function TutoringPage() {
                 <span>WhatsApp: +91 99028 00693</span>
               </a>
             </div>
+          </div>
 
-            {/* Metric Highlights */}
+          {/* Hero Visual Image Banner */}
+          <div style={{ maxWidth: '1060px', margin: '0 auto 60px' }}>
             <div
               className="glass-card"
               style={{
-                padding: '26px 32px',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: '20px',
-                border: '1px solid rgba(16, 185, 129, 0.25)',
+                padding: '14px',
+                border: '1.5px solid var(--border-subtle)',
+                position: 'relative',
               }}
             >
-              <div>
-                <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
-                  1-on-1
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '420px',
+                  borderRadius: 'var(--radius-md)',
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src="/tutoring_hero.jpg"
+                  alt="Hafeez Home Tutor providing 1-on-1 Math and Physics mentorship in Bangalore"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+                {/* Floating Reassurance Badge */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '20px',
+                    left: '20px',
+                    background: 'var(--nav-bg)',
+                    backdropFilter: 'blur(16px)',
+                    border: '1px solid var(--border-subtle)',
+                    padding: '12px 20px',
+                    borderRadius: 'var(--radius-md)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    boxShadow: 'var(--card-shadow)',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '38px',
+                      height: '38px',
+                      borderRadius: '50%',
+                      background: 'var(--badge-emerald-bg)',
+                      border: '1px solid var(--badge-emerald-border)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--accent-emerald)',
+                    }}
+                  >
+                    <CheckCircle2 size={20} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                      In-Person Home Mentorship
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                      Bangalore North &amp; Central Neighborhoods
+                    </div>
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Dedicated Personal Attention</div>
               </div>
-              <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-                <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
-                  8, 9 &amp; 10
-                </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Foundations &amp; Board Excellence</div>
+            </div>
+          </div>
+
+          {/* Metric Highlights */}
+          <div
+            className="glass-card"
+            style={{
+              maxWidth: '1060px',
+              margin: '0 auto',
+              padding: '28px 36px',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: '20px',
+              border: '1px solid var(--border-subtle)',
+            }}
+          >
+            <div>
+              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+                1-on-1
               </div>
-              <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-                <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
-                  CBSE / ICSE / IGCSE
-                </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>Complete Syllabus Mastery</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Dedicated Personal Attention</div>
+            </div>
+            <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
+              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+                8, 9 &amp; 10
               </div>
-              <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-                <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
-                  Bangalore
-                </div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>North &amp; Central Localities</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Foundations &amp; Board Excellence</div>
+            </div>
+            <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
+              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+                CBSE / ICSE / IGCSE
               </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Complete Syllabus Mastery</div>
+            </div>
+            <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
+              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+                Bangalore
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>North &amp; Central Localities</div>
             </div>
           </div>
         </div>
@@ -239,7 +318,7 @@ export default function TutoringPage() {
                 className="glass-card"
                 style={{
                   padding: '34px',
-                  border: '1.5px solid rgba(16, 185, 129, 0.25)',
+                  border: '1.5px solid var(--border-subtle)',
                 }}
               >
                 <div
@@ -265,20 +344,84 @@ export default function TutoringPage() {
         </div>
       </section>
 
-      {/* Teaching Methodology */}
-      <section id="methodology" style={{ padding: '80px 0', background: 'var(--bg-glass-subtle)' }}>
+      {/* Teaching Methodology with Concept Image */}
+      <section id="methodology" style={{ padding: '90px 0', background: 'var(--bg-glass-subtle)' }}>
         <div className="container-custom">
-          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 50px' }}>
-            <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '14px', color: 'var(--text-primary)' }}>
-              Our 4-Pillar <span className="gradient-text-emerald">Teaching Philosophy</span>
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6 }}>
-              Designed to build genuine intuition, banish exam anxiety, and foster a lifelong love for problem solving.
-            </p>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '48px',
+              alignItems: 'center',
+              marginBottom: '60px',
+            }}
+          >
+            <div>
+              <div style={{ display: 'inline-flex', marginBottom: '14px' }}>
+                <span className="badge-emerald">
+                  <Sparkles size={14} />
+                  <span>First-Principles Approach</span>
+                </span>
+              </div>
+              <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '18px', color: 'var(--text-primary)' }}>
+                Our 4-Pillar <span className="gradient-text-emerald">Teaching Philosophy</span>
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.65, marginBottom: '24px' }}>
+                Designed to build genuine intuition, banish exam anxiety, and foster a lifelong love for problem solving.
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {methodologySteps.slice(0, 2).map((m, idx) => (
+                  <div key={idx} style={{ display: 'flex', gap: '14px' }}>
+                    <div
+                      className="font-serif"
+                      style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--accent-emerald)', width: '32px' }}
+                    >
+                      {m.num}
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>
+                        {m.title}
+                      </h3>
+                      <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                        {m.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Concept Image Card */}
+            <div
+              className="glass-card"
+              style={{
+                padding: '12px',
+                border: '1.5px solid var(--border-subtle)',
+              }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '340px',
+                  borderRadius: 'var(--radius-md)',
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src="/tutoring_concept.jpg"
+                  alt="Indian high school student focused on Math and Physics problem solving"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
-            {methodologySteps.map((m, idx) => (
+          {/* Pillars 3 and 4 */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+            {methodologySteps.slice(2).map((m, idx) => (
               <div
                 key={idx}
                 className="glass-card"
@@ -289,7 +432,7 @@ export default function TutoringPage() {
               >
                 <div
                   className="font-serif"
-                  style={{ fontSize: '2rem', fontWeight: 900, color: 'rgba(16, 185, 129, 0.45)', marginBottom: '14px' }}
+                  style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--accent-emerald)', marginBottom: '14px' }}
                 >
                   {m.num}
                 </div>
@@ -301,6 +444,85 @@ export default function TutoringPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Confidence & Success Section with Student Photo */}
+      <section style={{ padding: '90px 0', position: 'relative' }}>
+        <div className="container-custom">
+          <div
+            className="glass-card"
+            style={{
+              padding: '40px',
+              border: '1.5px solid var(--border-subtle)',
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                gap: '40px',
+                alignItems: 'center',
+              }}
+            >
+              {/* Photo */}
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  height: '360px',
+                  borderRadius: 'var(--radius-md)',
+                  overflow: 'hidden',
+                }}
+              >
+                <Image
+                  src="/tutoring_confidence.jpg"
+                  alt="Indian high school student celebrating Math and Physics exam confidence"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+
+              {/* Text */}
+              <div>
+                <div style={{ display: 'inline-flex', marginBottom: '12px' }}>
+                  <span className="badge-emerald">
+                    <Award size={14} />
+                    <span>Real Academic Transformation</span>
+                  </span>
+                </div>
+                <h2 className="font-serif" style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>
+                  From Anxiety to <span className="gradient-text-emerald">Confident Problem Solvers</span>
+                </h2>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '20px' }}>
+                  Our personalized approach helps students overcome stumbling blocks in calculus, mechanics, optics, and algebra. We work closely with parents to provide transparent, encouraging progress after every module.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-emerald)' }} />
+                    <span>Weekly timed diagnostic practice papers</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-emerald)' }} />
+                    <span>10-year past board paper answer writing drills</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontSize: '0.92rem' }}>
+                    <CheckCircle2 size={16} style={{ color: 'var(--accent-emerald)' }} />
+                    <span>Patience, encouragement, and zero intimidation</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsContactOpen(true)}
+                  className="btn-emerald"
+                  style={{ padding: '14px 32px' }}
+                >
+                  <span>Book a Free Trial Session</span>
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -327,7 +549,7 @@ export default function TutoringPage() {
             className="glass-card"
             style={{
               padding: '36px',
-              border: '1px solid rgba(16, 185, 129, 0.25)',
+              border: '1.5px solid var(--border-subtle)',
               maxWidth: '960px',
               margin: '0 auto',
             }}
@@ -370,7 +592,7 @@ export default function TutoringPage() {
               padding: '64px 40px',
               textAlign: 'center',
               border: '1.5px solid rgba(16, 185, 129, 0.35)',
-              background: 'radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.18) 0%, rgba(251, 191, 36, 0.08) 35%, var(--bg-card) 75%)',
+              background: 'radial-gradient(circle at 50% 0%, var(--badge-emerald-bg) 0%, var(--bg-card) 75%)',
             }}
           >
             <h2 className="font-serif" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>
