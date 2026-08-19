@@ -1,12 +1,27 @@
 {
   "name": "hafeezstudio",
   "version": "1.0.0",
-  "description": "HafeezStudio website",
+  "description": "Hafeez Studio — AI-Driven Solutions & Intelligent Systems for Businesses",
   "scripts": {
-    "build": "node build.js",
-    "dev": "node build.js && npx serve ."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.1.0",
+    "lucide-react": "^1.32.0",
+    "next": "^16.3.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "serve": "^14.2.1"
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "serve": "^14.2.1",
+    "typescript": "^7.0.2"
   }
 }
