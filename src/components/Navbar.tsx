@@ -41,7 +41,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
       <div className="container-custom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Brand Logo */}
         <Link
-          href="/"
+          href={isTutoringPage ? '/tutoring' : '/'}
           style={{
             textDecoration: 'none',
             display: 'flex',
@@ -58,25 +58,31 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               color: 'var(--text-primary)',
             }}
           >
-            Hafeez<span style={{ color: 'var(--accent-orange)', fontStyle: 'italic', fontWeight: 400 }}>Studio</span>
+            {isTutoringPage ? (
+              <>
+                Hafeez<span style={{ color: 'var(--accent-emerald)', fontStyle: 'italic', fontWeight: 400 }}> Tutor</span>
+              </>
+            ) : (
+              <>
+                Hafeez<span style={{ color: 'var(--accent-orange)', fontStyle: 'italic', fontWeight: 400 }}>Studio</span>
+              </>
+            )}
           </span>
-          {!isTutoringPage && (
-            <span
-              style={{
-                fontSize: '0.65rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                background: 'rgba(255, 107, 53, 0.12)',
-                color: 'var(--accent-orange)',
-                border: '1px solid rgba(255, 107, 53, 0.28)',
-                padding: '2px 8px',
-                borderRadius: '999px',
-                fontWeight: 700,
-              }}
-            >
-              AI
-            </span>
-          )}
+          <span
+            style={{
+              fontSize: '0.65rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              background: isTutoringPage ? 'rgba(16, 185, 129, 0.12)' : 'rgba(255, 107, 53, 0.12)',
+              color: isTutoringPage ? 'var(--accent-emerald)' : 'var(--accent-orange)',
+              border: isTutoringPage ? '1px solid rgba(16, 185, 129, 0.28)' : '1px solid rgba(255, 107, 53, 0.28)',
+              padding: '2px 8px',
+              borderRadius: '999px',
+              fontWeight: 700,
+            }}
+          >
+            {isTutoringPage ? 'Bangalore' : 'AI'}
+          </span>
         </Link>
 
         {/* Desktop Nav Items */}
@@ -146,26 +152,20 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               >
                 Philosophy
               </a>
-              <Link
-                href="/tutoring"
+              <a
+                href="#process"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  color: 'var(--accent-emerald)',
+                  color: 'var(--text-secondary)',
                   textDecoration: 'none',
-                  fontSize: '0.88rem',
-                  fontWeight: 600,
-                  padding: '5px 14px',
-                  borderRadius: '999px',
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.28)',
-                  transition: 'all 0.2s',
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  transition: 'color 0.2s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                <GraduationCap size={15} />
-                Home Tutor
-              </Link>
+                Process
+              </a>
             </>
           ) : (
             <>
@@ -176,9 +176,12 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   textDecoration: 'none',
                   fontSize: '0.9rem',
                   fontWeight: 500,
+                  transition: 'color 0.2s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                Philosophy
+                Teaching Philosophy
               </a>
               <a
                 href="#curriculum"
@@ -187,7 +190,10 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   textDecoration: 'none',
                   fontSize: '0.9rem',
                   fontWeight: 500,
+                  transition: 'color 0.2s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Curriculum
               </a>
@@ -198,29 +204,13 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   textDecoration: 'none',
                   fontSize: '0.9rem',
                   fontWeight: 500,
+                  transition: 'color 0.2s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Bangalore Areas
               </a>
-              <Link
-                href="/"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  color: 'var(--accent-orange)',
-                  textDecoration: 'none',
-                  fontSize: '0.88rem',
-                  fontWeight: 600,
-                  padding: '5px 14px',
-                  borderRadius: '999px',
-                  background: 'rgba(255, 107, 53, 0.1)',
-                  border: '1px solid rgba(255, 107, 53, 0.28)',
-                }}
-              >
-                <Sparkles size={14} />
-                AI Studio
-              </Link>
             </>
           )}
         </nav>
@@ -310,13 +300,23 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               >
                 Our Philosophy
               </a>
-              <Link
-                href="/tutoring"
+              <a
+                href="#process"
                 onClick={() => setMobileMenuOpen(false)}
-                style={{ color: 'var(--accent-emerald)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
+                style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
-                🎓 Hafeez Home Tutor (Bangalore)
-              </Link>
+                2-Week Process
+              </a>
+              <div style={{ paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
+                <Link
+                  href="/tutoring"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ color: 'var(--accent-emerald)', fontSize: '1.1rem', textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <GraduationCap size={18} />
+                  <span>Hafeez Home Tutor (Bangalore)</span>
+                </Link>
+              </div>
             </>
           ) : (
             <>
@@ -325,14 +325,14 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
-                Philosophy
+                Teaching Philosophy
               </a>
               <a
                 href="#curriculum"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
-                Curriculum
+                Curriculum &amp; Boards
               </a>
               <a
                 href="#locations"
@@ -341,13 +341,16 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               >
                 Bangalore Areas
               </a>
-              <Link
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{ color: 'var(--accent-orange)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
-              >
-                ✨ Hafeez Studio — AI Solutions
-              </Link>
+              <div style={{ paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ color: 'var(--accent-orange)', fontSize: '1.1rem', textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <Sparkles size={18} />
+                  <span>Hafeez Studio (AI Solutions)</span>
+                </Link>
+              </div>
             </>
           )}
 
