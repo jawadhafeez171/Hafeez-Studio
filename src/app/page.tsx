@@ -8,6 +8,7 @@ import OpportunityExplorer from '@/components/OpportunityExplorer';
 import AiCapabilities from '@/components/AiCapabilities';
 import RoiCalculator from '@/components/RoiCalculator';
 import CaseStudies from '@/components/CaseStudies';
+import ClientShowcase from '@/components/ClientShowcase';
 import ProcessTimeline from '@/components/ProcessTimeline';
 import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
@@ -80,6 +81,9 @@ export default function HomePage() {
 
       {/* Human-Centered Philosophy */}
       <Philosophy />
+
+      {/* Real-World Client Work */}
+      <ClientShowcase />
 
       {/* Industry Case Studies */}
       <CaseStudies onOpenContact={() => setIsContactOpen(true)} />

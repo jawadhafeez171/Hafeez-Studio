@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import ClientShowcase from '@/components/ClientShowcase';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Sparkles, 
@@ -856,6 +857,9 @@ export default function WebsitesPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Client Live Showcase ── */}
+      <ClientShowcase isWebsitePage={true} />
 
       {/* ── Feature Comparison Table ── */}
       <section style={{ padding: '60px 0 100px', position: 'relative', zIndex: 1 }}>
