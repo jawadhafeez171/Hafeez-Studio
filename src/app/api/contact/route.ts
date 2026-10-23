@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, email, message, type } = body;
+    const { name, phone, email, message, type, plan } = body;
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -26,6 +26,7 @@ export async function POST(request: Request) {
         formData.append('phone', phone);
         if (email) formData.append('email', email);
         if (message) formData.append('message', message);
+        if (plan) formData.append('plan', plan);
         formData.append('timestamp', new Date().toISOString());
         formData.append('type', type || 'studio');
 

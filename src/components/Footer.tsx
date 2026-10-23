@@ -62,24 +62,29 @@ export default function Footer({ onOpenContact, isTutoring = false }: FooterProp
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <a href="#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                <Link href="/websites" style={{ color: 'var(--accent-orange)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'color 0.2s' }}>
+                  Websites &amp; Pricing (3 Plans)
+                </Link>
+              </li>
+              <li>
+                <Link href="/#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                   Workflow Automation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                <Link href="/#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                   Custom RAG Knowledge Bases
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                <Link href="/websites" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                   Next.js Web Applications
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#roi-calculator" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                <Link href="/#roi-calculator" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                   Interactive ROI Estimator
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

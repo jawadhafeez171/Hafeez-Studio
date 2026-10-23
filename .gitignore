@@ -6,18 +6,17 @@ node_modules/
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# next.js build output
+.next/
+out/
+build/
+dist/
 
 # misc
 .DS_Store
 *.pem
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

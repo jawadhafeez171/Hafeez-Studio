@@ -96,8 +96,38 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
         >
           {!isTutoringPage ? (
             <>
-              <a
-                href="#solutions"
+              <Link
+                href="/websites"
+                style={{
+                  color: 'var(--text-secondary)',
+                  textDecoration: 'none',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-orange)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              >
+                <span>Websites</span>
+                <span
+                  style={{
+                    fontSize: '0.65rem',
+                    fontWeight: 800,
+                    background: 'rgba(255, 107, 53, 0.15)',
+                    color: 'var(--accent-orange)',
+                    border: '1px solid rgba(255, 107, 53, 0.3)',
+                    padding: '1px 6px',
+                    borderRadius: '999px',
+                  }}
+                >
+                  3 Plans
+                </span>
+              </Link>
+              <Link
+                href="/#solutions"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -109,9 +139,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 AI Solutions
-              </a>
-              <a
-                href="#explorer"
+              </Link>
+              <Link
+                href="/#explorer"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -123,9 +153,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Find Solution
-              </a>
-              <a
-                href="#roi-calculator"
+              </Link>
+              <Link
+                href="/#roi-calculator"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -137,9 +167,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 ROI Estimator
-              </a>
-              <a
-                href="#philosophy"
+              </Link>
+              <Link
+                href="/#philosophy"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -151,9 +181,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Philosophy
-              </a>
-              <a
-                href="#process"
+              </Link>
+              <Link
+                href="/#process"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -165,7 +195,29 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
                 Process
-              </a>
+              </Link>
+              <Link
+                href="/tutoring"
+                style={{
+                  color: 'var(--accent-emerald)',
+                  textDecoration: 'none',
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: 'rgba(16, 185, 129, 0.08)',
+                  border: '1px solid rgba(16, 185, 129, 0.22)',
+                  padding: '4px 10px',
+                  borderRadius: '999px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(16, 185, 129, 0.16)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(16, 185, 129, 0.08)')}
+              >
+                <GraduationCap size={13} />
+                <span>Home Tutor</span>
+              </Link>
             </>
           ) : (
             <>
@@ -272,41 +324,69 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
         >
           {!isTutoringPage ? (
             <>
-              <a
-                href="#solutions"
+              <Link
+                href="/websites"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  color: 'var(--accent-orange)',
+                  fontSize: '1.25rem',
+                  textDecoration: 'none',
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                }}
+              >
+                <span>Websites &amp; Pricing</span>
+                <span
+                  style={{
+                    fontSize: '0.7rem',
+                    fontWeight: 800,
+                    background: 'rgba(255, 107, 53, 0.15)',
+                    color: 'var(--accent-orange)',
+                    border: '1px solid rgba(255, 107, 53, 0.3)',
+                    padding: '2px 8px',
+                    borderRadius: '999px',
+                  }}
+                >
+                  3 Plans (INR)
+                </span>
+              </Link>
+              <Link
+                href="/#solutions"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
                 AI Solutions
-              </a>
-              <a
-                href="#explorer"
+              </Link>
+              <Link
+                href="/#explorer"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
                 Find Your Solution
-              </a>
-              <a
-                href="#roi-calculator"
+              </Link>
+              <Link
+                href="/#roi-calculator"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
                 ROI Estimator
-              </a>
-              <a
-                href="#philosophy"
+              </Link>
+              <Link
+                href="/#philosophy"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
                 Our Philosophy
-              </a>
-              <a
-                href="#process"
+              </Link>
+              <Link
+                href="/#process"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', textDecoration: 'none', fontWeight: 600 }}
               >
                 2-Week Process
-              </a>
+              </Link>
               <div style={{ paddingTop: '16px', borderTop: '1px solid var(--border-subtle)' }}>
                 <Link
                   href="/tutoring"
