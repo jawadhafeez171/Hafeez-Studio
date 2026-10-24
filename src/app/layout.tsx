@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import CustomCursor from '@/components/CustomCursor';
+import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({
         <ThemeProvider>
           <CustomCursor />
           {children}
+          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>
