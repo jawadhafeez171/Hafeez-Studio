@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -32,6 +32,21 @@ export default function WebsitesPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<string>('Growth');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [mobilePlanFilter, setMobilePlanFilter] = useState<'Starter' | 'Growth' | 'Custom' | 'all'>('Growth');
+  const [expandedDeliverables, setExpandedDeliverables] = useState<Record<string, boolean>>({});
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 450) {
+        setShowStickyBar(true);
+      } else {
+        setShowStickyBar(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSelectPlan = (planName: string) => {
     setSelectedPlan(planName);
@@ -169,29 +184,41 @@ export default function WebsitesPage() {
   const whyCustomWins = [
     {
       icon: Zap,
+      metric: '< 0.8s vs 4–6s WP Bloat',
       title: 'Sub-Second Loading Speed',
-      desc: 'Generic builders load dozens of heavy background scripts that slow down pages to 4–6 seconds. Our clean handcrafted code loads in milliseconds, keeping bounce rates low and Google search rankings high.',
+      desc: 'Speed is your #1 conversion driver. Every 1-second delay reduces conversions by 7%. We handcraft every byte for sub-second First Contentful Paint.',
+      customAdvantage: 'Bespoke compiled Next.js edge code with zero bloat & 98+ Google Lighthouse score.',
+      templateFlaw: 'Heavy jQuery, 35+ plugins & database queries causing 4–6s mobile lag.',
       color: '#06B6D4',
       bgGlow: 'rgba(6, 182, 212, 0.12)',
     },
     {
       icon: ShieldCheck,
-      title: 'Zero Vulnerabilities & 100% Ownership',
-      desc: 'No endless plugin updates, security hacks, or broken templates. You receive 100% ownership of your design, code, and digital assets with zero vendor lock-in.',
+      metric: '100% IP & Code Ownership',
+      title: 'Zero Plugin Hacks & Full Control',
+      desc: 'Never get held hostage by proprietary website builders or wake up to hacked WordPress plugins and broken themes after automated updates.',
+      customAdvantage: 'Complete GitHub repository transfer, clean documentation & lifetime asset ownership.',
+      templateFlaw: 'Captive vendor lock-in, recurring plugin licenses, and weekly security vulnerabilities.',
       color: '#EC4899',
       bgGlow: 'rgba(236, 72, 153, 0.12)',
     },
     {
       icon: Smartphone,
-      title: 'Handcrafted Mobile Perfection',
-      desc: 'Over 75% of your Indian customers browse on mobile phones. Every typography scale, button tap zone, and scroll interaction is tuned specifically for smartphone screens.',
+      metric: '75%+ Mobile Traffic Focused',
+      title: 'Thumb-Engineered Mobile UX',
+      desc: 'Indian business visitors browse predominantly on smartphones. We engineer ergonomic tap targets, smooth touch swipe, and zero layout shifts.',
+      customAdvantage: 'Tailored responsive fluid typography, instant touch response & sticky action triggers.',
+      templateFlaw: 'Rigid desktop-first themes clumsily shrunk down to mobile with microscopic buttons.',
       color: '#8B5CF6',
       bgGlow: 'rgba(139, 92, 246, 0.12)',
     },
     {
       icon: TrendingUp,
-      title: 'Zero Monthly Builder Fees',
-      desc: 'Stop paying thousands of rupees every month just to keep a template builder online. Your modern website runs on global edge cloud infrastructure that is practically free to host.',
+      metric: 'Save ₹25,000+/year Forever',
+      title: 'Zero Monthly Builder Tax',
+      desc: 'Eliminate mandatory builder subscriptions. Your modern web platform runs on world-class global edge CDN infrastructure with virtually zero hosting cost.',
+      customAdvantage: 'Deploy to enterprise edge networks with global CDN, free SSL, and zero monthly builder tax.',
+      templateFlaw: 'Forced ₹1,500 – ₹3,500/month platform fees plus escalating storage & bandwidth penalties.',
       color: '#10B981',
       bgGlow: 'rgba(16, 185, 129, 0.12)',
     },
@@ -200,27 +227,55 @@ export default function WebsitesPage() {
   const processSteps = [
     {
       num: '01',
+      phase: 'Sprint Phase 01',
+      days: 'Days 1 – 2',
       title: 'Strategy & Wireframe Blueprint',
-      desc: 'We review your business goals, target audience, and competitors to design a high-converting layout and sales copy structure before writing a single line of code.',
+      desc: 'We map your customer journey, positioning, and sales copy architecture to craft a conversion-focused blueprint before writing any code.',
       color: '#06B6D4',
+      deliverables: [
+        'Figma UI/UX Layout Blueprint',
+        'High-Converting Sales Copy Matrix',
+        'Competitor Benchmarking Audit',
+      ],
     },
     {
       num: '02',
+      phase: 'Sprint Phase 02',
+      days: 'Days 3 – 7',
       title: 'Handcrafted Visual Development',
-      desc: 'We build your custom website with clean semantic code, tailored styling, crisp typography, responsive layouts, and smooth micro-animations.',
+      desc: 'We engineer your site with semantic HTML5, custom CSS styling, crisp modern typography, fluid responsive layouts, and buttery smooth micro-animations.',
       color: '#EC4899',
+      deliverables: [
+        'Next.js 16 Production Codebase',
+        'Mobile-First Responsive Tuning',
+        'Subtle Framer Micro-Interactions',
+      ],
     },
     {
       num: '03',
+      phase: 'Sprint Phase 03',
+      days: 'Days 8 – 10',
       title: 'SEO, Forms & Analytics Hookup',
-      desc: 'We wire up your lead capture forms, WhatsApp integrations, Google Analytics 4, and configure Google Search Console indexing and social share cards.',
+      desc: 'We integrate your lead generation channels, configure WhatsApp direct routing, connect Google Analytics 4, and optimize on-page schema.',
       color: '#8B5CF6',
+      deliverables: [
+        '1-Click WhatsApp Lead Routing',
+        'Google Analytics 4 & Search Console',
+        '95+ Lighthouse Speed Optimization',
+      ],
     },
     {
       num: '04',
+      phase: 'Sprint Phase 04',
+      days: 'Days 11 – 14',
       title: 'Live Launch & Complete Handover',
-      desc: 'We deploy your site to global high-speed cloud servers, connect your custom domain with free SSL, and provide a full walkthrough with 100% code ownership.',
+      desc: 'We launch on global edge cloud infrastructure, attach your custom domain with free SSL, and hand over 100% of the repository and assets.',
       color: '#10B981',
+      deliverables: [
+        'Production Domain & Free SSL Setup',
+        '100% Git Repository & IP Handover',
+        '30-Day Post-Launch Warranty Support',
+      ],
     },
   ];
 
@@ -272,6 +327,7 @@ export default function WebsitesPage() {
             scale: [1, 1.15, 0.95, 1],
           }}
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+          className="websites-ambient-orb"
           style={{
             position: 'absolute',
             top: '-5%',
@@ -292,6 +348,7 @@ export default function WebsitesPage() {
             scale: [1, 1.2, 0.9, 1],
           }}
           transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+          className="websites-ambient-orb"
           style={{
             position: 'absolute',
             top: '20%',
@@ -312,6 +369,7 @@ export default function WebsitesPage() {
             scale: [1, 1.1, 0.95, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+          className="websites-ambient-orb"
           style={{
             position: 'absolute',
             bottom: '10%',
@@ -326,14 +384,7 @@ export default function WebsitesPage() {
       </div>
 
       {/* ── Hero Section ── */}
-      <section
-        style={{
-          position: 'relative',
-          paddingTop: '160px',
-          paddingBottom: '80px',
-          zIndex: 1,
-        }}
-      >
+      <section className="websites-hero-section">
         <div className="container-custom">
           <div style={{ maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
             {/* Animated Bright Badge */}
@@ -341,24 +392,9 @@ export default function WebsitesPage() {
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}
+              style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}
             >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 20px',
-                  borderRadius: '999px',
-                  background: 'linear-gradient(90deg, rgba(6, 182, 212, 0.15) 0%, rgba(236, 72, 153, 0.15) 50%, rgba(139, 92, 246, 0.15) 100%)',
-                  border: '1px solid rgba(6, 182, 212, 0.4)',
-                  boxShadow: '0 0 20px rgba(6, 182, 212, 0.25)',
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  color: 'var(--text-primary)',
-                }}
-              >
+              <div className="websites-hero-badge">
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
@@ -367,6 +403,7 @@ export default function WebsitesPage() {
                   ✨
                 </motion.span>
                 <span
+                  className="websites-badge-gradient"
                   style={{
                     background: 'linear-gradient(90deg, #00F0FF 0%, #EC4899 50%, #A855F7 100%)',
                     WebkitBackgroundClip: 'text',
@@ -376,7 +413,7 @@ export default function WebsitesPage() {
                 >
                   High-Converting Business Websites
                 </span>
-                <span>• Designed for Measurable Growth</span>
+                <span>• Designed for Growth</span>
               </div>
             </motion.div>
 
@@ -385,18 +422,11 @@ export default function WebsitesPage() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="font-serif"
-              style={{
-                fontSize: 'clamp(2.6rem, 5.8vw, 4.6rem)',
-                fontWeight: 800,
-                lineHeight: 1.12,
-                letterSpacing: '-0.03em',
-                marginBottom: '24px',
-                color: 'var(--text-primary)',
-              }}
+              className="font-serif websites-hero-title"
             >
               Websites That Don&apos;t Just Look Stunning —{' '}
               <span
+                className="websites-title-gradient"
                 style={{
                   background: 'linear-gradient(135deg, #00F0FF 0%, #EC4899 50%, #F59E0B 100%)',
                   WebkitBackgroundClip: 'text',
@@ -414,43 +444,25 @@ export default function WebsitesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              style={{
-                fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
-                color: 'var(--text-secondary)',
-                maxWidth: '760px',
-                margin: '0 auto 40px',
-                lineHeight: 1.65,
-              }}
+              className="websites-hero-subtitle"
             >
               We craft bespoke, lightning-fast business websites for ambitious brands that refuse to settle for slow, generic templates. Engineered for maximum conversions, sub-second load times, and top Google search rank.
             </motion.p>
 
-            {/* Bright Metric Badges (Micro-animations) */}
+            {/* Bright Metric Badges (Micro-animations, 2x2 grid on mobile) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.45 }}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '16px',
-                flexWrap: 'wrap',
-                marginBottom: '46px',
-              }}
+              className="websites-metrics-grid"
             >
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
+                className="websites-metric-item"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 18px',
-                  borderRadius: '12px',
                   background: 'rgba(6, 182, 212, 0.08)',
                   border: '1px solid rgba(6, 182, 212, 0.3)',
                   color: '#06B6D4',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
                 }}
               >
                 <Zap size={16} />
@@ -459,17 +471,11 @@ export default function WebsitesPage() {
 
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
+                className="websites-metric-item"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 18px',
-                  borderRadius: '12px',
                   background: 'rgba(236, 72, 153, 0.08)',
                   border: '1px solid rgba(236, 72, 153, 0.3)',
                   color: '#EC4899',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
                 }}
               >
                 <Search size={16} />
@@ -478,17 +484,11 @@ export default function WebsitesPage() {
 
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
+                className="websites-metric-item"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 18px',
-                  borderRadius: '12px',
                   background: 'rgba(139, 92, 246, 0.08)',
                   border: '1px solid rgba(139, 92, 246, 0.3)',
                   color: '#A855F7',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
                 }}
               >
                 <ShieldCheck size={16} />
@@ -497,21 +497,15 @@ export default function WebsitesPage() {
 
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
+                className="websites-metric-item"
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 18px',
-                  borderRadius: '12px',
                   background: 'rgba(16, 185, 129, 0.08)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
                   color: '#10B981',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
                 }}
               >
                 <Clock size={16} />
-                <span><strong>5–14 Days</strong> Fast Delivery</span>
+                <span><strong>5–14 Days</strong> Fast Sprint</span>
               </motion.div>
             </motion.div>
 
@@ -520,7 +514,7 @@ export default function WebsitesPage() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}
+              className="websites-hero-ctas"
             >
               <motion.a
                 whileHover={{ scale: 1.04 }}
@@ -528,7 +522,7 @@ export default function WebsitesPage() {
                 href="#plans"
                 style={{
                   textDecoration: 'none',
-                  padding: '16px 38px',
+                  padding: '16px 36px',
                   fontSize: '1rem',
                   fontWeight: 700,
                   borderRadius: '999px',
@@ -555,9 +549,8 @@ export default function WebsitesPage() {
                 }}
                 className="btn-secondary"
                 style={{
-                  padding: '16px 34px',
+                  padding: '16px 32px',
                   fontSize: '1rem',
-                  border: '1.5px solid rgba(255, 255, 255, 0.2)',
                 }}
               >
                 <span>Schedule a Discovery Call</span>
@@ -625,17 +618,40 @@ export default function WebsitesPage() {
             </p>
           </motion.div>
 
+          {/* Segmented Control on Mobile Devices */}
+          <div className="websites-plan-segmented-tabs">
+            <button
+              type="button"
+              onClick={() => setMobilePlanFilter('Starter')}
+              className={`websites-plan-tab-btn ${mobilePlanFilter === 'Starter' ? 'active' : ''}`}
+            >
+              <span>⚡ Starter</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobilePlanFilter('Growth')}
+              className={`websites-plan-tab-btn ${mobilePlanFilter === 'Growth' ? 'active' : ''}`}
+            >
+              <span>🔥 Growth</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobilePlanFilter('Custom')}
+              className={`websites-plan-tab-btn ${mobilePlanFilter === 'Custom' ? 'active' : ''}`}
+            >
+              <span>💎 Custom</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobilePlanFilter('all')}
+              className={`websites-plan-tab-btn ${mobilePlanFilter === 'all' ? 'active' : ''}`}
+            >
+              <span>All</span>
+            </button>
+          </div>
+
           {/* Cards Grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '32px',
-              alignItems: 'stretch',
-              maxWidth: '1200px',
-              margin: '0 auto',
-            }}
-          >
+          <div className={`websites-plans-grid tab-${mobilePlanFilter.toLowerCase()}`}>
             {plans.map((p, idx) => (
               <motion.div
                 key={idx}
@@ -644,13 +660,8 @@ export default function WebsitesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
                 whileHover={{ y: -8 }}
+                className={`plan-${p.name.toLowerCase()} websites-plan-card-inner`}
                 style={{
-                  position: 'relative',
-                  padding: '44px 34px',
-                  borderRadius: 'var(--radius-lg)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
                   background: p.isPopular
                     ? 'radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.18) 0%, rgba(139, 92, 246, 0.12) 40%, var(--bg-card) 75%)'
                     : 'var(--bg-card)',
@@ -783,32 +794,56 @@ export default function WebsitesPage() {
                       Included Deliverables:
                     </div>
                     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '13px' }}>
-                      {p.features.map((feat, fIdx) => (
-                        <li
-                          key={fIdx}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: '11px',
-                            fontSize: '0.92rem',
-                            color: 'var(--text-secondary)',
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          <span
+                      {p.features.map((feat, fIdx) => {
+                        const isHiddenOnMobile = fIdx >= 4 && !expandedDeliverables[p.name];
+                        return (
+                          <li
+                            key={fIdx}
+                            className={isHiddenOnMobile ? 'plan-feature-collapsible' : ''}
                             style={{
-                              color: p.color,
-                              marginTop: '2px',
-                              flexShrink: 0,
-                              display: 'inline-flex',
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '11px',
+                              fontSize: '0.92rem',
+                              color: 'var(--text-secondary)',
+                              lineHeight: 1.5,
                             }}
                           >
-                            <CheckCircle2 size={17} />
-                          </span>
-                          <span>{feat}</span>
-                        </li>
-                      ))}
+                            <span
+                              style={{
+                                color: p.color,
+                                marginTop: '2px',
+                                flexShrink: 0,
+                                display: 'inline-flex',
+                              }}
+                            >
+                              <CheckCircle2 size={17} />
+                            </span>
+                            <span>{feat}</span>
+                          </li>
+                        );
+                      })}
                     </ul>
+
+                    {/* Mobile Deliverables Toggle Button */}
+                    {p.features.length > 4 && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedDeliverables((prev) => ({
+                            ...prev,
+                            [p.name]: !prev[p.name],
+                          }))
+                        }
+                        className="plan-features-toggle"
+                      >
+                        <span>
+                          {expandedDeliverables[p.name]
+                            ? '▲ Show top deliverables'
+                            : `▼ View all ${p.features.length} deliverables (+${p.features.length - 4})`}
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -917,21 +952,19 @@ export default function WebsitesPage() {
             </p>
           </motion.div>
 
+          {/* Mobile Swipe Hint Badge */}
+          <div className="websites-table-swipe-hint">
+            <span>↔ Swipe horizontally to compare deliverables</span>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card"
-            style={{
-              maxWidth: '1100px',
-              margin: '0 auto',
-              overflowX: 'auto',
-              border: '1.5px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: 'var(--radius-lg)',
-            }}
+            className="glass-card websites-table-wrapper"
           >
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '700px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '660px' }}>
               <thead>
                 <tr
                   style={{
@@ -939,16 +972,19 @@ export default function WebsitesPage() {
                     background: 'rgba(255, 255, 255, 0.03)',
                   }}
                 >
-                  <th style={{ padding: '22px 26px', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <th
+                    className="websites-table-sticky-col"
+                    style={{ padding: '20px 22px', fontSize: '0.88rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}
+                  >
                     Deliverable
                   </th>
-                  <th style={{ padding: '22px 20px', fontSize: '1rem', color: '#06B6D4', fontWeight: 800 }}>
+                  <th style={{ padding: '20px 18px', fontSize: '0.96rem', color: '#06B6D4', fontWeight: 800 }}>
                     Starter (From ₹12,999)
                   </th>
                   <th
                     style={{
-                      padding: '22px 20px',
-                      fontSize: '1.02rem',
+                      padding: '20px 18px',
+                      fontSize: '0.98rem',
                       color: '#EC4899',
                       fontWeight: 800,
                       background: 'rgba(236, 72, 153, 0.08)',
@@ -956,7 +992,7 @@ export default function WebsitesPage() {
                   >
                     Growth (From ₹24,999) ★
                   </th>
-                  <th style={{ padding: '22px 20px', fontSize: '1rem', color: '#8B5CF6', fontWeight: 800 }}>
+                  <th style={{ padding: '20px 18px', fontSize: '0.96rem', color: '#8B5CF6', fontWeight: 800 }}>
                     Custom (From ₹59,999)
                   </th>
                 </tr>
@@ -970,16 +1006,19 @@ export default function WebsitesPage() {
                       transition: 'background 0.2s',
                     }}
                   >
-                    <td style={{ padding: '18px 26px', fontWeight: 700, fontSize: '0.92rem', color: 'var(--text-primary)' }}>
+                    <td
+                      className="websites-table-sticky-col"
+                      style={{ padding: '16px 22px', fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-primary)' }}
+                    >
                       {item.name}
                     </td>
-                    <td style={{ padding: '18px 20px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                    <td style={{ padding: '16px 18px', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
                       {item.starter}
                     </td>
                     <td
                       style={{
-                        padding: '18px 20px',
-                        fontSize: '0.9rem',
+                        padding: '16px 18px',
+                        fontSize: '0.88rem',
                         color: 'var(--text-primary)',
                         fontWeight: 600,
                         background: 'rgba(236, 72, 153, 0.05)',
@@ -987,7 +1026,7 @@ export default function WebsitesPage() {
                     >
                       {item.growth}
                     </td>
-                    <td style={{ padding: '18px 20px', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+                    <td style={{ padding: '16px 18px', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
                       {item.custom}
                     </td>
                   </tr>
@@ -1054,13 +1093,7 @@ export default function WebsitesPage() {
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '24px',
-            }}
-          >
+          <div className="websites-why-grid">
             {whyCustomWins.map((reason, idx) => {
               const Icon = reason.icon;
               return (
@@ -1070,47 +1103,142 @@ export default function WebsitesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  className="glass-card"
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  className="glass-card websites-why-card"
                   style={{
-                    padding: '36px 30px',
+                    padding: '28px 24px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
+                    borderRadius: '18px',
                     border: `1.5px solid ${reason.color}35`,
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
                   <div>
+                    {/* Top Row: Icon + Metric Tag */}
                     <div
                       style={{
-                        width: '52px',
-                        height: '52px',
-                        borderRadius: '14px',
-                        background: reason.bgGlow,
-                        border: `1px solid ${reason.color}50`,
-                        color: reason.color,
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '22px',
+                        justifyContent: 'space-between',
+                        gap: '12px',
+                        marginBottom: '18px',
+                        flexWrap: 'wrap',
                       }}
                     >
-                      <Icon size={24} />
+                      <div
+                        style={{
+                          width: '46px',
+                          height: '46px',
+                          borderRadius: '13px',
+                          background: reason.bgGlow,
+                          border: `1.5px solid ${reason.color}55`,
+                          color: reason.color,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <Icon size={22} />
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: '0.74rem',
+                          fontWeight: 800,
+                          padding: '4px 10px',
+                          borderRadius: '999px',
+                          background: `${reason.color}18`,
+                          border: `1px solid ${reason.color}45`,
+                          color: reason.color,
+                          letterSpacing: '0.02em',
+                        }}
+                      >
+                        {reason.metric}
+                      </span>
                     </div>
+
                     <h3
                       className="font-serif"
                       style={{
-                        fontSize: '1.3rem',
+                        fontSize: '1.25rem',
                         fontWeight: 700,
                         color: 'var(--text-primary)',
-                        marginBottom: '12px',
+                        marginBottom: '8px',
                       }}
                     >
                       {reason.title}
                     </h3>
-                    <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                    <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '18px' }}>
                       {reason.desc}
                     </p>
+
+                    {/* Direct Comparison Breakdown */}
+                    <div
+                      style={{
+                        borderRadius: '12px',
+                        padding: '12px 14px',
+                        background: 'rgba(0, 0, 0, 0.14)',
+                        border: '1px solid var(--border-subtle)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '10px',
+                      }}
+                    >
+                      {/* Hafeez Studio Custom Pro */}
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.82rem' }}>
+                        <span
+                          style={{
+                            width: '18px',
+                            height: '18px',
+                            borderRadius: '50%',
+                            background: 'rgba(16, 185, 129, 0.15)',
+                            color: '#10B981',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                            fontWeight: 800,
+                            fontSize: '0.72rem',
+                          }}
+                        >
+                          ✓
+                        </span>
+                        <div>
+                          <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Hafeez Studio: </strong>
+                          <span style={{ color: 'var(--text-secondary)' }}>{reason.customAdvantage}</span>
+                        </div>
+                      </div>
+
+                      {/* Generic Template Con */}
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.82rem' }}>
+                        <span
+                          style={{
+                            width: '18px',
+                            height: '18px',
+                            borderRadius: '50%',
+                            background: 'rgba(239, 68, 68, 0.12)',
+                            color: '#EF4444',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                            fontWeight: 800,
+                            fontSize: '0.72rem',
+                          }}
+                        >
+                          ✕
+                        </span>
+                        <div>
+                          <strong style={{ color: 'var(--text-muted)', fontWeight: 600 }}>WordPress / Wix: </strong>
+                          <span style={{ color: 'var(--text-muted)' }}>{reason.templateFlaw}</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -1127,7 +1255,7 @@ export default function WebsitesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 60px' }}
+            style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 50px' }}
           >
             <div style={{ display: 'inline-flex', marginBottom: '14px' }}>
               <span
@@ -1171,13 +1299,7 @@ export default function WebsitesPage() {
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '24px',
-            }}
-          >
+          <div className="websites-process-grid">
             {processSteps.map((step, idx) => (
               <motion.div
                 key={idx}
@@ -1186,41 +1308,158 @@ export default function WebsitesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.12 }}
                 whileHover={{ y: -6 }}
-                className="glass-card"
+                className="glass-card websites-process-card"
                 style={{
-                  padding: '36px 30px',
+                  padding: '28px 24px',
+                  border: `1.5px solid ${step.color}35`,
+                  borderRadius: '18px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  border: `1px solid ${step.color}35`,
+                  position: 'relative',
                 }}
               >
                 <div>
+                  {/* Phase & Timeline Header */}
                   <div
                     style={{
-                      fontSize: '2.8rem',
-                      fontWeight: 800,
-                      fontFamily: 'var(--font-serif)',
-                      color: step.color,
-                      opacity: 0.9,
-                      marginBottom: '16px',
-                      lineHeight: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: '8px',
+                      marginBottom: '14px',
                     }}
                   >
-                    {step.num}
+                    <div
+                      className="websites-process-num-badge font-serif"
+                      style={{
+                        fontSize: '2rem',
+                        fontWeight: 800,
+                        color: step.color,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {step.num}
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span
+                        style={{
+                          fontSize: '0.74rem',
+                          fontWeight: 800,
+                          padding: '4px 10px',
+                          borderRadius: '999px',
+                          background: `${step.color}15`,
+                          border: `1px solid ${step.color}40`,
+                          color: step.color,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                        }}
+                      >
+                        <Clock size={12} />
+                        <span>{step.days}</span>
+                      </span>
+                    </div>
                   </div>
+
+                  <div
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: step.color,
+                      marginBottom: '6px',
+                    }}
+                  >
+                    {step.phase}
+                  </div>
+
                   <h3
                     className="font-serif"
-                    style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '12px' }}
+                    style={{
+                      fontSize: '1.2rem',
+                      fontWeight: 700,
+                      color: 'var(--text-primary)',
+                      marginBottom: '8px',
+                      lineHeight: 1.35,
+                    }}
                   >
                     {step.title}
                   </h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+
+                  <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '18px' }}>
                     {step.desc}
                   </p>
+
+                  {/* Concrete Deliverable Milestone Chips */}
+                  <div
+                    style={{
+                      paddingTop: '14px',
+                      borderTop: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '7px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '0.68rem',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                        color: 'var(--text-muted)',
+                        marginBottom: '2px',
+                      }}
+                    >
+                      Key Deliverables:
+                    </span>
+                    {step.deliverables.map((item, dIdx) => (
+                      <div
+                        key={dIdx}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          fontSize: '0.78rem',
+                          color: 'var(--text-primary)',
+                          fontWeight: 600,
+                        }}
+                      >
+                        <Check size={13} style={{ color: step.color, flexShrink: 0 }} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Guaranteed On-Time Sprint Commitment Banner */}
+          <div
+            style={{
+              marginTop: '36px',
+              padding: '16px 24px',
+              borderRadius: '16px',
+              background: 'var(--bg-glass)',
+              border: '1px solid var(--border-subtle)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '12px',
+              textAlign: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#10B981', fontWeight: 800, fontSize: '0.86rem' }}>
+              <Sparkles size={16} />
+              <span>100% On-Time Sprint Commitment:</span>
+            </div>
+            <span style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
+              Strict milestones, daily WhatsApp sprint reports, and zero unexpected delays — launched on time, every time.
+            </span>
           </div>
         </div>
       </section>
@@ -1233,7 +1472,7 @@ export default function WebsitesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 60px' }}
+            style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 50px' }}
           >
             <div style={{ display: 'inline-flex', marginBottom: '14px' }}>
               <span
@@ -1281,7 +1520,7 @@ export default function WebsitesPage() {
             </p>
           </motion.div>
 
-          <div style={{ maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '14px' }}>
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
@@ -1301,7 +1540,7 @@ export default function WebsitesPage() {
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
                     style={{
                       width: '100%',
-                      padding: '24px 28px',
+                      padding: 'clamp(18px, 3.5vw, 24px) clamp(18px, 3.5vw, 28px)',
                       background: 'transparent',
                       border: 'none',
                       textAlign: 'left',
@@ -1309,12 +1548,12 @@ export default function WebsitesPage() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '16px',
+                      gap: '14px',
                       color: 'var(--text-primary)',
                     }}
                     aria-expanded={isOpen}
                   >
-                    <span style={{ fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.4 }}>
+                    <span style={{ fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', fontWeight: 700, lineHeight: 1.4 }}>
                       {faq.q}
                     </span>
                     <motion.div
@@ -1339,10 +1578,10 @@ export default function WebsitesPage() {
                       >
                         <div
                           style={{
-                            padding: '0 28px 24px',
+                            padding: '0 clamp(18px, 3.5vw, 28px) clamp(18px, 3.5vw, 24px)',
                             color: 'var(--text-secondary)',
-                            fontSize: '0.96rem',
-                            lineHeight: 1.7,
+                            fontSize: '0.94rem',
+                            lineHeight: 1.65,
                           }}
                         >
                           {faq.a}
@@ -1365,16 +1604,16 @@ export default function WebsitesPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card"
+            className="glass-card websites-final-cta-card"
             style={{
-              padding: '68px 40px',
+              padding: 'clamp(36px, 6vw, 68px) clamp(20px, 4vw, 40px)',
               textAlign: 'center',
               border: '2px solid rgba(236, 72, 153, 0.4)',
               background: 'radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.22) 0%, rgba(139, 92, 246, 0.14) 40%, var(--bg-card) 80%)',
               boxShadow: '0 25px 70px -15px rgba(236, 72, 153, 0.3)',
             }}
           >
-            <div style={{ display: 'inline-flex', marginBottom: '18px' }}>
+            <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
               <span
                 style={{
                   padding: '6px 16px',
@@ -1382,7 +1621,7 @@ export default function WebsitesPage() {
                   background: 'rgba(236, 72, 153, 0.15)',
                   border: '1px solid rgba(236, 72, 153, 0.4)',
                   color: '#EC4899',
-                  fontSize: '0.85rem',
+                  fontSize: '0.84rem',
                   fontWeight: 700,
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -1397,15 +1636,16 @@ export default function WebsitesPage() {
             <h2
               className="font-serif"
               style={{
-                fontSize: 'clamp(2.3rem, 4.8vw, 3.8rem)',
+                fontSize: 'clamp(2.1rem, 4.6vw, 3.8rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.02em',
-                marginBottom: '20px',
+                marginBottom: '18px',
                 color: 'var(--text-primary)',
               }}
             >
               Let&apos;s Build a Website You&apos;re{' '}
               <span
+                className="websites-title-gradient"
                 style={{
                   background: 'linear-gradient(135deg, #00F0FF 0%, #EC4899 50%, #F59E0B 100%)',
                   WebkitBackgroundClip: 'text',
@@ -1420,9 +1660,9 @@ export default function WebsitesPage() {
             <p
               style={{
                 color: 'var(--text-secondary)',
-                fontSize: '1.14rem',
+                fontSize: 'clamp(1rem, 1.8vw, 1.14rem)',
                 maxWidth: '680px',
-                margin: '0 auto 38px',
+                margin: '0 auto 34px',
                 lineHeight: 1.65,
               }}
             >
@@ -1438,8 +1678,8 @@ export default function WebsitesPage() {
                   setIsContactOpen(true);
                 }}
                 style={{
-                  padding: '17px 46px',
-                  fontSize: '1.05rem',
+                  padding: '16px clamp(24px, 4vw, 46px)',
+                  fontSize: '1rem',
                   fontWeight: 800,
                   borderRadius: '999px',
                   background: 'linear-gradient(135deg, #00F0FF 0%, #EC4899 60%, #8B5CF6 100%)',
@@ -1459,6 +1699,62 @@ export default function WebsitesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Mobile Sticky Bottom Action Bar ── */}
+      {showStickyBar && !isContactOpen && (
+        <div className="websites-sticky-bottom-bar">
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: '0.7rem', color: '#EC4899', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Handcrafted Web Sprint
+            </div>
+            <div style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              Starts ₹12,999 <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 500 }}>• 5-Day Launch</span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+            <a
+              href="#plans"
+              style={{
+                padding: '8px 12px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                borderRadius: '999px',
+                background: 'var(--bg-glass)',
+                border: '1px solid var(--border-subtle)',
+                color: 'var(--text-primary)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+              }}
+            >
+              Plans
+            </a>
+            <button
+              onClick={() => {
+                setSelectedPlan('Growth');
+                setIsContactOpen(true);
+              }}
+              style={{
+                padding: '8px 16px',
+                fontSize: '0.82rem',
+                fontWeight: 800,
+                borderRadius: '999px',
+                background: 'linear-gradient(135deg, #00F0FF 0%, #EC4899 100%)',
+                color: '#FFFFFF',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+              }}
+            >
+              <span>Get Started</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <Footer onOpenContact={() => setIsContactOpen(true)} />

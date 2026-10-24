@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ExternalLink, Sparkles, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Sparkles, CheckCircle2, ArrowUpRight, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export interface ClientItem {
@@ -69,6 +69,71 @@ interface ClientShowcaseProps {
 }
 
 export default function ClientShowcase({ isWebsitePage = false }: ClientShowcaseProps) {
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const [canScrollLeft, setCanScrollLeft] = React.useState(false);
+  const [canScrollRight, setCanScrollRight] = React.useState(true);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const checkScrollBounds = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 15);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+
+      const cards = scrollRef.current.querySelectorAll('.client-showcase-card');
+      let closestIdx = 0;
+      let minDiff = Infinity;
+      const containerCenter = scrollLeft + clientWidth / 2;
+      cards.forEach((card, idx) => {
+        const cardEl = card as HTMLElement;
+        const cardCenter = cardEl.offsetLeft + cardEl.offsetWidth / 2;
+        const diff = Math.abs(containerCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      setActiveIdx(closestIdx);
+    }
+  };
+
+  const handleScroll = () => {
+    checkScrollBounds();
+  };
+
+  const scrollPrev = () => {
+    if (scrollRef.current) {
+      const card = scrollRef.current.querySelector('.client-showcase-card') as HTMLElement;
+      const cardWidth = card ? card.offsetWidth + 16 : 320;
+      scrollRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      setTimeout(checkScrollBounds, 300);
+    }
+  };
+
+  const scrollNext = () => {
+    if (scrollRef.current) {
+      const card = scrollRef.current.querySelector('.client-showcase-card') as HTMLElement;
+      const cardWidth = card ? card.offsetWidth + 16 : 320;
+      scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      setTimeout(checkScrollBounds, 300);
+    }
+  };
+
+  const scrollToIdx = (idx: number) => {
+    if (scrollRef.current) {
+      const cards = scrollRef.current.querySelectorAll('.client-showcase-card');
+      if (cards[idx]) {
+        (cards[idx] as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        setActiveIdx(idx);
+        setTimeout(checkScrollBounds, 350);
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    checkScrollBounds();
+  }, []);
+
   return (
     <section
       id="clients"
@@ -81,10 +146,10 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
     >
       <div className="container-custom">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 50px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 40px' }}>
           <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
-            <span className={isWebsitePage ? 'badge-pill' : 'badge-pill'}>
-              <Sparkles size={14} style={{ color: isWebsitePage ? '#00F0FF' : 'var(--accent-orange)' }} />
+            <span className="badge-pill">
+              <Sparkles size={14} style={{ color: isWebsitePage ? '#0284C7' : 'var(--accent-orange)' }} />
               <span style={{ fontWeight: 700 }}>Proven Client Results</span>
             </span>
           </div>
@@ -101,6 +166,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
           >
             Built for Businesses That{' '}
             <span
+              className={isWebsitePage ? 'websites-title-gradient' : ''}
               style={{
                 background: isWebsitePage
                   ? 'linear-gradient(135deg, #00F0FF 0%, #EC4899 50%, #8B5CF6 100%)'
@@ -127,14 +193,148 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
           </p>
         </div>
 
-        {/* 4 Interactive Client Cards */}
+        {/* ── Unmistakable Horizontal Slider Control Bar ── */}
         <div
+          className="client-showcase-slider-bar"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
-            marginBottom: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '8px',
+            marginBottom: '18px',
           }}
+        >
+          {/* Active Status Pill */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 12px',
+              borderRadius: '999px',
+              background: 'var(--bg-glass)',
+              border: '1px solid var(--border-subtle)',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              color: 'var(--text-primary)',
+              backdropFilter: 'blur(12px)',
+              minWidth: 0,
+              maxWidth: '65%',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: isWebsitePage ? '#00F0FF' : 'var(--accent-orange)',
+                boxShadow: isWebsitePage ? '0 0 10px #00F0FF' : '0 0 10px var(--accent-orange)',
+                display: 'inline-block',
+                flexShrink: 0,
+                animation: 'pulseGlow 2s infinite',
+              }}
+            />
+            <span style={{ color: 'var(--text-secondary)', fontWeight: 600, flexShrink: 0 }}>
+              Platform <strong style={{ color: 'var(--text-primary)' }}>{activeIdx + 1}</strong>/4:
+            </span>
+            <span
+              style={{
+                color: isWebsitePage ? 'var(--accent-blue)' : 'var(--accent-orange)',
+                fontWeight: 800,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {clientsData[activeIdx].name}
+            </span>
+          </div>
+
+          {/* Swipe Indicator & Navigation Arrows */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              flexShrink: 0,
+            }}
+          >
+            {/* Desktop / tablet swipe hint text */}
+            <span
+              className="client-slider-swipe-hint"
+              style={{
+                fontSize: '0.74rem',
+                fontWeight: 600,
+                color: 'var(--text-muted)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              <span>Swipe</span>
+              <ArrowRight size={11} style={{ animation: 'bounceX 1.5s infinite' }} />
+            </span>
+
+            {/* Prev Button */}
+            <button
+              onClick={scrollPrev}
+              type="button"
+              disabled={!canScrollLeft}
+              aria-label="Previous client platform"
+              className="client-showcase-nav-btn"
+              style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--bg-glass)',
+                border: '1.5px solid var(--border-subtle)',
+                color: canScrollLeft ? 'var(--text-primary)' : 'var(--text-muted)',
+                opacity: canScrollLeft ? 1 : 0.45,
+                cursor: canScrollLeft ? 'pointer' : 'not-allowed',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={scrollNext}
+              type="button"
+              disabled={!canScrollRight}
+              aria-label="Next client platform"
+              className="client-showcase-nav-btn"
+              style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--bg-glass)',
+                border: '1.5px solid var(--border-subtle)',
+                color: canScrollRight ? 'var(--text-primary)' : 'var(--text-muted)',
+                opacity: canScrollRight ? 1 : 0.45,
+                cursor: canScrollRight ? 'pointer' : 'not-allowed',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+
+        {/* 4 Interactive Client Cards (Snap carousel on mobile with card peek) */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="client-showcase-grid"
         >
           {clientsData.map((client, idx) => (
             <motion.div
@@ -144,7 +344,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              className="glass-card"
+              className="glass-card client-showcase-card"
               style={{
                 padding: '28px 26px',
                 display: 'flex',
@@ -307,6 +507,66 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* ── Interactive Client Pagination & Quick Selector Pills ── */}
+        <div
+          className="client-showcase-pagination"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            marginBottom: '32px',
+            flexWrap: 'wrap',
+          }}
+        >
+          {clientsData.map((client, i) => {
+            const isActive = activeIdx === i;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => scrollToIdx(i)}
+                aria-label={`Jump to ${client.name} card`}
+                className={`client-showcase-pill-btn ${isActive ? 'active' : ''}`}
+                style={{
+                  padding: isActive ? '6px 14px' : '6px 10px',
+                  borderRadius: '999px',
+                  background: isActive
+                    ? (isWebsitePage ? 'rgba(0, 240, 255, 0.15)' : 'rgba(255, 107, 53, 0.15)')
+                    : 'var(--bg-glass)',
+                  border: isActive
+                    ? `1.5px solid ${isWebsitePage ? 'var(--accent-blue)' : 'var(--accent-orange)'}`
+                    : '1px solid var(--border-subtle)',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
+                  fontSize: '0.78rem',
+                  fontWeight: isActive ? 700 : 500,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  transition: 'all 0.25s ease',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                <span
+                  style={{
+                    width: isActive ? '8px' : '6px',
+                    height: isActive ? '8px' : '6px',
+                    borderRadius: '50%',
+                    background: isActive
+                      ? (isWebsitePage ? '#00F0FF' : 'var(--accent-orange)')
+                      : 'var(--text-muted)',
+                    boxShadow: isActive ? `0 0 8px ${isWebsitePage ? '#00F0FF' : 'var(--accent-orange)'}` : 'none',
+                    transition: 'all 0.25s ease',
+                  }}
+                />
+                <span className="client-pill-name">{client.name.split(' ')[0]}</span>
+                <span className="client-pill-num" style={{ opacity: 0.6 }}>({i + 1}/4)</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Dynamic Continuous Trust Strip */}
