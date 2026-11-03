@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Sparkles, 
@@ -17,7 +16,8 @@ import {
   Layers,
   ChevronRight,
   BookOpen,
-  MapPin
+  MapPin,
+  Flame
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
@@ -27,8 +27,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onOpenContact, isTutoringPage = false }: NavbarProps) {
-  const pathname = usePathname();
-  const isWebsitePage = pathname === '/websites';
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -62,10 +60,12 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
   }, []);
 
   const studioNavItems = [
-    { href: '/#solutions', label: 'AI Solutions', icon: Cpu },
-    { href: '/#explorer', label: 'Find Solution', icon: Compass },
+    { href: '/#pricing', label: 'Web Packages', icon: Globe2 },
+    { href: '/#ai-solutions', label: 'AI Solutions', icon: Cpu },
+    { href: '/#why-custom', label: 'Why Custom', icon: Layers },
     { href: '/#roi-calculator', label: 'ROI Estimator', icon: Calculator },
-    { href: '/#philosophy', label: 'Philosophy & Process', icon: Layers },
+    { href: '/#work', label: 'Client Work', icon: Sparkles },
+    { href: '/#faq', label: 'FAQ', icon: Compass },
   ];
 
   const tutoringNavItems = [
@@ -88,7 +88,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
         borderBottom: isScrolled 
-          ? (isWebsitePage ? '1px solid rgba(6, 182, 212, 0.3)' : '1px solid var(--border-subtle)') 
+          ? '1px solid var(--border-subtle)' 
           : '1px solid transparent',
       }}
     >
@@ -114,21 +114,11 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
           >
             {isTutoringPage ? (
               <>
-                Hafeez<span style={{ color: 'var(--accent-emerald)', fontStyle: 'italic', fontWeight: 400 }}> Tutor</span>
-              </>
-            ) : isWebsitePage ? (
-              <>
-                Hafeez<span style={{ 
-                  background: 'linear-gradient(135deg, #00F0FF 0%, #EC4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontStyle: 'italic', 
-                  fontWeight: 600 
-                }}>Studio</span>
+                Hafeez<span style={{ color: 'var(--accent-emerald)', fontStyle: 'italic', fontWeight: 500 }}> Tutor</span>
               </>
             ) : (
               <>
-                Hafeez<span style={{ color: 'var(--accent-orange)', fontStyle: 'italic', fontWeight: 400 }}>Studio</span>
+                Hafeez<span style={{ color: 'var(--accent-emerald)', fontStyle: 'italic', fontWeight: 500 }}>Studio</span>
               </>
             )}
           </span>
@@ -137,27 +127,15 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               fontSize: '0.65rem',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              background: isTutoringPage 
-                ? 'rgba(16, 185, 129, 0.12)' 
-                : isWebsitePage 
-                  ? 'rgba(6, 182, 212, 0.15)' 
-                  : 'rgba(255, 107, 53, 0.12)',
-              color: isTutoringPage 
-                ? 'var(--accent-emerald)' 
-                : isWebsitePage 
-                  ? '#06B6D4' 
-                  : 'var(--accent-orange)',
-              border: isTutoringPage 
-                ? '1px solid rgba(16, 185, 129, 0.28)' 
-                : isWebsitePage 
-                  ? '1px solid rgba(6, 182, 212, 0.35)' 
-                  : '1px solid rgba(255, 107, 53, 0.28)',
+              background: 'rgba(5, 150, 105, 0.09)',
+              color: 'var(--accent-emerald)',
+              border: '1px solid rgba(5, 150, 105, 0.28)',
               padding: '2px 8px',
               borderRadius: '999px',
               fontWeight: 700,
             }}
           >
-            {isTutoringPage ? 'Bangalore' : isWebsitePage ? 'Websites' : 'AI'}
+            {isTutoringPage ? 'Bangalore' : 'Web & AI'}
           </span>
         </Link>
 
@@ -166,49 +144,48 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
           style={{
             display: 'none',
             alignItems: 'center',
-            gap: '24px',
+            gap: '22px',
           }}
           className="desktop-nav"
         >
           {!isTutoringPage ? (
             <>
-              {/* Highlighted Active Websites Link */}
+              {/* Highlighted Web Packages Link */}
               <Link
-                href="/websites"
+                href="/#pricing"
                 style={{
-                  color: isWebsitePage ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  color: 'var(--text-primary)',
                   textDecoration: 'none',
                   fontSize: '0.9rem',
-                  fontWeight: isWebsitePage ? 700 : 600,
+                  fontWeight: 600,
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: isWebsitePage ? '5px 12px' : '0',
+                  padding: '4px 10px',
                   borderRadius: '999px',
-                  background: isWebsitePage ? 'linear-gradient(90deg, rgba(6, 182, 212, 0.14) 0%, rgba(236, 72, 153, 0.14) 100%)' : 'transparent',
-                  border: isWebsitePage ? '1px solid rgba(236, 72, 153, 0.35)' : '1px solid transparent',
-                  boxShadow: isWebsitePage ? '0 0 16px rgba(236, 72, 153, 0.15)' : 'none',
+                  background: 'rgba(5, 150, 105, 0.08)',
+                  border: '1px solid rgba(5, 150, 105, 0.25)',
                   transition: 'all 0.2s ease',
                 }}
               >
-                <span>Websites</span>
+                <span>Web Packages</span>
                 <span
                   style={{
                     fontSize: '0.65rem',
                     fontWeight: 800,
-                    background: isWebsitePage ? 'rgba(236, 72, 153, 0.2)' : 'rgba(255, 107, 53, 0.15)',
-                    color: isWebsitePage ? '#EC4899' : 'var(--accent-orange)',
-                    border: isWebsitePage ? '1px solid rgba(236, 72, 153, 0.35)' : '1px solid rgba(255, 107, 53, 0.3)',
+                    background: 'rgba(5, 150, 105, 0.15)',
+                    color: '#059669',
+                    border: '1px solid rgba(5, 150, 105, 0.3)',
                     padding: '1px 6px',
                     borderRadius: '999px',
                   }}
                 >
-                  3 Plans
+                  ₹12,999+
                 </span>
               </Link>
 
               <Link
-                href="/#solutions"
+                href="/#ai-solutions"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -222,7 +199,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 AI Solutions
               </Link>
               <Link
-                href="/#explorer"
+                href="/#why-custom"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -233,7 +210,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                Find Solution
+                Why Custom
               </Link>
               <Link
                 href="/#roi-calculator"
@@ -250,7 +227,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 ROI Estimator
               </Link>
               <Link
-                href="/#philosophy"
+                href="/#work"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -261,10 +238,10 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                Philosophy
+                Client Work
               </Link>
               <Link
-                href="/#process"
+                href="/#faq"
                 style={{
                   color: 'var(--text-secondary)',
                   textDecoration: 'none',
@@ -275,7 +252,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                Process
+                FAQ
               </Link>
               <Link
                 href="/tutoring"
@@ -287,14 +264,14 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '4px',
-                  background: 'rgba(16, 185, 129, 0.08)',
-                  border: '1px solid rgba(16, 185, 129, 0.22)',
+                  background: 'rgba(5, 150, 105, 0.08)',
+                  border: '1px solid rgba(5, 150, 105, 0.22)',
                   padding: '4px 10px',
                   borderRadius: '999px',
                   transition: 'all 0.2s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(16, 185, 129, 0.16)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(16, 185, 129, 0.08)')}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(5, 150, 105, 0.16)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(5, 150, 105, 0.08)')}
               >
                 <GraduationCap size={13} />
                 <span>Home Tutor</span>
@@ -348,25 +325,19 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
           )}
         </nav>
 
-        {/* Right Controls: Theme Toggle + Themed CTA + Crisp Hamburger Button */}
+        {/* Right Controls: Theme Toggle + Themed CTA + Hamburger Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <ThemeToggle />
 
           <button
             onClick={onOpenContact}
-            className={`${isTutoringPage ? 'btn-emerald' : 'btn-primary'} nav-header-cta`}
+            className="btn-primary nav-header-cta"
             style={{
               padding: '9px 18px',
               fontSize: '0.86rem',
-              background: isWebsitePage 
-                ? 'linear-gradient(135deg, #00F0FF 0%, #EC4899 60%, #8B5CF6 100%)'
-                : undefined,
-              boxShadow: isWebsitePage 
-                ? '0 6px 20px rgba(236, 72, 153, 0.4)' 
-                : undefined,
             }}
           >
-            <span>{isTutoringPage ? 'Book Free Trial' : isWebsitePage ? 'Choose Plan' : "Let's Talk"}</span>
+            <span>{isTutoringPage ? 'Book Free Trial' : "Let's Talk"}</span>
             <ArrowUpRight size={15} />
           </button>
 
@@ -381,25 +352,13 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               height: '38px',
               borderRadius: '10px',
               background: mobileMenuOpen 
-                ? (isTutoringPage 
-                    ? 'rgba(16, 185, 129, 0.16)' 
-                    : isWebsitePage 
-                      ? 'rgba(236, 72, 153, 0.16)' 
-                      : 'rgba(255, 107, 53, 0.16)')
+                ? 'rgba(5, 150, 105, 0.16)' 
                 : 'var(--bg-glass)',
               border: mobileMenuOpen
-                ? (isTutoringPage 
-                    ? '1px solid rgba(16, 185, 129, 0.45)' 
-                    : isWebsitePage 
-                      ? '1px solid rgba(236, 72, 153, 0.45)' 
-                      : '1px solid rgba(255, 107, 53, 0.45)')
+                ? '1px solid rgba(5, 150, 105, 0.45)' 
                 : '1px solid var(--border-subtle)',
               color: mobileMenuOpen
-                ? (isTutoringPage 
-                    ? 'var(--accent-emerald)' 
-                    : isWebsitePage 
-                      ? '#EC4899' 
-                      : 'var(--accent-orange)')
+                ? 'var(--accent-emerald)' 
                 : 'var(--text-primary)',
               cursor: 'pointer',
               display: 'flex',
@@ -407,9 +366,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               justifyContent: 'center',
               transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
               boxShadow: mobileMenuOpen 
-                ? (isWebsitePage 
-                    ? '0 0 15px rgba(236, 72, 153, 0.25)' 
-                    : '0 0 15px rgba(255, 107, 53, 0.2)') 
+                ? '0 0 15px rgba(5, 150, 105, 0.2)' 
                 : 'none',
               padding: 0,
             }}
@@ -419,7 +376,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
         </div>
       </div>
 
-      {/* ── Mobile Menu Dropdown (Tight, Crisp Floating Glass Card) ── */}
+      {/* ── Mobile Menu Dropdown (Floating Glass Card) ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -433,14 +390,14 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
               style={{
                 position: 'fixed',
                 inset: 0,
-                background: 'rgba(0, 0, 0, 0.55)',
+                background: 'rgba(6, 42, 30, 0.35)',
                 backdropFilter: 'blur(6px)',
                 WebkitBackdropFilter: 'blur(6px)',
                 zIndex: 98,
               }}
             />
 
-            {/* Tight & Crisp Floating Menu Card */}
+            {/* Menu Card */}
             <motion.div
               initial={{ opacity: 0, y: -10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -457,9 +414,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                 background: 'var(--bg-card)',
                 backdropFilter: 'blur(28px)',
                 WebkitBackdropFilter: 'blur(28px)',
-                border: '1px solid var(--border-subtle)',
+                border: '1.5px solid var(--border-subtle)',
                 borderRadius: '18px',
-                boxShadow: '0 20px 45px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(236, 72, 153, 0.12)',
+                boxShadow: '0 20px 45px -10px rgba(6, 42, 30, 0.15)',
                 padding: '12px',
                 zIndex: 99,
                 display: 'flex',
@@ -471,9 +428,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
             >
               {!isTutoringPage ? (
                 <>
-                  {/* Featured: Websites & Pricing Card */}
+                  {/* Featured: Web Packages Card */}
                   <Link
-                    href="/websites"
+                    href="/#pricing"
                     onClick={() => setMobileMenuOpen(false)}
                     style={{
                       textDecoration: 'none',
@@ -482,8 +439,8 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                       justifyContent: 'space-between',
                       padding: '10px 12px',
                       borderRadius: '12px',
-                      background: 'linear-gradient(90deg, rgba(6, 182, 212, 0.12) 0%, rgba(236, 72, 153, 0.12) 100%)',
-                      border: '1px solid rgba(236, 72, 153, 0.35)',
+                      background: 'rgba(5, 150, 105, 0.08)',
+                      border: '1px solid rgba(5, 150, 105, 0.25)',
                       marginBottom: '4px',
                       transition: 'all 0.2s ease',
                     }}
@@ -494,18 +451,18 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                           width: '32px',
                           height: '32px',
                           borderRadius: '8px',
-                          background: 'rgba(236, 72, 153, 0.18)',
+                          background: 'rgba(5, 150, 105, 0.15)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          color: '#EC4899',
+                          color: '#059669',
                         }}
                       >
                         <Globe2 size={16} />
                       </div>
                       <div>
                         <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-                          Websites &amp; Pricing
+                          Web Packages
                         </div>
                       </div>
                     </div>
@@ -513,9 +470,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                       style={{
                         fontSize: '0.68rem',
                         fontWeight: 800,
-                        color: '#EC4899',
-                        background: 'rgba(236, 72, 153, 0.15)',
-                        border: '1px solid rgba(236, 72, 153, 0.3)',
+                        color: '#059669',
+                        background: 'rgba(5, 150, 105, 0.15)',
+                        border: '1px solid rgba(5, 150, 105, 0.3)',
                         padding: '3px 8px',
                         borderRadius: '999px',
                         letterSpacing: '0.02em',
@@ -546,7 +503,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                           transition: 'background 0.15s, color 0.15s',
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'var(--bg-glass)';
+                          e.currentTarget.style.background = 'var(--bg-surface)';
                           e.currentTarget.style.color = 'var(--text-primary)';
                         }}
                         onMouseLeave={(e) => {
@@ -576,8 +533,8 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                       justifyContent: 'space-between',
                       padding: '9px 12px',
                       borderRadius: '10px',
-                      background: 'rgba(16, 185, 129, 0.08)',
-                      border: '1px solid rgba(16, 185, 129, 0.22)',
+                      background: 'rgba(5, 150, 105, 0.06)',
+                      border: '1px solid rgba(5, 150, 105, 0.2)',
                       transition: 'all 0.2s ease',
                     }}
                   >
@@ -592,7 +549,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                         fontSize: '0.68rem',
                         fontWeight: 700,
                         color: 'var(--accent-emerald)',
-                        background: 'rgba(16, 185, 129, 0.15)',
+                        background: 'rgba(5, 150, 105, 0.12)',
                         padding: '2px 8px',
                         borderRadius: '999px',
                       }}
@@ -645,17 +602,17 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                       justifyContent: 'space-between',
                       padding: '9px 12px',
                       borderRadius: '10px',
-                      background: 'rgba(255, 107, 53, 0.08)',
-                      border: '1px solid rgba(255, 107, 53, 0.22)',
+                      background: 'rgba(5, 150, 105, 0.08)',
+                      border: '1px solid rgba(5, 150, 105, 0.22)',
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
-                      <Sparkles size={16} style={{ color: 'var(--accent-orange)' }} />
-                      <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-orange)' }}>
-                        Hafeez Studio (AI Solutions)
+                      <Sparkles size={16} style={{ color: 'var(--accent-emerald)' }} />
+                      <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>
+                        Hafeez Studio (Web &amp; AI)
                       </span>
                     </div>
-                    <ChevronRight size={14} style={{ opacity: 0.5, color: 'var(--accent-orange)' }} />
+                    <ChevronRight size={14} style={{ opacity: 0.5, color: 'var(--accent-emerald)' }} />
                   </Link>
                 </>
               )}
@@ -666,7 +623,7 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   setMobileMenuOpen(false);
                   onOpenContact?.();
                 }}
-                className={isTutoringPage ? 'btn-emerald' : 'btn-primary'}
+                className="btn-primary"
                 style={{
                   width: '100%',
                   padding: '11px 16px',
@@ -674,17 +631,9 @@ export default function Navbar({ onOpenContact, isTutoringPage = false }: Navbar
                   fontWeight: 700,
                   borderRadius: '12px',
                   marginTop: '6px',
-                  background: isWebsitePage
-                    ? 'linear-gradient(135deg, #00F0FF 0%, #EC4899 60%, #8B5CF6 100%)'
-                    : undefined,
-                  boxShadow: isTutoringPage
-                    ? '0 6px 20px rgba(16, 185, 129, 0.35)'
-                    : isWebsitePage 
-                      ? '0 6px 20px rgba(236, 72, 153, 0.4)' 
-                      : '0 6px 20px rgba(255, 107, 53, 0.35)',
                 }}
               >
-                <span>{isTutoringPage ? 'Book Free Trial Class' : isWebsitePage ? "Get Started — Choose Plan" : "Schedule a Discovery Call"}</span>
+                <span>{isTutoringPage ? 'Book Free Trial Class' : "Schedule Discovery Call"}</span>
                 <ArrowUpRight size={15} />
               </button>
             </motion.div>

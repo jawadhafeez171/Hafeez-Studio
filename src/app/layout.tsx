@@ -5,16 +5,17 @@ import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata: Metadata = {
-  title: 'Hafeez Studio — AI-Driven Solutions & Intelligent Systems for Businesses',
+  title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
   description:
-    'Hafeez Studio builds custom AI agents, automated workflow pipelines, and high-performance Next.js web applications to eliminate manual work, scale operations, and accelerate business revenue.',
+    'Hafeez Studio builds high-converting Next.js websites and custom AI workflow automation pipelines to eliminate manual work, capture clients, and accelerate business revenue.',
   keywords: [
+    'high-converting websites',
+    'Next.js web development',
+    'custom web design Bangalore',
     'AI solutions for business',
     'AI workflow automation',
     'custom AI agents',
     'RAG chatbot development',
-    'Next.js web development',
-    'AI agency Bangalore',
     'business process automation',
     'Hafeez Studio',
   ],
@@ -28,16 +29,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://hafeezstudio.com',
-    title: 'Hafeez Studio — AI-Driven Solutions & Intelligent Systems for Businesses',
+    title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
     description:
-      'We design and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
+      'We build high-converting Next.js websites and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
     siteName: 'Hafeez Studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hafeez Studio — AI-Driven Solutions & Intelligent Systems',
+    title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
     description:
-      'We design and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
+      'We build high-converting Next.js websites and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
   },
   verification: {
     google: 'SJ9BIXHBoNu5rQA6pQyKAHZ333ZRQQhAGWjnwElAOUI',
@@ -53,15 +54,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="light">
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
         <ThemeProvider>
           <CustomCursor />
-          {children}
           <FloatingActions />
+          {children}
         </ThemeProvider>
       </body>
     </html>

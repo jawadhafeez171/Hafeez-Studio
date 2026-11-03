@@ -26,7 +26,7 @@ export default function ThemeToggle() {
         overflow: 'hidden',
       }}
       aria-label={`Switch to ${theme === 'dark' ? 'warm light' : 'warm dark'} mode`}
-      title={`Switch to ${theme === 'dark' ? 'Sunlit Linen' : 'Roasted Espresso'} theme`}
+      title={`Switch to ${theme === 'dark' ? 'Sage & Mineral Mint' : 'Midnight Pine'} theme`}
     >
       <span
         style={{
@@ -37,7 +37,7 @@ export default function ThemeToggle() {
           opacity: theme === 'dark' ? 1 : 0,
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           position: 'absolute',
-          color: '#FBBF24',
+          color: '#D97706',
         }}
       >
         <Sun size={18} />
@@ -52,7 +52,7 @@ export default function ThemeToggle() {
           opacity: theme === 'light' ? 1 : 0,
           transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
           position: 'absolute',
-          color: '#FF6B35',
+          color: '#10B981',
         }}
       >
         <Moon size={18} />

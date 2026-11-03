@@ -283,8 +283,8 @@ export default function ContactModal({
               alignItems: 'center',
               justifyContent: 'center',
               gap: '8px',
-              background: isWebsite ? 'linear-gradient(135deg, #00F0FF 0%, #EC4899 60%, #8B5CF6 100%)' : undefined,
-              boxShadow: isWebsite ? '0 6px 20px rgba(236, 72, 153, 0.35)' : undefined,
+              background: isWebsite ? 'linear-gradient(135deg, #059669 0%, #10B981 60%, #0D9488 100%)' : undefined,
+              boxShadow: isWebsite ? '0 6px 20px rgba(5, 150, 105, 0.35)' : undefined,
               border: 'none',
               cursor: 'pointer',
             }}

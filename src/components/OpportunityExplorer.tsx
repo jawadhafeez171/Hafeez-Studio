@@ -9,6 +9,7 @@ import {
   Compass, 
   ArrowRight,
   Clock,
+  Globe2
 } from 'lucide-react';
 
 interface OpportunityExplorerProps {
@@ -19,6 +20,17 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
   const [selectedGoal, setSelectedGoal] = useState(0);
 
   const challenges = [
+    {
+      id: 'slow-website',
+      icon: Globe2,
+      question: 'Our current website is slow, template-based, or fails to convert visitors into paying clients',
+      solutionTitle: 'Sub-Second Next.js Growth Platform',
+      howItWorks:
+        'A custom, high-converting Next.js website engineered for <0.8s mobile loads, top Google Lighthouse scores, direct 1-click WhatsApp triggers, and automated lead capture with zero builder fees.',
+      timeSaved: '2x – 3x boost in customer conversions',
+      bestFor: 'Local Businesses, Clinics, Agencies, Consultants',
+      badge: 'High Conversion',
+    },
     {
       id: 'customer-queries',
       icon: MessageSquare,
@@ -68,9 +80,9 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
   const current = challenges[selectedGoal];
 
   return (
-    <section id="explorer" style={{ padding: '100px 0', position: 'relative' }}>
+    <section id="explorer" style={{ padding: '90px 0', position: 'relative' }}>
       <div className="container-custom">
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 50px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 50px' }}>
           <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
             <span className="badge-pill">
               <Sparkles size={14} />
@@ -87,10 +99,10 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
               color: 'var(--text-primary)',
             }}
           >
-            What is Slowing Your Team Down <span className="gradient-text-orange">the Most?</span>
+            What is Slowing Your Business Down <span className="gradient-text-orange">the Most?</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.08rem', lineHeight: 1.65 }}>
-            Select your biggest operational bottleneck below to see how a simple, thoughtfully crafted AI solution can solve it.
+            Select your biggest operational bottleneck below to see how a thoughtful website or AI automation solution can solve it.
           </p>
         </div>
 
@@ -114,7 +126,7 @@ export default function OpportunityExplorer({ onOpenContact }: OpportunityExplor
                   key={item.id}
                   onClick={() => setSelectedGoal(idx)}
                   style={{
-                    padding: '20px 22px',
+                    padding: '18px 20px',
                     borderRadius: 'var(--radius-md)',
                     background: isSelected ? 'var(--badge-orange-bg)' : 'var(--bg-card)',
                     border: isSelected ? '1.5px solid var(--accent-orange)' : '1px solid var(--border-subtle)',

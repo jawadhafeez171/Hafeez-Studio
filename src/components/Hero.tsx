@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ArrowRight, Bot, Cpu, Zap, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, Bot, Cpu, Zap, CheckCircle2, Globe2, ShieldCheck } from 'lucide-react';
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -13,7 +13,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
       style={{
         position: 'relative',
         paddingTop: '160px',
-        paddingBottom: '100px',
+        paddingBottom: '90px',
         overflow: 'hidden',
       }}
     >
@@ -29,12 +29,12 @@ export default function Hero({ onOpenContact }: HeroProps) {
       />
 
       <div className="container-custom" style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{ maxWidth: '940px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
           {/* Status Badge */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
             <div className="badge-pill">
               <span className="pulse-dot" />
-              <span>✨ Welcome to Hafeez Studio • Human-Centered AI &amp; Intelligent Web Craft</span>
+              <span>✨ Hafeez Studio • Modern Websites &amp; Intelligent AI Automation</span>
             </div>
           </div>
 
@@ -42,29 +42,30 @@ export default function Hero({ onOpenContact }: HeroProps) {
           <h1
             className="font-serif"
             style={{
-              fontSize: 'clamp(2.5rem, 5.5vw, 4.6rem)',
+              fontSize: 'clamp(2.4rem, 5.4vw, 4.5rem)',
               fontWeight: 800,
-              lineHeight: 1.12,
+              lineHeight: 1.14,
               letterSpacing: '-0.03em',
-              marginBottom: '26px',
+              marginBottom: '24px',
               color: 'var(--text-primary)',
             }}
           >
-            Empowering Your Business with <span className="gradient-text-orange">Intelligent AI Solutions</span> &amp; Human-First Craft.
+            Websites Engineered to Convert.{' '}
+            <span className="gradient-text-orange">AI Automation Built to Scale.</span>
           </h1>
 
           {/* Subtitle */}
           <p
             style={{
-              fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+              fontSize: 'clamp(1.05rem, 1.9vw, 1.25rem)',
               color: 'var(--text-secondary)',
-              maxWidth: '760px',
-              margin: '0 auto 40px',
+              maxWidth: '800px',
+              margin: '0 auto 38px',
               lineHeight: 1.65,
               fontWeight: 400,
             }}
           >
-            We partner with forward-thinking teams to build bespoke AI agents, effortless workflow automations, and high-converting Next.js web applications that eliminate drudgery and multiply what you can achieve.
+            We partner with ambitious founders, agencies, and clinics to build lightning-fast Next.js web applications and intelligent AI workflow pipelines that turn visitors into paying clients and eliminate repetitive manual drudgery.
           </p>
 
           {/* Action Buttons */}
@@ -72,19 +73,23 @@ export default function Hero({ onOpenContact }: HeroProps) {
             style={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: '16px',
+              gap: '14px',
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: '60px',
+              marginBottom: '54px',
             }}
           >
-            <button onClick={onOpenContact} className="btn-primary" style={{ padding: '16px 36px', fontSize: '1rem' }}>
-              <span>Let&apos;s Talk About Your Project</span>
+            <button onClick={onOpenContact} className="btn-primary" style={{ padding: '16px 34px', fontSize: '1rem' }}>
+              <span>Book Discovery Call</span>
               <ArrowRight size={18} />
             </button>
-            <a href="#roi-calculator" className="btn-secondary" style={{ padding: '16px 32px', fontSize: '1rem' }}>
-              <Zap size={18} style={{ color: 'var(--accent-amber)' }} />
-              <span>Explore ROI Estimator</span>
+            <a href="#pricing" className="btn-secondary" style={{ padding: '16px 28px', fontSize: '1rem' }}>
+              <Globe2 size={18} style={{ color: '#0D9488' }} />
+              <span>Website Plans (from ₹12,999)</span>
+            </a>
+            <a href="#ai-solutions" className="btn-secondary" style={{ padding: '16px 28px', fontSize: '1rem' }}>
+              <Cpu size={18} style={{ color: 'var(--accent-orange)' }} />
+              <span>Explore AI Systems</span>
             </a>
           </div>
 
@@ -92,10 +97,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
           <div
             className="glass-card"
             style={{
-              padding: '28px 36px',
+              padding: '26px 32px',
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '24px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
+              gap: '20px',
               textAlign: 'center',
             }}
           >
@@ -104,10 +109,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 className="font-serif gradient-text-orange"
                 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '4px' }}
               >
-                10x - 20x
+                &lt; 0.8s
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                Bandwidth Reclaimed
+              <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                Sub-Second Speed Guarantee
               </div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
@@ -115,10 +120,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 className="font-serif gradient-text"
                 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '4px' }}
               >
-                2 Weeks
+                10x – 20x
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                From Idea to Working MVP
+              <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                Bandwidth Reclaimed
               </div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
@@ -126,10 +131,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
                 className="font-serif gradient-text-emerald"
                 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '4px' }}
               >
-                24 / 7
+                2 Weeks
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                Always-On Intelligent Support
+              <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                Rapid Turnaround Sprint
               </div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
@@ -139,19 +144,19 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 100%
               </div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                Human-Aligned &amp; Private
+              <div style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                Full IP &amp; Code Ownership
               </div>
             </div>
           </div>
         </div>
 
-        {/* Live Interactive AI Pipeline Preview Card */}
-        <div style={{ marginTop: '70px', maxWidth: '960px', margin: '70px auto 0' }}>
+        {/* Live Interactive End-to-End Pipeline Card */}
+        <div style={{ marginTop: '64px', maxWidth: '960px', margin: '64px auto 0' }}>
           <div
             className="glass-card"
             style={{
-              padding: '32px',
+              padding: '30px 32px',
               border: '1.5px solid var(--border-subtle)',
             }}
           >
@@ -174,12 +179,12 @@ export default function Hero({ onOpenContact }: HeroProps) {
                   className="font-mono"
                   style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginLeft: '10px' }}
                 >
-                  hafeez-studio-pipeline v2.4 • ready to assist
+                  hafeez-studio-unified-engine v3.0 • live customer flow
                 </span>
               </div>
               <div className="badge-emerald" style={{ padding: '4px 12px', fontSize: '0.78rem' }}>
                 <CheckCircle2 size={13} />
-                Live &amp; Ready
+                Fully Integrated
               </div>
             </div>
 
@@ -194,17 +199,17 @@ export default function Hero({ onOpenContact }: HeroProps) {
               <div
                 style={{
                   background: 'var(--bg-glass)',
-                  border: '1px solid var(--border-subtle)',
+                  border: '1px solid rgba(13, 148, 136, 0.35)',
                   borderRadius: 'var(--radius-md)',
                   padding: '18px',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <Zap size={16} style={{ color: 'var(--accent-orange)' }} />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)' }}>1. Client Trigger</span>
+                  <Globe2 size={16} style={{ color: '#0D9488' }} />
+                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0D9488' }}>1. Lightning-Fast Web Storefront</span>
                 </div>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                  Inbound customer message, lead form submission, email, or webhook event.
+                  Sub-second Next.js pages capture visitors, display social proof, and trigger 1-click WhatsApp/form inquiries.
                 </p>
               </div>
 
@@ -218,10 +223,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                   <Cpu size={16} style={{ color: 'var(--accent-orange)' }} />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-orange)' }}>2. AI Understanding</span>
+                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-orange)' }}>2. AI Triage &amp; Knowledge</span>
                 </div>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                  Grounded in your company guidelines, knowledge base, and precise business rules.
+                  Private AI assistant answers questions, quotes services, and qualifies customer budgets within 3 seconds.
                 </p>
               </div>
 
@@ -235,10 +240,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                   <Bot size={16} style={{ color: 'var(--accent-emerald)' }} />
-                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>3. Helpful Action</span>
+                  <span style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>3. Automated CRM Action</span>
                 </div>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                  Instant polite response, calendar appointment scheduled, and CRM seamlessly updated.
+                  Instant calendar appointment booked, customer notified on WhatsApp, and lead synced to your CRM.
                 </p>
               </div>
             </div>

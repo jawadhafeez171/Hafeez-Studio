@@ -51,39 +51,49 @@ export default function Footer({ onOpenContact, isTutoring = false }: FooterProp
               </span>
             </Link>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '320px' }}>
-              Architecting bespoke AI agents, intelligent automated pipelines, and modern digital applications with care.
+              Architecting bespoke Next.js web applications, intelligent AI assistants, and automated workflow pipelines with human-first craft.
             </p>
           </div>
 
           {/* Column 2: Solutions */}
           <div>
             <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '20px' }}>
-              AI Solutions
+              Web &amp; AI Services
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li>
-                <Link href="/websites" style={{ color: 'var(--accent-orange)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'color 0.2s' }}>
-                  Websites &amp; Pricing (3 Plans)
+                <Link href="/#pricing" style={{ color: '#059669', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, transition: 'color 0.2s' }}>
+                  Web Packages (From ₹12,999)
                 </Link>
               </li>
               <li>
-                <Link href="/#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
-                  Workflow Automation
+                <Link href="/#ai-solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                  AI Assistants &amp; RAG Knowledge Bases
                 </Link>
               </li>
               <li>
-                <Link href="/#solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
-                  Custom RAG Knowledge Bases
+                <Link href="/#ai-solutions" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                  Workflow &amp; CRM Automation
                 </Link>
               </li>
               <li>
-                <Link href="/websites" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
-                  Next.js Web Applications
+                <Link href="/#why-custom" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                  Why Custom Next.js Beats Builders
                 </Link>
               </li>
               <li>
                 <Link href="/#roi-calculator" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
                   Interactive ROI Estimator
+                </Link>
+              </li>
+              <li>
+                <Link href="/#work" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                  Client Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/#faq" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}>
+                  Frequently Asked Questions
                 </Link>
               </li>
             </ul>
@@ -112,16 +122,6 @@ export default function Footer({ onOpenContact, isTutoring = false }: FooterProp
                   Hafeez Home Tutor (Bangalore)
                 </Link>
               </li>
-              <li>
-                <a
-                  href="https://hafeezstudio.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem' }}
-                >
-                  HafeezStudio Cloud
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -131,14 +131,14 @@ export default function Footer({ onOpenContact, isTutoring = false }: FooterProp
               Get in Touch
             </div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: 1.55 }}>
-              Ready to automate manual workflows or build a custom AI solution?
+              Ready to build a high-converting website or automate your business operations?
             </p>
             <button
               onClick={onOpenContact}
               className={isTutoring ? 'btn-emerald' : 'btn-primary'}
               style={{ padding: '12px 24px', fontSize: '0.85rem' }}
             >
-              <span>{isTutoring ? 'Book Free Trial Class' : 'Start a Conversation'}</span>
+              <span>{isTutoring ? 'Book Free Trial Class' : 'Schedule Discovery Call'}</span>
               <ArrowUpRight size={15} />
             </button>
           </div>

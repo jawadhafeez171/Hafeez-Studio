@@ -136,7 +136,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
 
   return (
     <section
-      id="clients"
+      id="work"
       style={{
         padding: '90px 0 100px',
         position: 'relative',
@@ -149,7 +149,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 40px' }}>
           <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
             <span className="badge-pill">
-              <Sparkles size={14} style={{ color: isWebsitePage ? '#0284C7' : 'var(--accent-orange)' }} />
+              <Sparkles size={14} style={{ color: 'var(--accent-emerald)' }} />
               <span style={{ fontWeight: 700 }}>Proven Client Results</span>
             </span>
           </div>
@@ -168,9 +168,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
             <span
               className={isWebsitePage ? 'websites-title-gradient' : ''}
               style={{
-                background: isWebsitePage
-                  ? 'linear-gradient(135deg, #00F0FF 0%, #EC4899 50%, #8B5CF6 100%)'
-                  : 'var(--gradient-orange)',
+                background: 'linear-gradient(135deg, #059669 0%, #10B981 50%, #D97706 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -230,8 +228,8 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
                 width: '8px',
                 height: '8px',
                 borderRadius: '50%',
-                background: isWebsitePage ? '#00F0FF' : 'var(--accent-orange)',
-                boxShadow: isWebsitePage ? '0 0 10px #00F0FF' : '0 0 10px var(--accent-orange)',
+                background: 'var(--accent-emerald)',
+                boxShadow: '0 0 10px var(--accent-emerald)',
                 display: 'inline-block',
                 flexShrink: 0,
                 animation: 'pulseGlow 2s infinite',
@@ -242,7 +240,7 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
             </span>
             <span
               style={{
-                color: isWebsitePage ? 'var(--accent-blue)' : 'var(--accent-orange)',
+                color: 'var(--accent-emerald)',
                 fontWeight: 800,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
@@ -556,9 +554,9 @@ export default function ClientShowcase({ isWebsitePage = false }: ClientShowcase
                     height: isActive ? '8px' : '6px',
                     borderRadius: '50%',
                     background: isActive
-                      ? (isWebsitePage ? '#00F0FF' : 'var(--accent-orange)')
+                      ? 'var(--accent-emerald)'
                       : 'var(--text-muted)',
-                    boxShadow: isActive ? `0 0 8px ${isWebsitePage ? '#00F0FF' : 'var(--accent-orange)'}` : 'none',
+                    boxShadow: isActive ? '0 0 8px var(--accent-emerald)' : 'none',
                     transition: 'all 0.25s ease',
                   }}
                 />

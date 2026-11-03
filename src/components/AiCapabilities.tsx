@@ -91,7 +91,7 @@ export default function AiCapabilities({ onOpenContact }: AiCapabilitiesProps) {
   ];
 
   return (
-    <section id="solutions" style={{ padding: '100px 0', position: 'relative' }}>
+    <section id="ai-solutions" style={{ padding: '100px 0', position: 'relative' }}>
       <div className="container-custom">
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 60px' }}>
