@@ -13,26 +13,18 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
-  const [mounted, setMounted] = useState(false);
 
+  // The inline script in layout.tsx already applied the saved theme before paint; sync React state to it
   useEffect(() => {
-    // Check localStorage
-    const savedTheme = localStorage.getItem('hafeez-theme') as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      // Default to fresh Sage & Mineral Mint Luxe (Light Mode)
-      setTheme('light');
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-    setMounted(true);
+    if (document.documentElement.getAttribute('data-theme') === 'dark') setTheme('dark');
   }, []);
 
   const toggleTheme = () => {
     const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
-    localStorage.setItem('hafeez-theme', nextTheme);
+    try {
+      localStorage.setItem('hafeez-theme', nextTheme);
+    } catch {}
     document.documentElement.setAttribute('data-theme', nextTheme);
   };
 

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X, Send, CheckCircle2, AlertCircle, Sparkles, Loader2 } from 'lucide-react';
+import React, { useEffect, useId, useRef, useState } from 'react';
+import { X, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -11,6 +11,14 @@ interface ContactModalProps {
   selectedPlan?: string;
 }
 
+const STUDIO_WHATSAPP = '919886658462';
+const TUTOR_WHATSAPP = '919902800693';
+
+// Mirrors the server check in /api/contact: 10–13 digits once spaces, dashes and "+" are removed
+const isValidPhone = (value: string) => /^\d{10,13}$/.test(value.replace(/[\s\-()+]/g, ''));
+
+type Status = { type: 'success' } | { type: 'error'; message: string } | null;
+
 export default function ContactModal({
   isOpen,
   onClose,
@@ -18,23 +26,94 @@ export default function ContactModal({
   isWebsite = false,
   selectedPlan = '',
 }: ContactModalProps) {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
+  const [nameError, setNameError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [status, setStatus] = useState<Status>(null);
+
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  // Callers pass inline onClose handlers; a ref keeps the focus effect from re-running on every render
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  const ids = useId();
+  const fieldId = (name: string) => `${ids}-${name}`;
+
+  const whatsappNumber = isTutoring ? TUTOR_WHATSAPP : STUDIO_WHATSAPP;
+  const whatsappText = isTutoring
+    ? 'Hi, I am interested in Math & Physics home tutoring'
+    : selectedPlan
+    ? `Hi Hafeez Studio, I'm interested in the ${selectedPlan} website plan`
+    : "Hi Hafeez Studio, I'd like to discuss a project";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
+
+  // Focus management: move focus in on open, trap Tab inside, close on Escape, restore focus on close
+  useEffect(() => {
+    if (!isOpen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    firstFieldRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onCloseRef.current();
+        return;
+      }
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = prevOverflow;
+      previouslyFocused?.focus?.();
+    };
+  }, [isOpen]);
+
+  // A fresh open always starts from an empty form, not a previous success screen
+  useEffect(() => {
+    if (isOpen) {
+      setStatus(null);
+      setNameError('');
+      setPhoneError('');
+    }
+  }, [isOpen]);
+
+  // Once the success screen replaces the form, move focus onto it so it is announced
+  useEffect(() => {
+    if (status?.type === 'success') dialogRef.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus();
+  }, [status]);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const missingName = !formData.name.trim();
+    const badPhone = !isValidPhone(formData.phone);
+    setNameError(missingName ? 'Please add your name so we know who to ask for.' : '');
+    setPhoneError(badPhone ? 'Enter a 10-digit mobile number, e.g. 98765 43210.' : '');
+    if (missingName || badPhone) {
+      (missingName ? firstFieldRef.current : dialogRef.current?.querySelector<HTMLInputElement>('input[type=tel]'))?.focus();
+      return;
+    }
     setLoading(true);
     setStatus(null);
-
-    const submissionType = isTutoring ? 'tutor' : isWebsite ? 'website' : 'studio';
 
     try {
       const res = await fetch('/api/contact', {
@@ -42,272 +121,219 @@ export default function ContactModal({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          type: submissionType,
+          type: isTutoring ? 'tutor' : isWebsite ? 'website' : 'studio',
           plan: selectedPlan || undefined,
         }),
       });
+      const data = await res.json().catch(() => ({}));
 
-      const data = await res.json();
       if (res.ok && data.success) {
-        setStatus({
-          type: 'success',
-          message: isTutoring
-            ? "Wonderful! We've received your request for a free trial class and will reach out shortly."
-            : isWebsite
-            ? `Thank you! We've received your inquiry for the ${selectedPlan || 'Website'} package and will contact you within 24 hours.`
-            : "Thank you! We've received your project details and will get back to you within 24 hours.",
-        });
+        setStatus({ type: 'success' });
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        setStatus({
-          type: 'error',
-          message: data.error || 'Something went wrong. Please try again.',
-        });
+        setStatus({ type: 'error', message: data.error || "We couldn't send your details just now." });
       }
-    } catch (err) {
-      setStatus({
-        type: 'error',
-        message: 'Network error. Please try again or reach out on WhatsApp.',
-      });
+    } catch {
+      setStatus({ type: 'error', message: "We couldn't reach our server. Check your connection and try again." });
     } finally {
       setLoading(false);
     }
   };
 
+  const titleId = fieldId('title');
+  const descId = fieldId('desc');
+
+  const title = isTutoring
+    ? 'Book a Free Trial Session'
+    : selectedPlan
+    ? `Book a call about the ${selectedPlan} plan`
+    : 'Book a Discovery Call';
+  const intro = isTutoring
+    ? 'Tell us your location in Bangalore and curriculum to schedule a friendly trial class.'
+    : "Leave your number and a line about your business. The founder who leads your project will get back to you within 24 hours.";
+
+  const label = (htmlFor: string, text: string) => (
+    <label htmlFor={htmlFor} className="contact-label">
+      {text}
+    </label>
+  );
+
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.72)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        zIndex: 10000,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '16px',
-        overflowX: 'hidden',
-        overflowY: 'auto',
-        boxSizing: 'border-box',
-      }}
-      onClick={onClose}
-    >
+    <div className="contact-backdrop" onClick={onClose}>
       <div
-        className="glass-card"
-        style={{
-          width: '100%',
-          maxWidth: '520px',
-          padding: '26px 28px',
-          position: 'relative',
-          background: 'var(--modal-bg)',
-          border: isTutoring
-            ? '1.5px solid rgba(16, 185, 129, 0.45)'
-            : isWebsite
-            ? '1.5px solid rgba(236, 72, 153, 0.5)'
-            : '1.5px solid rgba(255, 107, 53, 0.45)',
-          boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.55)',
-          maxHeight: 'min(92vh, 660px)',
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          boxSizing: 'border-box',
-          borderRadius: '16px',
-        }}
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        aria-describedby={descId}
+        className="contact-dialog"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '16px',
-            right: '16px',
-            background: 'var(--bg-glass)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: '50%',
-            width: '32px',
-            height: '32px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'var(--text-secondary)',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-          }}
-          aria-label="Close dialog"
-        >
-          <X size={16} />
+        <button type="button" onClick={onClose} className="contact-close" aria-label="Close">
+          <X size={18} />
         </button>
 
-        {/* Modal Header */}
-        <div style={{ marginBottom: '18px', paddingRight: '32px' }}>
-          <div style={{ display: 'inline-flex', marginBottom: '6px' }}>
-            <span
-              className={isTutoring ? 'badge-emerald' : 'badge-pill'}
-              style={{ padding: '3px 10px', fontSize: '0.74rem' }}
-            >
-              <Sparkles size={12} />
-              <span>
-                {isTutoring
-                  ? 'Bangalore Home Tutoring'
-                  : isWebsite
-                  ? `${selectedPlan ? selectedPlan + ' Plan • ' : ''}Bespoke Web Design`
-                  : 'Friendly Project Discovery'}
-              </span>
-            </span>
-          </div>
-          <h3
-            className="font-serif"
-            style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px', lineHeight: 1.25 }}
-          >
-            {isTutoring
-              ? 'Book a Free Trial Session'
-              : isWebsite
-              ? `Let's Build Your Website`
-              : "Let's Start a Conversation"}
-          </h3>
-          <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
-            {isTutoring
-              ? 'Tell us your location in Bangalore and curriculum to schedule a friendly trial class.'
-              : isWebsite
-              ? `Share your vision, brand references, or timeline. We'll reply within 24 hours.`
-              : "Tell us a bit about your business goals. We'll reply within 24 hours with honest suggestions."}
-          </p>
-        </div>
-
-        {/* Success / Error Message Banner */}
-        {status && (
-          <div
-            style={{
-              padding: '12px 14px',
-              borderRadius: '8px',
-              marginBottom: '16px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: status.type === 'success' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
-              border: status.type === 'success' ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid rgba(239, 68, 68, 0.4)',
-              color: status.type === 'success' ? 'var(--accent-emerald)' : '#EF4444',
-              fontSize: '0.84rem',
-            }}
-          >
-            {status.type === 'success' ? <CheckCircle2 size={18} /> : <AlertCircle size={18} />}
-            <span>{status.message}</span>
-          </div>
-        )}
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', boxSizing: 'border-box' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                Your Name *
-              </label>
-              <input
-                type="text"
-                required
-                className="form-input"
-                style={{ padding: '10px 14px', fontSize: '0.9rem', borderRadius: '8px' }}
-                placeholder={isTutoring ? "Parent / Student's Name" : 'e.g. Rajesh Kumar'}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              />
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                Phone / WhatsApp *
-              </label>
-              <input
-                type="tel"
-                required
-                className="form-input"
-                style={{ padding: '10px 14px', fontSize: '0.9rem', borderRadius: '8px' }}
-                placeholder="+91 98765 43210"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-              Email Address (Optional)
-            </label>
-            <input
-              type="email"
-              className="form-input"
-              style={{ padding: '10px 14px', fontSize: '0.9rem', borderRadius: '8px' }}
-              placeholder="you@company.com"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
-
-          <div>
-            <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
+        {status?.type === 'success' ? (
+          <div className="contact-success" role="status">
+            <CheckCircle2 size={32} style={{ color: 'var(--accent)' }} aria-hidden="true" />
+            <h2 id={titleId} className="contact-title" tabIndex={-1} data-autofocus>
+              Got it — thank you.
+            </h2>
+            <p id={descId} className="contact-intro">
               {isTutoring
-                ? 'Class / Board / Location in Bangalore'
-                : isWebsite
-                ? 'Your Website Goals or Inspiration'
-                : 'Tell us about your project or bottleneck'}
-            </label>
-            <textarea
-              className="form-input"
-              rows={2}
-              style={{ padding: '10px 14px', fontSize: '0.9rem', borderRadius: '8px', resize: 'none', minHeight: '64px' }}
-              placeholder={
-                isTutoring
-                  ? 'e.g. Class 10 ICSE Math & Physics in Sadashivanagar / RT Nagar'
-                  : isWebsite
-                  ? 'e.g. Need a fast, clean website to showcase our services and capture inbound leads…'
-                  : 'Describe your current bottlenecks, target capabilities, timeline…'
-              }
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            />
+                ? "We've received your trial class request and will call you shortly to fix a time."
+                : `We'll call or WhatsApp you within 24 hours${selectedPlan ? ` about the ${selectedPlan} plan` : ''}. No preparation needed — we'll ask the questions.`}
+            </p>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary contact-wide-btn">
+              <MessageCircle size={18} aria-hidden="true" />
+              <span>Prefer to chat now? Message on WhatsApp</span>
+            </a>
+            <button type="button" onClick={onClose} className="btn-primary contact-wide-btn">
+              Done
+            </button>
           </div>
+        ) : (
+          <>
+            <div style={{ marginBottom: '18px', paddingRight: '40px' }}>
+              <h2 id={titleId} className="contact-title">
+                {title}
+              </h2>
+              <p id={descId} className="contact-intro">
+                {intro}
+              </p>
+            </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className={isTutoring ? 'btn-emerald' : 'btn-primary'}
-            style={{
-              width: '100%',
-              padding: '13px 20px',
-              marginTop: '4px',
-              fontSize: '0.95rem',
-              fontWeight: 700,
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              background: isWebsite ? 'linear-gradient(135deg, #059669 0%, #10B981 60%, #0D9488 100%)' : undefined,
-              boxShadow: isWebsite ? '0 6px 20px rgba(5, 150, 105, 0.35)' : undefined,
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            {loading ? (
-              <>
-                <Loader2 size={16} className="animate-spin" />
-                <span>Sending…</span>
-              </>
-            ) : (
-              <>
+            {status?.type === 'error' && (
+              <div className="contact-error" role="alert">
+                <AlertCircle size={18} aria-hidden="true" style={{ flexShrink: 0, marginTop: '1px' }} />
                 <span>
-                  {isTutoring
-                    ? 'Confirm Free Trial Request'
-                    : isWebsite
-                    ? `Get Started with ${selectedPlan || 'Web'} Package`
-                    : 'Send Message'}
+                  {status.message} Your details are still here — try again, or{' '}
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                    message us on WhatsApp
+                  </a>
+                  .
                 </span>
-                <Send size={15} />
-              </>
+              </div>
             )}
-          </button>
-        </form>
+
+            <form onSubmit={handleSubmit} noValidate className="contact-form">
+              <div className="contact-row">
+                <div>
+                  {label(fieldId('name'), 'Your name')}
+                  <input
+                    ref={firstFieldRef}
+                    id={fieldId('name')}
+                    type="text"
+                    required
+                    autoComplete="name"
+                    aria-invalid={Boolean(nameError)}
+                    aria-describedby={nameError ? fieldId('name-error') : undefined}
+                    className="form-input contact-input"
+                    placeholder={isTutoring ? "Parent / Student's Name" : 'e.g. Rajesh Kumar'}
+                    value={formData.name}
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (nameError) setNameError('');
+                    }}
+                  />
+                  {nameError && (
+                    <p id={fieldId('name-error')} className="contact-field-error">
+                      {nameError}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  {label(fieldId('phone'), 'Phone / WhatsApp')}
+                  <input
+                    id={fieldId('phone')}
+                    type="tel"
+                    required
+                    inputMode="tel"
+                    autoComplete="tel"
+                    aria-invalid={Boolean(phoneError)}
+                    aria-describedby={phoneError ? fieldId('phone-error') : undefined}
+                    className="form-input contact-input"
+                    placeholder="98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => {
+                      setFormData({ ...formData, phone: e.target.value });
+                      if (phoneError) setPhoneError('');
+                    }}
+                    onBlur={() => {
+                      if (formData.phone && !isValidPhone(formData.phone)) {
+                        setPhoneError('Enter a 10-digit mobile number, e.g. 98765 43210.');
+                      }
+                    }}
+                  />
+                  {phoneError && (
+                    <p id={fieldId('phone-error')} className="contact-field-error">
+                      {phoneError}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                {label(fieldId('email'), 'Email (optional)')}
+                <input
+                  id={fieldId('email')}
+                  type="email"
+                  autoComplete="email"
+                  className="form-input contact-input"
+                  placeholder="you@business.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+
+              <div>
+                {label(
+                  fieldId('message'),
+                  isTutoring ? 'Class / Board / Location in Bangalore' : 'What does your business do? (optional)'
+                )}
+                <textarea
+                  id={fieldId('message')}
+                  className="form-input contact-input"
+                  rows={3}
+                  style={{ resize: 'vertical', minHeight: '80px' }}
+                  placeholder={
+                    isTutoring
+                      ? 'e.g. Class 10 ICSE Math & Physics in Sadashivanagar / RT Nagar'
+                      : 'e.g. Dental clinic in Indiranagar, want online appointment bookings'
+                  }
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={isTutoring ? 'btn-emerald contact-wide-btn' : 'btn-primary contact-wide-btn'}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 size={18} className="spin" aria-hidden="true" />
+                    <span>Sending…</span>
+                  </>
+                ) : (
+                  <>
+                    <span>{isTutoring ? 'Request Free Trial' : 'Request My Call'}</span>
+                    <Send size={16} aria-hidden="true" />
+                  </>
+                )}
+              </button>
+
+              <p className="contact-alt">
+                Rather chat?{' '}
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  Message us on WhatsApp
+                </a>
+              </p>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

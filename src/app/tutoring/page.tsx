@@ -69,7 +69,7 @@ export default function TutoringPage() {
   ];
 
   return (
-    <main style={{ minHeight: '100vh', position: 'relative' }}>
+    <main className="theme-tutor" style={{ minHeight: '100vh', position: 'relative' }}>
       {/* Local Business Structured Data */}
       <script
         type="application/ld+json"
@@ -121,7 +121,7 @@ export default function TutoringPage() {
               className="font-serif"
               style={{
                 fontSize: 'clamp(2.5rem, 5vw, 4.3rem)',
-                fontWeight: 800,
+                fontWeight: 600,
                 lineHeight: 1.15,
                 letterSpacing: '-0.02em',
                 marginBottom: '20px',
@@ -272,25 +272,25 @@ export default function TutoringPage() {
             }}
           >
             <div>
-              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 600 }}>
                 1-on-1
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Dedicated Personal Attention</div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 600 }}>
                 8, 9 &amp; 10
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Foundations &amp; Board Excellence</div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+              <div className="font-serif gradient-text-emerald" style={{ fontSize: '1.9rem', fontWeight: 600 }}>
                 CBSE / ICSE / IGCSE
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Complete Syllabus Mastery</div>
             </div>
             <div style={{ borderLeft: '1px solid var(--border-subtle)' }}>
-              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 800 }}>
+              <div className="font-serif gradient-text" style={{ fontSize: '1.9rem', fontWeight: 600 }}>
                 Bangalore
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600 }}>North &amp; Central Localities</div>
@@ -303,7 +303,7 @@ export default function TutoringPage() {
       <section id="curriculum" style={{ padding: '80px 0', position: 'relative' }}>
         <div className="container-custom">
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 50px' }}>
-            <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '14px', color: 'var(--text-primary)' }}>
+            <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 600, marginBottom: '14px', color: 'var(--text-primary)' }}>
               Tailored Guidance for <span className="gradient-text-emerald">Every Major Board</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.6 }}>
@@ -332,7 +332,7 @@ export default function TutoringPage() {
                 >
                   {b.name}
                 </div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--accent-orange)', fontWeight: 600, marginBottom: '16px' }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--accent-brand)', fontWeight: 600, marginBottom: '16px' }}>
                   {b.subtitle}
                 </div>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
@@ -363,7 +363,7 @@ export default function TutoringPage() {
                   <span>First-Principles Approach</span>
                 </span>
               </div>
-              <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '18px', color: 'var(--text-primary)' }}>
+              <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 600, marginBottom: '18px', color: 'var(--text-primary)' }}>
                 Our 4-Pillar <span className="gradient-text-emerald">Teaching Philosophy</span>
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.65, marginBottom: '24px' }}>
@@ -375,7 +375,7 @@ export default function TutoringPage() {
                   <div key={idx} style={{ display: 'flex', gap: '14px' }}>
                     <div
                       className="font-serif"
-                      style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--accent-emerald)', width: '32px' }}
+                      style={{ fontSize: '1.4rem', fontWeight: 600, color: 'var(--accent-emerald)', width: '32px' }}
                     >
                       {m.num}
                     </div>
@@ -432,7 +432,7 @@ export default function TutoringPage() {
               >
                 <div
                   className="font-serif"
-                  style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--accent-emerald)', marginBottom: '14px' }}
+                  style={{ fontSize: '2rem', fontWeight: 600, color: 'var(--accent-emerald)', marginBottom: '14px' }}
                 >
                   {m.num}
                 </div>
@@ -492,7 +492,7 @@ export default function TutoringPage() {
                     <span>Real Academic Transformation</span>
                   </span>
                 </div>
-                <h2 className="font-serif" style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>
+                <h2 className="font-serif" style={{ fontSize: '2.2rem', fontWeight: 600, marginBottom: '16px', color: 'var(--text-primary)' }}>
                   From Anxiety to <span className="gradient-text-emerald">Confident Problem Solvers</span>
                 </h2>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '20px' }}>
@@ -537,7 +537,7 @@ export default function TutoringPage() {
                 <span>Bangalore North &amp; Central Presence</span>
               </span>
             </div>
-            <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '14px', color: 'var(--text-primary)' }}>
+            <h2 className="font-serif" style={{ fontSize: '2.4rem', fontWeight: 600, marginBottom: '14px', color: 'var(--text-primary)' }}>
               Welcoming Students in <span className="gradient-text-emerald">Bangalore Neighborhoods</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
@@ -595,7 +595,7 @@ export default function TutoringPage() {
               background: 'radial-gradient(circle at 50% 0%, var(--badge-emerald-bg) 0%, var(--bg-card) 75%)',
             }}
           >
-            <h2 className="font-serif" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>
+            <h2 className="font-serif" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 600, marginBottom: '16px', color: 'var(--text-primary)' }}>
               Give Your Child the Gift of <span className="gradient-text-emerald">Confidence &amp; Mastery</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.08rem', maxWidth: '640px', margin: '0 auto 34px', lineHeight: 1.65 }}>

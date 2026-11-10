@@ -1,22 +1,50 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Source_Serif_4, Hanken_Grotesk, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import CustomCursor from '@/components/CustomCursor';
 import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/context/ThemeContext';
 
+// Studio type: a book serif with optical sizes for headlines, a quiet grotesque for text
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
+  variable: '--font-source-serif',
+  display: 'swap',
+});
+const hanken = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-hanken', display: 'swap' });
+
+// Tutoring (separate business) keeps its own faces; not preloaded on studio pages
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap', preload: false });
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+  preload: false,
+});
+
+// Applies a saved dark theme before first paint so returning visitors don't see a light flash
+const themeScript = `try{var t=localStorage.getItem('hafeez-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}`;
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  // Lets fixed bars use env(safe-area-inset-*) around notches and home indicators
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
-  title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
+  title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
   description:
-    'Hafeez Studio builds high-converting Next.js websites and custom AI workflow automation pipelines to eliminate manual work, capture clients, and accelerate business revenue.',
+    'Fast custom websites from ₹12,999 and practical AI automation for clinics, academies and local businesses. Live in about two weeks, no monthly platform fees, and you own the code.',
   keywords: [
-    'high-converting websites',
-    'Next.js web development',
-    'custom web design Bangalore',
-    'AI solutions for business',
-    'AI workflow automation',
-    'custom AI agents',
-    'RAG chatbot development',
-    'business process automation',
+    'website design Bengaluru',
+    'custom website for clinics',
+    'website for coaching academy',
+    'WhatsApp chatbot for business',
+    'AI automation for small business',
+    'lead follow-up automation',
     'Hafeez Studio',
   ],
   authors: [{ name: 'Hafeez Studio' }],
@@ -29,16 +57,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://hafeezstudio.com',
-    title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
+    title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
     description:
-      'We build high-converting Next.js websites and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
+      'Fast custom websites and practical AI automation for clinics, academies and local businesses. You own the code; no monthly platform fees.',
     siteName: 'Hafeez Studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hafeez Studio — High-Converting Websites & Intelligent AI Automation',
+    title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
     description:
-      'We build high-converting Next.js websites and deploy custom AI agents, automated workflow pipelines, and bespoke modern web applications.',
+      'Fast custom websites and practical AI automation for clinics, academies and local businesses. You own the code; no monthly platform fees.',
   },
   verification: {
     google: 'SJ9BIXHBoNu5rQA6pQyKAHZ333ZRQQhAGWjnwElAOUI',
@@ -54,13 +82,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light">
+    <html
+      lang="en"
+      data-theme="light"
+      className={`${sourceSerif.variable} ${hanken.variable} ${jakarta.variable} ${playfair.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
         <ThemeProvider>
-          <CustomCursor />
           <FloatingActions />
           {children}
         </ThemeProvider>
