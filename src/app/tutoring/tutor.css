@@ -374,6 +374,56 @@ body:has(.tutor) {
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
+/* ── FAQ: native disclosure rows divided by hairlines ───── */
+.t-faq details {
+  border-top: 1px solid var(--rule);
+}
+.t-faq summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 12px 40px 12px 0;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.t-faq summary::-webkit-details-marker {
+  display: none;
+}
+/* A plus drawn in CSS that turns into a minus when open */
+.t-faq summary::before,
+.t-faq summary::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--green);
+  transition: transform 0.2s ease;
+}
+.t-faq summary::after {
+  transform: rotate(90deg);
+}
+.t-faq details[open] summary::after {
+  transform: rotate(0deg);
+}
+.t-faq summary:hover {
+  color: var(--green-hover);
+}
+.t-faq details p {
+  margin: 0 0 18px;
+  max-width: 60ch;
+  color: var(--ink-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-faq summary::after {
+    transition: none;
+  }
+}
+
 .t-close-text {
   margin: 0 0 24px;
   color: var(--ink-soft);

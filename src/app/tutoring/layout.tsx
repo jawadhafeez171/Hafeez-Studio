@@ -11,9 +11,10 @@ const atkinson = Atkinson_Hyperlegible_Next({
   display: 'swap',
 });
 
-const title = 'Hafeez Tutor — Maths & Physics Home Tuition in Bangalore';
+// Written for search results: what, where, who, then the brand
+const title = 'Maths & Physics Home Tutor in Bangalore, Classes 8–10';
 const description =
-  'One-to-one Maths and Physics home tuition for Classes 8, 9 and 10 (CBSE, ICSE, IGCSE) at your home in central Bangalore and nearby areas. ₹600 an hour; the first trial class is free.';
+  'One-to-one Maths and Physics home tuition for Classes 8–10 (CBSE, ICSE, IGCSE) in Indiranagar, Sadashivanagar, Koramangala & nearby. ₹600/hr, first class free.';
 
 // The browser bar matches the pale yellow top band
 export const viewport: Viewport = {
@@ -30,6 +31,11 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'home tuition Bangalore',
+    'home tutor Bangalore',
+    'maths tuition Indiranagar',
+    'physics tuition Koramangala',
+    'ICSE maths tutor Bangalore',
+    'Class 10 maths home tuition',
     'maths home tutor Bangalore',
     'physics home tutor Bangalore',
     'CBSE maths tuition',
