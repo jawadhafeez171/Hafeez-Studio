@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import ContactModal from '@/components/ContactModal';
+import React from 'react';
 import { TUTOR_WHATSAPP_URL } from '@/lib/tutor';
 
 export function WhatsAppIcon({ size = 20 }: { size?: number }) {
@@ -20,18 +19,5 @@ export function BookButton({ className = '', href = TUTOR_WHATSAPP_URL }: { clas
       <span>Book a free trial class</span>
       <span className="t-sr"> on WhatsApp (opens in a new tab)</span>
     </a>
-  );
-}
-
-// The quieter alternative for parents who'd rather be called back
-export function LeaveNumber() {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <button type="button" className="t-quiet" onClick={() => setOpen(true)}>
-        or leave your number
-      </button>
-      <ContactModal isOpen={open} onClose={() => setOpen(false)} isTutoring />
-    </>
   );
 }

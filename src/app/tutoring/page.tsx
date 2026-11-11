@@ -1,7 +1,7 @@
 import React from 'react';
 import { TUITION_ORIGIN } from '@/lib/sites';
 import { TUTOR_PHONE_DISPLAY } from '@/lib/tutor';
-import { BookButton, LeaveNumber } from './_components/contact';
+import { BookButton } from './_components/contact';
 import { TutorFooter, TutorHeader, included } from './_components/chrome';
 import { slugByAreaName } from './areas';
 
@@ -167,7 +167,6 @@ export default function TutoringPage() {
             </p>
             <div className="t-actions">
               <BookButton />
-              <LeaveNumber />
             </div>
           </div>
         </section>
@@ -239,12 +238,10 @@ export default function TutoringPage() {
               Book a free trial class
             </h2>
             <p className="t-close-text">
-              Message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp, or leave your number and
-              we&apos;ll call you.
+              Message or call <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp or by phone.
             </p>
             <div className="t-actions">
               <BookButton />
-              <LeaveNumber />
             </div>
           </section>
         </div>

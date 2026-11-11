@@ -24,7 +24,7 @@ OWN-WORLD: White ground, green-tinted near-black text, one deep green (#1F6B48) 
 
 STORY: A parent reads the headline, sees the price and free trial, and taps to book on WhatsApp; anything else they need (what's included, how it starts, areas) is one short list each below.
 
-FIRST VIEWPORT: Wordmark and WhatsApp number on top. Headline "Maths and Physics home tuition for Classes 8 to 10.", one line on who and where, "₹600 an hour. The first class is a free trial.", the green "Book a free trial class" button with "or leave your number" beside or under it.
+FIRST VIEWPORT: Wordmark and WhatsApp number on top. Headline "Maths and Physics home tuition for Classes 8 to 10.", one line on who and where, "₹600 an hour. The first class is a free trial.", the green "Book a free trial class" WhatsApp button (the "or leave your number" form was removed at the user's request on 2026-11-11; the floating call button covers phone calls).
 
 FORM: User-directed simplification to a plain white single-column page (chosen on 2026-11-11 over keeping the green look). seed: none (user-pinned direction, no roll)
 

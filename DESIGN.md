@@ -87,7 +87,7 @@ A separate business with its own world. Everything below applies only inside `.t
 |---|---|---|---|
 | `--paper` | #FFFFFF | – | The whole ground, the dialog, and the browser chrome (`themeColor` #FFFFFF, `color-scheme: light`) |
 | `--ink` | #16211C | 16.56:1 | Headings, wordmark, body, price |
-| `--ink-soft` | #4D5A53 | 7.23:1 | Lede, top-line link, quiet link, areas, closing text, footer |
+| `--ink-soft` | #4D5A53 | 7.23:1 | Lede, top-line link, areas, closing text, footer |
 | `--text-muted` (dialog placeholders) | #6B7770 | 4.67:1 | Lighter than body text so placeholders never read as entered values |
 | `--rule` | #DDE3DF | – | Every hairline (section tops, footer) |
 | `--green` | #1F6B48 | 6.45:1 as a mark; white on it 6.45:1 | Book button fill, list dots, step numbers, WhatsApp glyph, focus ring |
@@ -108,7 +108,7 @@ Selected text is green at 18% (`rgba(31, 107, 72, 0.18)`).
 | Body | 18px | 1.6 | Areas paragraph at 1.7 |
 | Wordmark | 1.1rem | – | |
 | Button | 1.05rem | – | |
-| Small | 0.9–1rem | – | Top link 0.95rem, quiet link 1rem, footer 0.9rem |
+| Small | 0.9–1rem | – | Top link 0.95rem, footer 0.9rem |
 
 ### Layout
 
@@ -116,7 +116,7 @@ Selected text is green at 18% (`rgba(31, 107, 72, 0.18)`).
 - **Top line:** 72px tall, wordmark left, WhatsApp link right.
 - **Hero:** padded `clamp(40px, 9vh, 96px)` above and `clamp(48px, 8vw, 72px)` below.
 - **Sections:** each opened by a 1px `--rule` hairline and padded `clamp(36px, 6vw, 56px)`; the footer is opened by the same hairline.
-- **Actions:** button and quiet link in a wrapping row (gap 8px / 20px); at 480px and below they stack and the button runs full width.
+- **Actions:** the WhatsApp book button alone; at 480px and below it runs full width. Calls go through the floating call button.
 
 ### Elevation and shape
 
@@ -125,7 +125,6 @@ Flat: no shadows anywhere. The only shapes are the fully rounded button (999px),
 ### Components
 
 - **Book button:** the one primary action, used in the hero and in the closing section. A green pill with white text and the WhatsApp glyph, 54px tall, 26px side padding, bold; it opens WhatsApp in a new tab.
-- **Quiet link:** "or leave your number", underlined soft-ink text (44px tap height) that opens the shared contact dialog; it turns ink on hover. It is never styled as a second button.
 - **Price pill:** "₹600 an hour · First class free" in a fully rounded pill (`--pill` #DCEBE2, text `--green-hover` #17563A at 7.01:1, bold, 8px 16px padding) directly above the book button, so the price and free trial are seen first.
 - **Area pages** (`tuition.hafeezstudio.com/<area>`, content in `src/app/tutoring/areas.ts`, template `src/app/tutoring/[area]/page.tsx`): the same band, pill, header and footer as the main page, plus a breadcrumb above the headline, a "Home tuition across <area>" section with hand-written local text and the localities as an inline dot list, area-specific FAQ, and green bold "Home tutor in <area>" links to neighbouring area pages. Each page writes its own introduction, local note and questions; only confirmed facts and well-known public roads and landmarks are used, and no quotes until real ones exist. The WhatsApp button pre-fills the area name. Area names on the main page link to their pages.
 - **Floating buttons** (`FloatingButtons.tsx`, every tuition page): bottom-right, a 58px green WhatsApp circle (white icon, soft offset shadow; area pages pre-fill the area) with a 50px amber call circle above it (#E8B13A, ink phone icon at 8.5:1, hover #D9A02A, `tel:+919902800693`) and a 46px white back-to-top circle at the top that appears after ~80% of a screen of scrolling and returns focus to the wordmark. On phones the WhatsApp and call circles step aside while a full-width booking button is on screen.

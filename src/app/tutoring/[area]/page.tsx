@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { TUITION_ORIGIN } from '@/lib/sites';
 import { TUTOR_PHONE_DISPLAY, tutorWhatsAppUrlFor } from '@/lib/tutor';
-import { BookButton, LeaveNumber } from '../_components/contact';
+import { BookButton } from '../_components/contact';
 import { TutorFooter, TutorHeader, included } from '../_components/chrome';
 import { areaBySlug, areaPages } from '../areas';
 
@@ -119,7 +119,6 @@ export default async function AreaPage({ params }: Props) {
             </p>
             <div className="t-actions">
               <BookButton href={whatsapp} />
-              <LeaveNumber />
             </div>
           </div>
         </section>
@@ -186,12 +185,10 @@ export default async function AreaPage({ params }: Props) {
               Book a free trial class in {area.name}
             </h2>
             <p className="t-close-text">
-              Message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp, or leave your number and
-              we&apos;ll call you.
+              Message or call <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp or by phone.
             </p>
             <div className="t-actions">
               <BookButton href={whatsapp} />
-              <LeaveNumber />
             </div>
           </section>
         </div>

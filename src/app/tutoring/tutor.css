@@ -278,21 +278,6 @@ body:has(.tutor) {
 .t-book:hover {
   background: var(--green-hover);
 }
-.t-quiet {
-  min-height: 44px;
-  padding: 0 4px;
-  border: 0;
-  background: none;
-  color: var(--ink-soft);
-  font: inherit;
-  font-size: 1rem;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-  cursor: pointer;
-}
-.t-quiet:hover {
-  color: var(--ink);
-}
 @media (max-width: 480px) {
   .t-actions {
     flex-direction: column;
