@@ -6,7 +6,7 @@ import HeroProof from './HeroProof';
 const WHATSAPP_URL =
   'https://wa.me/919886658462?text=' + encodeURIComponent("Hi Hafeez Studio, I'd like to discuss a project");
 
-const facts = ['Websites from ₹12,999', 'Live in about two weeks', 'No monthly platform fees', 'You own the code'];
+const facts = ['Websites from ₹12,999', 'Live in 48 hours*', 'No monthly platform fees', 'You own the code'];
 
 export default function Hero() {
   return (
@@ -19,8 +19,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-lede">
-            We build fast, custom websites for clinics, academies, and growing businesses in Bengaluru, and the AI tools that
-            answer enquiries and book appointments while you work.
+            We build fast, custom websites for clinics, academies, and growing businesses wherever they are, and the AI tools
+            that answer enquiries and book appointments while you work.
           </p>
 
           <div className="hero-actions">
@@ -43,6 +43,9 @@ export default function Hero() {
               </li>
             ))}
           </ul>
+          <p className="footnote">
+            *Starter sites, within 48 hours of receiving your content. Larger builds take 10 days to 3 weeks.
+          </p>
         </div>
 
         {/* Proof in the first screen on wide displays: two live client sites */}

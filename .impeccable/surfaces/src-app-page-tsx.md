@@ -7,7 +7,7 @@ related_targets: []
 
 # Studio homepage (/)
 
-Scope: the studio marketing homepage, mode Persuade. Visitor: Bengaluru business owner on a mid-range Android phone, often in daylight. Action: book a discovery call or open WhatsApp. Proof: four live client sites with real phone screenshots. Constraints: PRODUCT.md (no invented metrics; tutoring stays separate and keeps its own theme).
+Scope: the studio marketing homepage, mode Persuade. Visitor: a business owner anywhere in the world, often on a mid-range Android phone, often in daylight. Action: book a discovery call or open WhatsApp. Proof: four live client sites with real phone screenshots. Constraints: PRODUCT.md (no invented metrics; tutoring stays separate and keeps its own theme).
 
 User decisions (2026-11-11): rejected the coral and plum look, the Garden City option and the bolder hand. Asked for "minimalistic" and for "beautiful typography". Took the category standard (canon), executed with care and led by type.
 

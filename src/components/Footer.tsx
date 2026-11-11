@@ -40,7 +40,7 @@ export default function Footer({ onOpenContact: onOpenContactProp, isTutoring = 
             <p className="footer-about">
               {isTutoring
                 ? 'Patient, one-on-one Math & Physics home tutoring across Bangalore.'
-                : 'Fast custom websites and practical AI automation for clinics, academies and local businesses in Bengaluru.'}
+                : 'Fast custom websites and practical AI automation for clinics, academies and growing businesses worldwide.'}
             </p>
           </div>
 

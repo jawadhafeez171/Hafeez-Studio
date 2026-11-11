@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Owner-led local businesses in India, mostly Bengaluru: clinics and medical specialists, coaching academies, builders and construction firms, and other service businesses. The person evaluating is usually the owner or a senior decision-maker, often non-technical and budget-conscious, who wants more enquiries and less manual follow-up. They arrive comparing a custom build against cheaper template/builder options or doing nothing, and they decide by talking to a person (WhatsApp or a call), not by self-serve checkout.
+Owner-led businesses worldwide (positioning changed from Bengaluru-local to global on 2026-11-11; the site no longer names a city): clinics and medical specialists, coaching academies, builders and construction firms, and other service businesses. The person evaluating is usually the owner or a senior decision-maker, often non-technical and budget-conscious, who wants more enquiries and less manual follow-up. They arrive comparing a custom build against cheaper template/builder options or doing nothing, and they decide by talking to a person (WhatsApp or a call), not by self-serve checkout.
 
 ## Product Purpose
 
@@ -23,12 +23,12 @@ Websites and AI automation are equal-weight core offers, sold by the same people
 - Leads arrive via the contact modal (POST `/api/contact`, forwarded to a Google Apps Script / Sheet) or a WhatsApp deep link; follow-up is personal, promised within 24 hours.
 - Selling happens in conversation: discovery call, scoped quote, fixed milestones.
 - Clients' own tools are the integration targets: WhatsApp, Google Sheets, CRMs (HubSpot, Notion), Razorpay/Stripe, calendars.
-- Delivery is a roughly two-week sprint for standard work (2 to 3 weeks for custom builds): discovery, prototype, build and integrate, launch and support.
+- Delivery: the headline promise is "Live in 48 hours*", where the asterisk is always footnoted as Starter sites within 48 hours of receiving the client's content. Growth takes 10 to 14 days and Custom 2 to 3 weeks (discovery, prototype, build and integrate, launch and support). Never show "48 hours" without its footnote.
 
 ## Capabilities and Constraints
 
 - Team: a founder who leads and delivers, bringing in trusted freelancers per project. "We" is accurate; do not imply a large agency.
-- Website packages (current published pricing, one-time, starting prices): Starter ₹12,999 (5 to 7 days), Growth ₹24,999 (10 to 14 days), Custom ₹59,999+ (2 to 3 weeks). Each includes revisions and a post-launch support window.
+- Website packages (current published pricing, one-time, starting prices): Starter ₹12,999 (48 hours from receiving content), Growth ₹24,999 (10 to 14 days), Custom ₹59,999+ (2 to 3 weeks). Each includes revisions and a post-launch support window.
 - AI offers: workflow automation, custom chat assistants trained on the client's own documents, AI web apps / MVPs, and short AI pilot sprints. AI work is quoted after a call, not priced publicly.
 - Clients receive full source code and IP; hosting typically costs little or nothing on Vercel/Cloudflare.
 - Stack of this site: Next.js (App Router) on Vercel. Contact leads go through `src/app/api/contact/route.ts`.
@@ -43,7 +43,7 @@ Websites and AI automation are equal-weight core offers, sold by the same people
 
 ## Evidence on Hand
 
-- Live client sites, linkable, with logos in `public/clients/`: JointXperts (orthopaedic practice, Bengaluru), Encourage India IAS Academy (UPSC/KPSC coaching), Construction Buddy (turnkey home construction, Bangalore), India Job Notice (national government job portal).
+- Live client sites, linkable, with logos in `public/clients/` and phone screenshots in `public/clients/shots/`: Dstellar (enterprise SAP consulting, global; added 2026-11-11), JointXperts (orthopaedic practice, Bengaluru), Encourage India IAS Academy (UPSC/KPSC coaching), Construction Buddy (turnkey home construction, Bangalore), India Job Notice (national government job portal).
 - Client testimonials: available with permission (not yet collected on the site).
 - Real AI/automation project examples: available to show or describe (not yet on the site).
 - **Not available, do not fabricate:** verified client performance metrics. Figures currently on the site ("3x lead inflow", "5 clinics synced", "< 0.8s" per client) are unverified and should not be extended or repeated as proof. No founder photo or bio is to be published. No invented case studies, industry statistics, or benchmark claims.

@@ -31,11 +31,11 @@ export default function ProcessTimeline() {
       <div className="container-custom">
         <div className="section-head">
           <h2 className="section-title">
-            From first call to launch, <em>in about two weeks.</em>
+            From first call to launch, <em>step by step.</em>
           </h2>
           <p className="section-lede">
-            Four clear stages and something real to look at early. The days below are for a typical Growth site; Starter sites
-            launch in 5–7 days and custom builds take two to three weeks.
+            Four clear stages and something real to look at early. Starter sites go live within 48 hours of receiving your
+            content; the days below are for a typical Growth site, and custom builds take two to three weeks.
           </p>
         </div>
 

@@ -17,10 +17,20 @@ export interface ClientItem {
 // Summaries describe only what is visible on the live sites; no outcome numbers until clients verify them
 export const clientsData: ClientItem[] = [
   {
+    name: 'Dstellar',
+    url: 'https://www.dstellarss.com/',
+    domain: 'dstellarss.com',
+    category: 'Enterprise SAP consulting',
+    summary:
+      'A site for an SAP consulting firm that walks visitors through its industries, services and own software products, with assessment booking and WhatsApp always in reach.',
+    shot: '/clients/shots/dstellarss.jpg',
+    shotAlt: 'Dstellar SAP consulting home screen on a phone',
+  },
+  {
     name: 'JointXperts',
     url: 'https://www.jointxperts.in/',
     domain: 'jointxperts.in',
-    category: 'Orthopaedic clinic · Bengaluru',
+    category: 'Orthopaedic clinic',
     summary:
       'A patient-friendly site for an orthopaedic surgeon, with appointment booking, WhatsApp and call buttons always one tap away.',
     shot: '/clients/shots/jointxperts.jpg',
@@ -30,7 +40,7 @@ export const clientsData: ClientItem[] = [
     name: 'Encourage India IAS Academy',
     url: 'https://www.encourageindiaias.com/',
     domain: 'encourageindiaias.com',
-    category: 'UPSC & KPSC coaching · Bengaluru',
+    category: 'Civil-services exam coaching',
     summary:
       'A course site covering every exam the academy teaches, in English and Kannada, with enrolment and call-back built in.',
     shot: '/clients/shots/encourageindiaias.jpg',
@@ -40,7 +50,7 @@ export const clientsData: ClientItem[] = [
     name: 'Construction Buddy',
     url: 'https://constructionbuddy.in/',
     domain: 'constructionbuddy.in',
-    category: 'Home construction · Bengaluru',
+    category: 'Home construction',
     summary:
       "A turnkey builder's site that walks families through packages and build stages, with WhatsApp and call always in reach.",
     shot: '/clients/shots/constructionbuddy.jpg',
@@ -50,7 +60,7 @@ export const clientsData: ClientItem[] = [
     name: 'India Job Notice',
     url: 'https://www.indiajobnotice.com/',
     domain: 'indiajobnotice.com',
-    category: 'Government jobs portal · All India',
+    category: 'Government jobs portal',
     summary:
       'A government-jobs portal where every listing is read from the official notice, searchable by state and by age.',
     shot: '/clients/shots/indiajobnotice.jpg',
@@ -67,8 +77,8 @@ export default function ClientShowcase() {
             Sites we&apos;ve built, <em>live right now.</em>
           </h2>
           <p className="section-lede">
-            An orthopaedic practice, an IAS academy, a construction firm, and a national job portal. Every one is live, so
-            open them on your phone and judge the work for yourself.
+            An SAP consulting firm, an orthopaedic practice, an exam academy, a construction firm and a national job portal.
+            Every one is live, so open them on your phone and judge the work for yourself.
           </p>
         </div>
 
@@ -99,7 +109,7 @@ export default function ClientShowcase() {
             </li>
           ))}
         </ul>
-        <p className="label work-swipe-hint">Swipe to see all four sites</p>
+        <p className="label work-swipe-hint">Swipe to see all five sites</p>
       </div>
     </section>
   );

@@ -15,7 +15,7 @@ const plans = [
   {
     name: 'Starter',
     price: '₹12,999',
-    timeframe: '5–7 days',
+    timeframe: '48 hours*',
     desc: 'For consultants and local businesses that need a clean, credible site that turns visitors into enquiries.',
     isPopular: false,
     example: { name: 'Encourage India IAS Academy', url: 'https://www.encourageindiaias.com/' },
@@ -76,7 +76,7 @@ const comparison = [
   { name: 'Where enquiries go', starter: 'WhatsApp + email form', growth: 'Also your Google Sheet or CRM', custom: 'Your own database + automations' },
   { name: 'Interactive features', starter: 'FAQ and enquiry form', growth: 'Calculators, quote forms, tabs', custom: 'Logins, portals and payments' },
   { name: 'Updating content', starter: 'We update it for you', growth: 'Blog you can edit yourself', custom: 'Content system built for you' },
-  { name: 'Launch time', starter: '5–7 days', growth: '10–14 days', custom: '2–3 weeks' },
+  { name: 'Launch time', starter: '48 hours*', growth: '10–14 days', custom: '2–3 weeks' },
   { name: 'Support after launch', starter: '14 days', growth: '30 days, priority', custom: '60 days, priority' },
 ];
 
@@ -146,7 +146,7 @@ export default function WebsitePricing({ onSelectPlan: onSelectPlanProp }: Websi
                     />
                   </button>
 
-                  <a href={p.example.url} target="_blank" rel="noopener noreferrer" className="text-link" style={{ marginTop: '12px' }}>
+                  <a href={p.example.url} target="_blank" rel="noopener noreferrer" className="text-link plan-example">
                     <span>Live example: {p.example.name}</span>
                     <ArrowUpRight size={15} aria-hidden="true" />
                     <span className="sr-only"> (opens in a new tab)</span>
@@ -174,6 +174,8 @@ export default function WebsitePricing({ onSelectPlan: onSelectPlanProp }: Websi
             );
           })}
         </div>
+
+        <p className="footnote">*Starter sites go live within 48 hours of receiving your content.</p>
 
         <div className="compare">
           <button

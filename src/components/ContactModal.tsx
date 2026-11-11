@@ -313,7 +313,7 @@ export default function ContactModal({
                   placeholder={
                     isTutoring
                       ? 'e.g. Class 10 ICSE Math & Physics in Sadashivanagar / RT Nagar'
-                      : 'e.g. Dental clinic in Indiranagar, want online appointment bookings'
+                      : 'e.g. Dental clinic, want online appointment bookings'
                   }
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}

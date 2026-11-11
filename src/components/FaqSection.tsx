@@ -44,7 +44,7 @@ const groups = [
       },
       {
         q: 'How long from the first call to something working?',
-        a: 'Websites launch in 5 days to 3 weeks, depending on the plan. Most AI projects start with a two-week pilot on one real problem.',
+        a: 'Starter websites go live within 48 hours of receiving your content. Growth sites take 10–14 days and custom builds 2–3 weeks. Most AI projects start with a two-week pilot on one real problem.',
       },
       {
         q: 'Can the website and the AI work together?',

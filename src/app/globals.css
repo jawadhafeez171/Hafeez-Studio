@@ -732,6 +732,13 @@ textarea {
   color: var(--text-secondary);
 }
 
+.footnote {
+  margin-top: 14px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .hero-facts li {
   display: inline-flex;
   align-items: center;
@@ -774,8 +781,12 @@ textarea {
   position: relative;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(24px, 3vw, 40px);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(20px, 2.2vw, 32px);
+}
+
+.work-item h3 {
+  overflow-wrap: anywhere;
 }
 
 .work-item h3 {
@@ -809,9 +820,9 @@ textarea {
   text-decoration: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1099px) {
   .work-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     row-gap: 48px;
   }
 }
@@ -1002,6 +1013,13 @@ textarea {
 
 .plan-body {
   flex: 1;
+}
+
+/* Own line, so it never sits beside the "Show all" toggle */
+.plan-example {
+  display: block;
+  width: fit-content;
+  margin-top: 8px;
 }
 
 .plan-actions {

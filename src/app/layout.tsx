@@ -36,11 +36,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
+  title: 'Hafeez Studio — Custom Websites & AI Automation',
   description:
-    'Fast custom websites from ₹12,999 and practical AI automation for clinics, academies and local businesses. Live in about two weeks, no monthly platform fees, and you own the code.',
+    'Fast custom websites from ₹12,999 and practical AI automation for clinics, academies and growing businesses worldwide. Starter sites live in 48 hours, no monthly platform fees, and you own the code.',
   keywords: [
-    'website design Bengaluru',
+    'custom website design',
     'custom website for clinics',
     'website for coaching academy',
     'WhatsApp chatbot for business',
@@ -58,16 +58,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://hafeezstudio.com',
-    title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
+    title: 'Hafeez Studio — Custom Websites & AI Automation',
     description:
-      'Fast custom websites and practical AI automation for clinics, academies and local businesses. You own the code; no monthly platform fees.',
+      'Fast custom websites and practical AI automation for clinics, academies and growing businesses worldwide. You own the code; no monthly platform fees.',
     siteName: 'Hafeez Studio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hafeez Studio — Custom Websites & AI Automation in Bengaluru',
+    title: 'Hafeez Studio — Custom Websites & AI Automation',
     description:
-      'Fast custom websites and practical AI automation for clinics, academies and local businesses. You own the code; no monthly platform fees.',
+      'Fast custom websites and practical AI automation for clinics, academies and growing businesses worldwide. You own the code; no monthly platform fees.',
   },
   verification: {
     google: 'SJ9BIXHBoNu5rQA6pQyKAHZ333ZRQQhAGWjnwElAOUI',
