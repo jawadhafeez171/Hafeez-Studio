@@ -1,6 +1,6 @@
 # Hafeez Studio design system
 
-Minimal and typographic. Well-set words, real client screens and honest prices do the persuading. Applies to the studio site (`/`). The tutoring site (`/tutoring`, served at tuition.hafeezstudio.com) is a separate business with its own board world, scoped under `.tutor` in `src/app/tutoring/tutor.css`; see [Hafeez Tutor](#hafeez-tutor-tuitionhafeezstudiocom) below.
+Minimal and typographic. Well-set words, real client screens and honest prices do the persuading. Applies to the studio site (`/`). The tutoring site (`/tutoring`, served at tuition.hafeezstudio.com) is a separate business with its own plain white world, scoped under `.tutor` in `src/app/tutoring/tutor.css`; see [Hafeez Tutor](#hafeez-tutor-tuitionhafeezstudiocom) below.
 
 ## Principles
 
@@ -75,77 +75,68 @@ A separate business with its own world. Everything below applies only inside `.t
 
 ### Principle
 
-**The page is the classroom board.** One board-green field, chalk-white type, and a real problem worked out line by line. Sections are the phases of a written solution: Given, To find, Solution, Answer.
+**One plain white page, one green button.** It says what is offered, to whom, where and for how much, in one short column. Nothing is decorated.
 
-- **The Two-Tone Rule.** Board and chalk carry the whole page. Secondary text is a softer chalk, never a second hue.
-- **The Rationed Chalk Rule.** Chalk yellow marks exactly two things: the primary action (the WhatsApp book button) and the line on the board currently being explained. It is not used for links, headings, rules or decoration. (Text selection and the shared dialog's accent also resolve to yellow through the token mapping.)
-- **The Bare Board Rule.** No cards, shadows, gradients, photos or textures. Separation comes from hairline chalk rules and whitespace.
+- **The One Green Rule.** Deep green marks the book button, the list markers and step numbers, the WhatsApp glyph in the top line and the focus ring. Text is ink or soft ink, never green.
+- **The Bare Page Rule.** No images, cards, shadows or gradients. Sections are separated by a hairline and whitespace only.
 
 ### Colour (tokens on `.tutor`)
 
-| Token | Value | On board #1E3A2F | Use |
+| Token | Value | On white | Use |
 |---|---|---|---|
-| `--board` | #1E3A2F | – | The whole ground: page, sticky bar, dialog, browser chrome (`themeColor`, `color-scheme: dark`, scrollbar track) |
-| `--board-raised` | #24463A | – | Only the shared dialog's surfaces (`--bg-surface`, `--bg-card`) |
-| `--chalk` | #EEEFE6 | 10.65:1 | Primary text, focus ring, selected tab underline |
-| `--chalk-soft` | #B7C6BB | 6.94:1 | Secondary text: lede, labels, phase words, question, footer, quiet link |
-| `--chalk-dim` | #8FA597 | 4.70:1 | Board lines already explained; scrollbar thumb |
-| `--chalk-rule` | #EEEFE6 at 20% | – | Every hairline |
-| `--yellow` | #EBD56C | 8.38:1 | Book button fill (board text on it, 8.38:1) and the current board line |
-| `--yellow-hover` | #F3E28F | 9.45:1 | Book button hover |
-| dialog error | #FFB4A8 | 7.26:1 (7.3:1) | Field errors and invalid input borders in the shared dialog; the error box uses it at 50% border / 8% fill |
+| `--paper` | #FFFFFF | – | The whole ground, the dialog, and the browser chrome (`themeColor` #FFFFFF, `color-scheme: light`) |
+| `--ink` | #16211C | 16.56:1 | Headings, wordmark, body, price |
+| `--ink-soft` | #4D5A53 | 7.23:1 | Lede, top-line link, quiet link, areas, closing text, footer |
+| `--text-muted` (dialog placeholders) | #6B7770 | 4.67:1 | Lighter than body text so placeholders never read as entered values |
+| `--rule` | #DDE3DF | – | Every hairline (section tops, footer) |
+| `--green` | #1F6B48 | 6.45:1 as a mark; white on it 6.45:1 | Book button fill, list dots, step numbers, WhatsApp glyph, focus ring |
+| `--green-hover` | #17563A | white on it 8.65:1 | Book button hover |
 
-`--chalk-dim` is for the board's past lines only; it falls to 3.97:1 on `--board-raised`, so it stays out of the dialog.
+Selected text is green at 18% (`rgba(31, 107, 72, 0.18)`).
 
 ### Type
 
-- **One face throughout:** Atkinson Hyperlegible Next (`next/font/google`, normal and italic, `--font-atkinson`, fallback Segoe UI / system-ui). Chosen for unambiguous figures and l/I/1 in worked maths; its slashed zero is kept as drawn (no feature setting turns it off). Mathematical variables are set in italic (`<var>`). Prices and counts use tabular lining numerals (`.num`).
-- **Weights:** 700 for headings, wordmark, buttons and prices; 500 for board lines; 400 italic in `--chalk-soft` for the phase word that opens each section heading ("*Given:*") and for "*Tutor*" in the wordmark.
+- **One face throughout:** Atkinson Hyperlegible Next (`next/font/google`, normal and italic, `--font-atkinson`, fallback Segoe UI / system-ui), chosen for unambiguous figures and l/I/1. Prices and the phone number use tabular lining numerals (`.num`).
+- **Weights:** 700 for the headline, section headings, wordmark, button, price figure and step numbers; 400 for everything else.
 
 | Role | Size | Line-height / tracking | Notes |
 |---|---|---|---|
-| Headline | `clamp(2.5rem, 8.6vw, 4.4rem)`; ≥1024 `clamp(2.6rem, 3.1vw, 3.3rem)` | 1.02 / -0.022em | 700, max 13ch, balanced |
-| Answer close | `clamp(2.2rem, 6.2vw, 4.6rem)` | 1.04 / -0.02em | 700, max 16ch |
-| Section heading | `clamp(1.75rem, 3.8vw, 2.9rem)`; ≥1024 `clamp(1.9rem, 2.3vw, 2.3rem)` | 1.1 / -0.015em | 700, max 24ch; held a clear step below the headline on wide screens |
-| Board lines | `clamp(1.35rem, 3.4vw, 2.1rem)`; ≥1024 `clamp(1.6rem, 2vw, 2.1rem)` | 1.45 | 500; a term never breaks inside itself (`.t-nb`) |
-| Lede | `clamp(1.06rem, 1.7vw, 1.3rem)` | 1.55 | `--chalk-soft`, max 42ch |
-| Price line | `clamp(1.15rem, 2vw, 1.45rem)`, figure at 1.35em bold | 1.45 | max 36ch |
-| Fact values / outcome titles / steps | `clamp(1.15rem, 1.9vw, 1.4rem)` / `clamp(1.15rem, 1.8vw, 1.35rem)` / `clamp(1.1rem, 1.8vw, 1.3rem)` | 1.3–1.45 | |
-| Board explanation | `clamp(1.06rem, 1.6vw, 1.22rem)` | 1.5 | max 46ch; reserves 3em so the board doesn't jump |
-| Body | 17px | 1.6 | |
-| Labels and small text | 0.9–1rem | – | `--chalk-soft` |
+| Headline | `clamp(2.2rem, 6.4vw, 3.4rem)` | 1.08 / -0.02em | Balanced |
+| Section heading | `clamp(1.4rem, 3vw, 1.75rem)` | 1.2 / -0.01em | |
+| Lede and price | `clamp(1.1rem, 2vw, 1.25rem)` | 1.55 | Lede in `--ink-soft`, max 40ch |
+| Body | 18px | 1.6 | Areas paragraph at 1.7 |
+| Wordmark | 1.1rem | – | |
+| Button | 1.05rem | – | |
+| Small | 0.9–1rem | – | Top link 0.95rem, quiet link 1rem, footer 0.9rem |
 
 ### Layout
 
-- Container max 1120px, with 20px gutters on phones and 40px from 768px up.
-- **Hero:** on phones the copy comes first and the lesson sits right under it behind a top hairline. From 1024px the hero becomes two columns, copy 0.8fr and lesson 1.2fr (the board is the focal object), gap `clamp(40px, 5vw, 72px)`, with the lesson set off by a vertical hairline on its left.
-- **Phases:** Given, To find, Solution and Answer are full-width sections, each opened by a hairline and padded `clamp(48px, 7vw, 88px)`; the Answer close has `clamp(72px, 10vw, 128px)` below it.
-- **Ruled lists:** Given is a definition list and To find a list, both set as hairline-ruled rows (a rule above each row and one closing the set). From 768px they become two columns: label 180px / value for Given, title up to 340px / text for To find. Solution is three numbered rows (soft tabular numeral in a 2.2em column), max 760px, because order matters.
-- **Actions:** on phones the book button is full width (max 420px) with the quiet link under it; from 640px they sit in a row; in the hero from 1024px the quiet link drops back under the button.
+- A single column, max 720px, centred, with 20px side padding at every width.
+- **Top line:** 72px tall, wordmark left, WhatsApp link right.
+- **Hero:** padded `clamp(40px, 9vh, 96px)` above and `clamp(48px, 8vw, 72px)` below.
+- **Sections:** each opened by a 1px `--rule` hairline and padded `clamp(36px, 6vw, 56px)`; the footer is opened by the same hairline.
+- **Actions:** button and quiet link in a wrapping row (gap 8px / 20px); at 480px and below they stack and the button runs full width.
 
 ### Elevation and shape
 
-Flat: no shadows anywhere. Shapes are limited to fully rounded pills for buttons (999px) and a 6px radius on the focus outline; everything else is unboxed type on the board.
+Flat: no shadows anywhere. The only shapes are the fully rounded button (999px), the 8px round list dots and a 6px radius on the focus outline.
 
 ### Components
 
-- **Worked board** (`WorkedBoard.tsx`, the signature): subject tabs ("Physics, Class 9", "Maths, Class 10") as plain text, the selected one bold with a 2px chalk underline, with the full tablist keyboard pattern. The question in soft chalk, then the solution lines. A line not yet written is a faint wiped-chalk trace (chalk at 9% opacity) so the space never reads as empty; lines already explained drop to `--chalk-dim`; the current line is yellow; once the problem is done the final answer is double-underlined, as in an exam answer. Under the lines sit the explanation for the current step, a chalk outline pill ("Next step" / "Write it out again", 1.5px chalk at 50%, faint chalk fill on hover) and a soft "3 / 5" count. Screen readers hear explanations only after the visitor acts.
-- **Book button:** the one primary action. A yellow pill with board-colour text and the WhatsApp glyph, 56px tall (48px in the sticky bar), bold; it opens WhatsApp with a prefilled message.
-- **Quiet alternative:** "or leave your number", underlined soft-chalk text that opens the shared contact dialog. It is never styled as a second button.
-- **Top line:** bold wordmark "Hafeez *Tutor*" on the left; on the right a soft-chalk WhatsApp link with the number, which becomes the word "WhatsApp" at 420px and below.
-- **Phone booking bar** (`StickyBook.tsx`, below 900px): a board-coloured bar with a hairline above, "₹600 an hour" and the small book button. It slides up once the hero's button has scrolled off and steps aside while the Answer section's own button is on screen.
-- **Contact dialog:** the shared `ContactModal` is themed by mapping its tokens onto the board (`--modal-bg` board, surfaces `--board-raised`, text chalk / soft chalk, borders chalk at 20% / 36% / 60%, accent and CTA yellow with board text, both font tokens Atkinson). Errors use #FFB4A8.
-- **Focus and selection:** a 3px chalk outline at 3px offset; selected text is board on yellow.
+- **Book button:** the one primary action, used in the hero and in the closing section. A green pill with white text and the WhatsApp glyph, 54px tall, 26px side padding, bold; it opens WhatsApp in a new tab.
+- **Quiet link:** "or leave your number", underlined soft-ink text (44px tap height) that opens the shared contact dialog; it turns ink on hover. It is never styled as a second button.
+- **Top line:** bold wordmark "Hafeez Tutor" on the left; on the right a soft-ink link with a green WhatsApp glyph and the number, which becomes the word "WhatsApp" at 420px and below.
+- **Bulleted list** ("What's included"): rows padded 10px with a 28px indent and an 8px green dot.
+- **Numbered list** ("How it starts"): the same rows with a bold green tabular numeral in a 36px indent, because the order matters.
+- **Areas covered:** grouped as a definition list, **Central** then **North**, each a bold label over one comma-separated sentence in soft ink (line-height 1.7), not chips. A closing line invites nearby areas to ask on WhatsApp.
+- **Contact dialog:** the shared `ContactModal` is themed by mapping its tokens onto the page: `--modal-bg`, `--bg-main` and `--bg-card` white, `--bg-surface` #F4F7F5, text ink / soft ink, muted #6B7770 for placeholders, borders `--rule` / #B9C4BE / #8D9A93 on hover, accent and CTA green with hover #17563A and white CTA text, accent tints green at 8% / 22% and a 40% accent border, both font tokens Atkinson. Its title is set at 700 like the page headings, the phone placeholder reads "10-digit mobile number" (no sample digits), and its primary button is green with white text. Field errors are pinned to #B42323 (6.55:1) on white.
+- **Focus:** a 3px green outline at 3px offset with a 6px radius.
 
 ### Motion
 
-The board writing itself is the page's one authored moment; nothing else animates on scroll.
-
-- The first time the board is 45% in view it writes the problem a line at a time, one line every 1.9s. Each line is drawn on left to right with a clip-path wipe (0.9s, `cubic-bezier(0.16, 1, 0.3, 1)`), and lines change colour over 0.5s as they move from current to explained. Choosing a tab writes that problem afresh; "Next step" stops the autoplay and advances by hand.
-- Small feedback only: the book button presses to 98%; the sticky bar slides in over 0.35s on the same curve.
-- The server HTML shows every line, so the worked problem reads without JavaScript. With reduced motion the board shows the whole solution at once, and the write-on, the colour transitions and the bar slide are all off.
+None beyond the book button's background colour change on hover (0.2s ease). Nothing animates on load or on scroll.
 
 ### Share image and favicon
 
-- The link preview (`opengraph-image.tsx`, 1200×630) is a piece of the board: the wordmark, the headline in chalk, one worked line (s = ut + ½at²) in yellow and the offer in soft chalk, set in Atkinson Hyperlegible Next from the TTFs in `src/app/tutoring/_og`.
-- The tutoring site has its own favicon, separate from the studio's: a chalk #EEEFE6 "H" (Atkinson Hyperlegible Next Bold, outlined) over a chalk-yellow #EBD56C double underline (the board's marked answer) on a board-green #1E3A2F tile. Files: `public/tutoring-favicon.svg` and `public/tutoring-apple-touch-icon.png` (180, square), wired in the tutoring layout's metadata.
+- The link preview (`opengraph-image.tsx`, 1200×630) matches the page: white ground, the wordmark (36px bold) and the headline (62px bold) in ink, "₹600 an hour · First class free" in green, and the boards line in soft ink, set in Atkinson Hyperlegible Next from the TTFs in `src/app/tutoring/_og`.
+- Favicon: a white "H" (Atkinson Hyperlegible Next Bold, outlined) on the page's green #1F6B48 tile (14px radius on 64). Files: `public/tutoring-favicon.svg` and `public/tutoring-apple-touch-icon.png` (180, square; iOS rounds it), wired in the tutoring layout's metadata.

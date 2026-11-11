@@ -268,7 +268,7 @@ export default function ContactModal({
                     aria-invalid={Boolean(phoneError)}
                     aria-describedby={phoneError ? fieldId('phone-error') : undefined}
                     className="form-input contact-input"
-                    placeholder="98765 43210"
+                    placeholder={isTutoring ? '10-digit mobile number' : '98765 43210'}
                     value={formData.phone}
                     onChange={(e) => {
                       setFormData({ ...formData, phone: e.target.value });

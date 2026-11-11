@@ -1,53 +1,55 @@
 import React from 'react';
 import { TUITION_ORIGIN } from '@/lib/sites';
-import WorkedBoard from './_components/WorkedBoard';
-import StickyBook from './_components/StickyBook';
-import { BookButton, LeaveNumber, WhatsAppIcon } from './_components/contact';
 import { TUTOR_PHONE_DISPLAY, TUTOR_WHATSAPP_URL } from '@/lib/tutor';
+import { BookButton, LeaveNumber, WhatsAppIcon } from './_components/contact';
 
-const areas = [
-  'Sanjay Nagar',
-  'Sahakar Nagar',
-  'Sadashivanagar',
-  'Cunningham Road',
-  'Richmond Town',
-  'RT Nagar',
-  'Vasant Nagar',
-  'Benson Town',
-  'MG Road',
-  'Frazer Town',
-  'Malleshwaram',
-  'Hebbal',
-  'RMV Extension',
-  'HBR Layout',
-  'Cooke Town',
-  'Lavelle Road',
+const included = [
+  'Concepts explained clearly, so formulas make sense',
+  'Practice from the textbook up to past board papers',
+  'Short regular tests, with updates for parents',
+  'Board-exam answer writing and time management',
 ];
 
-const outcomes = [
-  {
-    title: 'Why each formula works',
-    text: 'Ideas are explained from first principles, with everyday examples, before any drilling.',
-  },
-  {
-    title: 'Practice that climbs',
-    text: 'Graded questions, from textbook and exemplar problems up to ten years of past board papers.',
-  },
-  {
-    title: 'Calm, regular check-ins',
-    text: 'Short, low-pressure tests show what to work on next, and parents get honest updates.',
-  },
-  {
-    title: 'Board-exam answer writing',
-    text: 'Setting out steps, units and working so every mark is earned, and managing time in the hall.',
-  },
-];
-
-const startSteps = [
-  "Send a WhatsApp message with your child's class, board and area.",
+const steps = [
+  "Message on WhatsApp with your child's class, board and area.",
   'We fix a free trial class at your home.',
-  'If it suits you, regular one-to-one sessions follow at ₹600 an hour.',
+  'If it suits you, regular classes continue at ₹600 an hour.',
 ];
+
+// Grouped so a parent can find their own neighbourhood at a glance
+const areaGroups = [
+  {
+    name: 'Central',
+    areas: [
+      'Sadashivanagar',
+      'Palace Orchards',
+      'Jayamahal',
+      'Malleshwaram',
+      'Kumara Park',
+      'High Grounds',
+      'Vasant Nagar',
+      'Cunningham Road',
+      'MG Road',
+      'Lavelle Road',
+      'Richmond Town',
+      'Langford Town',
+      'Shanti Nagar',
+      'Ashok Nagar',
+      'Ulsoor',
+      'Indiranagar',
+      'Domlur',
+      'Benson Town',
+      'Frazer Town',
+      'Cox Town',
+      'Cooke Town',
+    ],
+  },
+  {
+    name: 'North',
+    areas: ['Dollars Colony', 'RMV Extension', 'Sanjay Nagar', 'Sahakar Nagar', 'RT Nagar', 'Hebbal', 'HBR Layout'],
+  },
+];
+const areas = areaGroups.flatMap((g) => g.areas);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -66,123 +68,94 @@ export default function TutoringPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
-      <header className="t-top">
-        <div className="t-wrap t-top-inner">
-          <a href="/" className="t-wordmark">
-            Hafeez <span>Tutor</span>
-          </a>
-          <a href={TUTOR_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="t-top-link">
-            <WhatsAppIcon size={18} />
-            <span className="num">{TUTOR_PHONE_DISPLAY}</span>
-            <span className="t-sr"> on WhatsApp (opens in a new tab)</span>
-          </a>
-        </div>
+      <header className="t-wrap t-top">
+        <a href="/" className="t-wordmark">
+          Hafeez Tutor
+        </a>
+        <a
+          href={TUTOR_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="t-top-link"
+          aria-label={`WhatsApp ${TUTOR_PHONE_DISPLAY} (opens in a new tab)`}
+        >
+          <WhatsAppIcon size={18} />
+          <span className="num">{TUTOR_PHONE_DISPLAY}</span>
+        </a>
       </header>
 
-      <main>
-        <div className="t-hero t-wrap">
-          <section className="t-hero-copy" aria-labelledby="t-title">
-            <h1 id="t-title" className="t-title">
-              Maths and Physics, worked out step by step.
-            </h1>
-            <p className="t-lede">
-              One-to-one home tuition for Classes 8, 9 and 10. CBSE, ICSE and IGCSE, across Bangalore North and Central.
-            </p>
-            <p className="t-price">
-              <span className="num">₹600</span> an hour, at your home. The first class is a free trial.
-            </p>
-            <div className="t-actions" id="t-hero-actions">
-              <BookButton />
-              <LeaveNumber />
-            </div>
-          </section>
-
-          {/* The board sits in the first view: beside the copy on wide screens, right under it on phones */}
-          <section className="t-lesson" aria-labelledby="t-board-title">
-            <h2 id="t-board-title" className="t-lesson-title">
-              A lesson, one line at a time.
-            </h2>
-            <WorkedBoard />
-          </section>
-        </div>
-
-        <section className="t-phase t-wrap" aria-labelledby="given">
-          <h2 id="given" className="t-h2">
-            <span className="t-phase-word">Given:</span> what is taught, and where
-          </h2>
-          <dl className="t-facts">
-            <div>
-              <dt>Subjects</dt>
-              <dd>Maths and Physics</dd>
-            </div>
-            <div>
-              <dt>Classes</dt>
-              <dd>8, 9 and 10</dd>
-            </div>
-            <div>
-              <dt>Boards</dt>
-              <dd>CBSE, ICSE and IGCSE (Cambridge)</dd>
-            </div>
-            <div>
-              <dt>Fee</dt>
-              <dd>
-                <span className="num">₹600</span> an hour. The trial class is free.
-              </dd>
-            </div>
-            <div>
-              <dt>Where</dt>
-              <dd>
-                At your home, one to one.
-                <span className="t-areas">{areas.join(', ')}.</span>
-              </dd>
-            </div>
-          </dl>
-        </section>
-
-        <section className="t-phase t-wrap" aria-labelledby="to-find">
-          <h2 id="to-find" className="t-h2">
-            <span className="t-phase-word">To find:</span> what changes for your child
-          </h2>
-          <ul className="t-outcomes">
-            {outcomes.map((o) => (
-              <li key={o.title}>
-                <h3>{o.title}</h3>
-                <p>{o.text}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="t-phase t-wrap" aria-labelledby="solution">
-          <h2 id="solution" className="t-h2">
-            <span className="t-phase-word">Solution:</span> how it starts
-          </h2>
-          <ol className="t-start">
-            {startSteps.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="t-phase t-answer t-wrap" id="answer" aria-labelledby="answer-title">
-          <h2 id="answer-title" className="t-answer-title">
-            <span className="t-phase-word">Answer:</span> book a free trial class.
-          </h2>
+      <main className="t-wrap">
+        <section className="t-hero" aria-labelledby="t-title">
+          <h1 id="t-title" className="t-title">
+            Maths and Physics home tuition for Classes 8 to 10.
+          </h1>
+          <p className="t-lede">
+            One-to-one lessons at your home in Bangalore North and Central, for CBSE, ICSE and IGCSE students.
+          </p>
+          <p className="t-price">
+            <strong className="num">₹600</strong> an hour. The first class is a free trial.
+          </p>
           <div className="t-actions">
             <BookButton />
             <LeaveNumber />
           </div>
-          <p className="t-small">
-            Or message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp.
+        </section>
+
+        <section className="t-section" aria-labelledby="included">
+          <h2 id="included" className="t-h2">
+            What&apos;s included
+          </h2>
+          <ul className="t-list">
+            {included.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="t-section" aria-labelledby="how">
+          <h2 id="how" className="t-h2">
+            How it starts
+          </h2>
+          <ol className="t-list t-steps">
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="t-section" aria-labelledby="areas">
+          <h2 id="areas" className="t-h2">
+            Areas covered
+          </h2>
+          <dl className="t-areas">
+            {areaGroups.map((g) => (
+              <div key={g.name}>
+                <dt>{g.name}</dt>
+                <dd>{g.areas.join(', ')}.</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="t-areas-note">Nearby but not listed? Ask on WhatsApp.</p>
+        </section>
+
+        <section className="t-section t-close" aria-labelledby="book">
+          <h2 id="book" className="t-h2">
+            Book a free trial class
+          </h2>
+          <p className="t-close-text">
+            Message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp, or leave your number and we&apos;ll
+            call you.
           </p>
+          <div className="t-actions">
+            <BookButton />
+            <LeaveNumber />
+          </div>
         </section>
       </main>
 
-      <footer className="t-foot t-wrap">
+      <footer className="t-wrap t-foot">
         <p>© {new Date().getFullYear()} Hafeez Tutor. Maths and Physics home tuition, Bangalore.</p>
       </footer>
-
-      <StickyBook />
     </>
   );
 }

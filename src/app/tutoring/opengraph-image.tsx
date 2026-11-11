@@ -3,14 +3,14 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 export const alt =
-  'Hafeez Tutor: Maths and Physics, worked out step by step. One-to-one home tuition for Classes 8 to 10 in Bangalore, ₹600 an hour.';
+  'Hafeez Tutor: Maths and Physics home tuition for Classes 8 to 10 in Bangalore. ₹600 an hour, first class free.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 // Atkinson Hyperlegible Next (SIL Open Font License), the page's own face, as TTF for the image renderer
 const font = (file: string) => readFile(join(process.cwd(), 'src/app/tutoring/_og', file));
 
-// The link preview is a small piece of the board: the headline in chalk and one worked line in yellow
+// The link preview matches the page: the headline in ink on white, the price in green
 export default async function OpenGraphImage() {
   const [regular, bold, italic] = await Promise.all([
     font('atkinson-next-regular.ttf'),
@@ -28,25 +28,25 @@ export default async function OpenGraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '68px 80px',
-          background: '#1E3A2F',
-          color: '#EEEFE6',
+          background: '#FFFFFF',
+          color: '#16211C',
           fontFamily: 'Atkinson',
         }}
       >
         <div style={{ display: 'flex', fontSize: 36, fontWeight: 700 }}>
-          Hafeez&nbsp;<span style={{ fontStyle: 'italic', fontWeight: 400, color: '#B7C6BB' }}>Tutor</span>
+          Hafeez Tutor
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', fontSize: 88, fontWeight: 700, lineHeight: 1.02, letterSpacing: '-0.02em' }}>
-            <span>Maths and Physics,</span>
-            <span>worked out step by step.</span>
+          <div style={{ display: 'flex', flexDirection: 'column', fontSize: 62, fontWeight: 700, lineHeight: 1.02, letterSpacing: '-0.02em' }}>
+            <span>Maths and Physics home tuition</span>
+            <span>for Classes 8 to 10.</span>
           </div>
-          <div style={{ display: 'flex', marginTop: 30, fontSize: 44, color: '#EBD56C' }}>
-            s = ut + ½at²
+          <div style={{ display: 'flex', marginTop: 30, fontSize: 44, fontWeight: 700, color: '#1F6B48' }}>
+            ₹600 an hour · First class free
           </div>
         </div>
-        <div style={{ display: 'flex', fontSize: 30, color: '#B7C6BB' }}>
-          At home in Bangalore · Classes 8 to 10 · CBSE, ICSE, IGCSE · ₹600 an hour
+        <div style={{ display: 'flex', fontSize: 30, color: '#4D5A53' }}>
+          One-to-one at your home in Bangalore · CBSE, ICSE, IGCSE
         </div>
       </div>
     ),

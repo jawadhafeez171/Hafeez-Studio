@@ -12,19 +12,20 @@ Mode: Persuade. Separate business (Hafeez Tutor), not the studio.
 - Audience: Bangalore parents of Class 8–10 students, mostly on phones, comparing a home tutor with coaching centres.
 - Job: understand the offer in seconds and book a free trial class.
 - Action: WhatsApp to book a free trial (primary); leave a number via the form (secondary).
-- Proof/content: the teaching itself, shown as a worked problem; plain facts (subjects, classes, boards, areas, ₹600 an hour). No photos, no testimonials, no invented numbers.
-- Constraints: minimalist (user-pinned); WCAG AA on the green ground; fast on mid-range Android.
+- Proof/content: plain facts only (subjects, classes, boards, areas, ₹600 an hour, free trial). No photos, testimonials or invented numbers.
+- Constraints: minimal with clear messaging (user-pinned, 2026-11-11); WCAG AA; fast on mid-range Android.
+- History: the "Blackboard" direction (green board, animated worked problem) shipped on 2026-11-11 and was replaced the same day at the user's request as too complex.
 
 ## Direction contract
 
-THESIS: The page is the classroom board: one green field, chalk-white type, and a real problem worked out line by line. It refuses the category default of a smiling stock photo, pastel gradients and a grid of feature cards.
+THESIS: One short, plain page that says what is offered, to whom, where and for how much, with one obvious button. It refuses decoration, clever framing and interactive demos.
 
-OWN-WORLD: Board green #1E3A2F as the whole ground, chalk white for text, a softer chalk for secondary text, and chalk yellow rationed to the primary action and the line currently being explained. Atkinson Hyperlegible Next throughout, variables in italic. No cards, shadows, gradients, photos or textures; hairline chalk rules separate phases.
+OWN-WORLD: White ground, green-tinted near-black text, one deep green (#1F6B48) for the button, list markers and step numbers. Atkinson Hyperlegible Next throughout. A single 720px column, hairlines between sections, no images, cards, shadows or gradients.
 
-STORY: A parent sees what's taught, to whom, where and for how much, watches a problem being explained step by step, and taps to book a free trial on WhatsApp.
+STORY: A parent reads the headline, sees the price and free trial, and taps to book on WhatsApp; anything else they need (what's included, how it starts, areas) is one short list each below.
 
-FIRST VIEWPORT: Wordmark top left and a small WhatsApp link top right. A three-line chalk headline, the class/board/area line, "₹600 an hour, at your home", a full-width yellow WhatsApp button with "or leave your number" beneath, and the worked problem starting below.
+FIRST VIEWPORT: Wordmark and WhatsApp number on top. Headline "Maths and Physics home tuition for Classes 8 to 10.", one line on who and where, "₹600 an hour. The first class is a free trial.", the green "Book a free trial class" button with "or leave your number" beside or under it.
 
-FORM: The Blackboard, candidate 4 of 7 (seed:71d59b189f083309). Raises: two-tone discipline (Ikeda); only the current step full-bright (step row); named phases Given / To find / Solution / Answer (cyclorama); yellow rationed by role (Bauhaus); the offer as a small closed set (yé-yé). Signature: the board writes each step on and lets the visitor step through it.
+FORM: User-directed simplification to a plain white single-column page (chosen on 2026-11-11 over keeping the green look). seed: none (user-pinned direction, no roll)
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

@@ -1,64 +1,58 @@
-/* Hafeez Tutor: the page is the classroom board.
-   Board green ground, chalk-white type, and chalk yellow rationed to the primary action
-   and the line currently being explained. No cards, shadows, gradients or photos. */
+/* Hafeez Tutor: a plain white page with one clear message and one green button.
+   Single column, hairlines between sections, no images, cards, shadows or gradients. */
 
 .tutor {
-  --board: #1e3a2f;
-  --board-raised: #24463a;
-  --chalk: #eeefe6;
-  --chalk-soft: #b7c6bb; /* 6.9:1 on the board */
-  --chalk-dim: #8fa597; /* 4.7:1, for lines already explained */
-  --chalk-rule: rgba(238, 239, 230, 0.2);
-  --yellow: #ebd56c;
-  --yellow-hover: #f3e28f;
+  --paper: #ffffff;
+  --ink: #16211c; /* 16.6:1 on white */
+  --ink-soft: #4d5a53; /* 7.2:1 */
+  --rule: #dde3df;
+  --green: #1f6b48; /* white text on it 6.5:1 */
+  --green-hover: #17563a;
   --t-font: var(--font-atkinson), 'Segoe UI', system-ui, sans-serif;
 
-  /* Tokens the shared contact dialog reads, mapped onto the board */
+  /* Tokens the shared contact dialog reads */
   --font-sans: var(--t-font);
   --font-serif: var(--t-font);
-  --bg-main: var(--board);
-  --bg-surface: var(--board-raised);
-  --bg-card: var(--board-raised);
-  --modal-bg: var(--board);
-  --text-primary: var(--chalk);
-  --text-secondary: var(--chalk-soft);
-  --text-muted: var(--chalk-soft);
-  --border-subtle: var(--chalk-rule);
-  --border-strong: rgba(238, 239, 230, 0.36);
-  --border-hover: rgba(238, 239, 230, 0.6);
-  --accent: var(--yellow);
-  --accent-hover: var(--yellow-hover);
-  --accent-tint: rgba(235, 213, 108, 0.14);
-  --accent-tint-strong: rgba(235, 213, 108, 0.32);
-  --accent-border: rgba(235, 213, 108, 0.5);
-  --cta-bg: var(--yellow);
-  --cta-bg-hover: var(--yellow-hover);
-  --cta-text: var(--board);
+  --bg-main: var(--paper);
+  --bg-surface: #f4f7f5;
+  --bg-card: var(--paper);
+  --modal-bg: var(--paper);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: #6b7770; /* placeholders: lighter than body text, still 4.67:1 */
+  --border-subtle: var(--rule);
+  --border-strong: #b9c4be;
+  --border-hover: #8d9a93;
+  --accent: var(--green);
+  --accent-hover: var(--green-hover);
+  --accent-tint: rgba(31, 107, 72, 0.08);
+  --accent-tint-strong: rgba(31, 107, 72, 0.22);
+  --accent-border: rgba(31, 107, 72, 0.4);
+  --cta-bg: var(--green);
+  --cta-bg-hover: var(--green-hover);
+  --cta-text: #ffffff;
 
   min-height: 100vh;
-  background: var(--board);
-  color: var(--chalk);
+  background: var(--paper);
+  color: var(--ink);
   font-family: var(--t-font);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* The browser's own surfaces belong to the board too */
 :root:has(.tutor) {
-  color-scheme: dark;
-  background: #1e3a2f;
-  scrollbar-color: #8fa597 #1e3a2f;
+  color-scheme: light;
+  background: #ffffff;
 }
 body:has(.tutor) {
-  background: #1e3a2f;
+  background: #ffffff;
 }
 .tutor ::selection {
-  background: var(--yellow);
-  color: var(--board);
+  background: rgba(31, 107, 72, 0.18);
 }
 .tutor :focus-visible {
-  outline: 3px solid var(--chalk);
+  outline: 3px solid var(--green);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -66,9 +60,6 @@ body:has(.tutor) {
   color: inherit;
   text-underline-offset: 0.22em;
   text-decoration-thickness: 1px;
-}
-.tutor var {
-  font-style: italic;
 }
 .tutor .num {
   font-variant-numeric: lining-nums tabular-nums;
@@ -82,22 +73,16 @@ body:has(.tutor) {
   white-space: nowrap;
 }
 
+/* One narrow column keeps every line short and easy to read */
 .t-wrap {
   width: 100%;
-  max-width: 1120px;
+  max-width: 720px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 }
-@media (min-width: 768px) {
-  .t-wrap {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
 
-/* ── Top line ───────────────────────────────────────────── */
-.t-top-inner {
+.t-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -105,27 +90,24 @@ body:has(.tutor) {
   min-height: 72px;
 }
 .t-wordmark {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   text-decoration: none;
-  letter-spacing: 0.005em;
-}
-.t-wordmark span {
-  font-weight: 400;
-  font-style: italic;
-  color: var(--chalk-soft);
 }
 .t-top-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  color: var(--chalk-soft) !important;
+  color: var(--ink-soft) !important;
   font-size: 0.95rem;
   text-decoration: none;
 }
+.t-top-link svg {
+  color: var(--green);
+}
 .t-top-link:hover {
-  color: var(--chalk) !important;
+  color: var(--ink) !important;
 }
 @media (max-width: 420px) {
   .t-top-link .num {
@@ -138,109 +120,64 @@ body:has(.tutor) {
 
 /* ── Hero ───────────────────────────────────────────────── */
 .t-hero {
-  padding-top: clamp(20px, 5vh, 72px);
-  padding-bottom: clamp(48px, 8vw, 96px);
-}
-@media (min-width: 1024px) {
-  .t-hero {
-    display: grid;
-    /* The board is the focal object, so it takes the larger share */
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 0 clamp(40px, 5vw, 72px);
-    align-items: start;
-    padding-top: clamp(32px, 7vh, 88px);
-  }
+  padding: clamp(40px, 9vh, 96px) 0 clamp(48px, 8vw, 72px);
 }
 .t-title {
-  margin: 0 0 24px;
-  max-width: 13ch;
-  font-size: clamp(2.5rem, 8.6vw, 4.4rem);
+  margin: 0 0 20px;
+  font-size: clamp(2.2rem, 6.4vw, 3.4rem);
   font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.022em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
-@media (min-width: 1024px) {
-  .t-title {
-    max-width: 13ch;
-    font-size: clamp(2.6rem, 3.1vw, 3.3rem);
-  }
-}
 .t-lede {
-  margin: 0 0 20px;
-  max-width: 42ch;
-  color: var(--chalk-soft);
-  font-size: clamp(1.06rem, 1.7vw, 1.3rem);
+  margin: 0 0 16px;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
   line-height: 1.55;
 }
 .t-price {
   margin: 0 0 28px;
-  max-width: 36ch;
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  line-height: 1.45;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
 }
-.t-price .num {
+.t-price strong {
   font-weight: 700;
-  font-size: 1.35em;
 }
 
 /* ── Actions ────────────────────────────────────────────── */
 .t-actions {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 6px;
-  max-width: 420px;
-}
-@media (min-width: 640px) {
-  .t-actions {
-    flex-direction: row;
-    align-items: center;
-    gap: 22px;
-    max-width: none;
-  }
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
 }
 .t-book {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 56px;
-  padding: 0 28px;
+  min-height: 54px;
+  padding: 0 26px;
   border-radius: 999px;
-  background: var(--yellow);
-  color: var(--board) !important;
-  font-size: 1.06rem;
+  background: var(--green);
+  color: #ffffff !important;
+  font-size: 1.05rem;
   font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-@media (min-width: 1024px) {
-  /* In the narrower copy column, the quiet option sits under the button */
-  .t-hero .t-actions {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+  transition: background-color 0.2s ease;
 }
 .t-book:hover {
-  background: var(--yellow-hover);
-}
-.t-book:active {
-  transform: scale(0.98);
-}
-.t-book--small {
-  min-height: 48px;
-  padding: 0 20px;
-  font-size: 0.98rem;
+  background: var(--green-hover);
 }
 .t-quiet {
   min-height: 44px;
   padding: 0 4px;
   border: 0;
   background: none;
-  color: var(--chalk-soft);
+  color: var(--ink-soft);
   font: inherit;
   font-size: 1rem;
   text-decoration: underline;
@@ -248,361 +185,117 @@ body:has(.tutor) {
   cursor: pointer;
 }
 .t-quiet:hover {
-  color: var(--chalk);
+  color: var(--ink);
+}
+@media (max-width: 480px) {
+  .t-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
-/* ── Phases (sections) ──────────────────────────────────── */
-.t-phase {
-  padding-top: clamp(48px, 7vw, 88px);
-  padding-bottom: clamp(48px, 7vw, 88px);
-  border-top: 1px solid var(--chalk-rule);
+/* ── Sections ───────────────────────────────────────────── */
+.t-section {
+  padding: clamp(36px, 6vw, 56px) 0;
+  border-top: 1px solid var(--rule);
 }
 .t-h2 {
-  margin: 0 0 14px;
-  max-width: 24ch;
-  font-size: clamp(1.75rem, 3.8vw, 2.9rem);
+  margin: 0 0 16px;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
-@media (min-width: 1024px) {
-  /* Section headings stay a clear step below the page headline */
-  .t-h2 {
-    font-size: clamp(1.9rem, 2.3vw, 2.3rem);
-  }
-}
-.t-phase-word {
-  color: var(--chalk-soft);
-  font-weight: 400;
-  font-style: italic;
-}
-
-/* The lesson: under the copy on phones, beside it on wide screens */
-.t-lesson {
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--chalk-rule);
-}
-@media (min-width: 1024px) {
-  .t-lesson {
-    margin-top: 0;
-    padding: 6px 0 0 clamp(32px, 4vw, 56px);
-    border-top: 0;
-    border-left: 1px solid var(--chalk-rule);
-  }
-}
-.t-lesson-title {
-  margin: 0 0 6px;
-  max-width: 34ch;
-  font-size: 1.06rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
-.t-phase > .t-h2 + .t-facts,
-.t-phase > .t-h2 + .t-outcomes,
-.t-phase > .t-h2 + .t-start {
-  margin-top: clamp(24px, 4vw, 40px);
-}
-
-/* ── The board: a worked problem ────────────────────────── */
-.t-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 24px;
-  margin-bottom: 12px;
-}
-.t-tab {
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: none;
-  color: var(--chalk-soft);
-  font: inherit;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.t-tab:hover {
-  color: var(--chalk);
-}
-.t-tab[aria-selected='true'] {
-  color: var(--chalk);
-  font-weight: 700;
-  border-bottom-color: var(--chalk);
-}
-.t-question {
-  margin: 0 0 12px;
-  max-width: 48ch;
-  color: var(--chalk-soft);
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-}
-.t-lines {
+.t-list {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: clamp(1.35rem, 3.4vw, 2.1rem);
-  line-height: 1.45;
-  font-weight: 500;
 }
-@media (min-width: 1024px) {
-  .t-lines {
-    font-size: clamp(1.6rem, 2vw, 2.1rem);
-  }
+.t-list li {
+  position: relative;
+  padding: 10px 0 10px 28px;
 }
-.t-line {
-  width: fit-content;
-  max-width: 100%;
-  padding: 2px 0;
-  color: var(--chalk);
-  /* Not yet written: a faint trace, like chalk wiped off a board, so the space never reads as empty */
-  opacity: 0.09;
-  transition: color 0.5s ease, opacity 0.5s ease;
+.t-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1.15em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
 }
-/* Each term stays whole; a long step may only break between terms */
-.t-nb {
-  white-space: nowrap;
-}
-.t-line.is-shown {
-  color: var(--chalk-dim);
-  opacity: 1;
-}
-.t-line.is-current {
-  color: var(--yellow);
-}
-/* The final answer, double-underlined the way it's marked in an exam answer */
-.t-line.is-final {
-  text-decoration: underline double;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.2em;
-}
-/* Written on left to right, like chalk, but only once the board is live */
-.t-lines.is-live .t-line.is-shown {
-  animation: t-write 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-/* The mask reaches a little past the line so glyph edges and the answer's underline are never cut */
-@keyframes t-write {
-  from {
-    clip-path: inset(-0.2em 100% -0.5em -0.2em);
-  }
-  to {
-    clip-path: inset(-0.2em -1em -0.5em -0.2em);
-  }
-}
-.t-explain {
-  min-height: 3em;
-  margin: 16px 0 14px;
-  max-width: 46ch;
-  font-size: clamp(1.06rem, 1.6vw, 1.22rem);
-  line-height: 1.5;
-}
-.t-board-controls {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.t-chalk-btn {
-  min-height: 44px;
-  padding: 0 20px;
-  border: 1.5px solid rgba(238, 239, 230, 0.5);
-  border-radius: 999px;
-  background: none;
-  color: var(--chalk);
-  font: inherit;
-  font-size: 0.98rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-.t-chalk-btn:hover {
-  background: rgba(238, 239, 230, 0.08);
-  border-color: var(--chalk);
-}
-.t-count {
-  color: var(--chalk-soft);
-  font-size: 0.95rem;
-}
-
-/* ── Given: the offer as a small closed set ─────────────── */
-.t-facts {
-  margin: 0;
-  border-bottom: 1px solid var(--chalk-rule);
-}
-.t-facts > div {
-  display: grid;
-  gap: 2px;
-  padding: 16px 0;
-  border-top: 1px solid var(--chalk-rule);
-}
-@media (min-width: 768px) {
-  .t-facts > div {
-    grid-template-columns: 180px 1fr;
-    gap: 24px;
-    padding: 20px 0;
-  }
-}
-.t-facts dt {
-  color: var(--chalk-soft);
-  font-size: 0.98rem;
-}
-.t-facts dd {
-  margin: 0;
-  font-size: clamp(1.15rem, 1.9vw, 1.4rem);
-  line-height: 1.4;
-}
-.t-areas {
-  display: block;
-  margin-top: 8px;
-  max-width: 62ch;
-  color: var(--chalk-soft);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* ── To find: a ruled list, set like the Given facts ────── */
-.t-outcomes {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-bottom: 1px solid var(--chalk-rule);
-}
-.t-outcomes li {
-  display: grid;
-  gap: 4px;
-  padding: 18px 0;
-  border-top: 1px solid var(--chalk-rule);
-}
-@media (min-width: 768px) {
-  .t-outcomes li {
-    grid-template-columns: minmax(0, 340px) 1fr;
-    gap: 24px;
-    align-items: baseline;
-    padding: 22px 0;
-  }
-}
-.t-outcomes h3 {
-  margin: 0;
-  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
-  font-weight: 700;
-  line-height: 1.3;
-}
-.t-outcomes p {
-  margin: 0;
-  max-width: 44ch;
-  color: var(--chalk-soft);
-}
-
-/* ── Solution: three steps, numbered because order matters ─ */
-.t-start {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* Numbered because the order matters */
+.t-steps {
   counter-reset: t-step;
 }
-.t-start li {
+.t-steps li {
   counter-increment: t-step;
-  display: grid;
-  grid-template-columns: 2.2em 1fr;
-  align-items: baseline;
-  padding: 16px 0;
-  border-top: 1px solid var(--chalk-rule);
-  max-width: 760px;
-  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-  line-height: 1.45;
+  padding-left: 36px;
 }
-.t-start li::before {
+.t-steps li::before {
   content: counter(t-step);
-  color: var(--chalk-soft);
+  top: 10px;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: var(--green);
+  font-weight: 700;
   font-variant-numeric: lining-nums tabular-nums;
 }
-
-/* ── Answer: the close ──────────────────────────────────── */
-.t-answer {
-  padding-bottom: clamp(72px, 10vw, 128px);
+.t-areas {
+  margin: 0;
 }
-.t-answer-title {
-  margin: 0 0 32px;
-  max-width: 16ch;
-  font-size: clamp(2.2rem, 6.2vw, 4.6rem);
+.t-areas > div + div {
+  margin-top: 16px;
+}
+.t-areas dt {
   font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
 }
-.t-small {
-  margin: 18px 0 0;
-  color: var(--chalk-soft);
-  font-size: 0.98rem;
+.t-areas dd {
+  margin: 2px 0 0;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.t-areas-note {
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.t-close-text {
+  margin: 0 0 24px;
+  color: var(--ink-soft);
 }
 
 .t-foot {
   padding-top: 24px;
-  padding-bottom: calc(24px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--chalk-rule);
-  color: var(--chalk-soft);
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
   font-size: 0.9rem;
 }
 .t-foot p {
   margin: 0;
 }
 
-/* ── Phone booking bar ──────────────────────────────────── */
-.t-sticky {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-  background: var(--board);
-  border-top: 1px solid var(--chalk-rule);
-  transform: translateY(110%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+/* The shared dialog's errors stay dark red on white even if a dark theme is ever set on this origin */
+:root .tutor .contact-field-error {
+  color: #b42323;
 }
-.t-sticky.is-on {
-  transform: none;
+:root .tutor .contact-input[aria-invalid='true'] {
+  border-color: #c42b2b;
 }
-.t-sticky-price {
-  font-size: 0.98rem;
-  white-space: nowrap;
-}
-.t-sticky-price .num {
+
+/* The shared dialog's title matches the page headings */
+.tutor .contact-title {
   font-weight: 700;
-}
-@media (min-width: 900px) {
-  .t-sticky {
-    display: none;
-  }
+  letter-spacing: -0.01em;
 }
 
-/* The shared dialog's errors, readable on the board (7.3:1) */
-.tutor .contact-field-error {
-  color: #ffb4a8;
-}
-.tutor .contact-input[aria-invalid='true'] {
-  border-color: #ffb4a8;
-}
-.tutor .contact-error {
-  border-color: rgba(255, 180, 168, 0.5);
-  background: rgba(255, 180, 168, 0.08);
-}
-
-/* The shared dialog's primary button on the board */
+/* The shared dialog's primary button */
 .tutor .contact-wide-btn.btn-primary {
-  background: var(--yellow);
-  color: var(--board);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .t-lines.is-live .t-line.is-shown {
-    animation: none;
-  }
-  .t-sticky,
-  .t-line {
-    transition: none;
-  }
+  background: var(--green);
+  color: #ffffff;
 }

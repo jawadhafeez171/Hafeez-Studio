@@ -15,12 +15,12 @@ const title = 'Hafeez Tutor — Maths & Physics Home Tuition in Bangalore';
 const description =
   'One-to-one Maths and Physics home tuition for Classes 8, 9 and 10 (CBSE, ICSE, IGCSE) across Bangalore North and Central. ₹600 an hour; the first trial class is free.';
 
-// The browser bar matches the board
+// The browser bar matches the page
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#1E3A2F',
+  themeColor: '#FFFFFF',
 };
 
 // The tutoring business has its own identity and lives at tuition.hafeezstudio.com
