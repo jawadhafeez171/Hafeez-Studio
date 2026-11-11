@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
 import { useContact } from '@/context/ContactContext';
+import { STUDIO_ORIGIN } from '@/lib/sites';
 
 interface NavbarProps {
   onOpenContact?: () => void;
@@ -82,7 +83,7 @@ export default function Navbar({ onOpenContact: onOpenContactProp, isTutoringPag
   return (
     <header className={`site-nav${isScrolled || menuOpen ? ' is-scrolled' : ''}`}>
       <div className="container-custom site-nav-inner">
-        <Link href={isTutoringPage ? '/tutoring' : '/'} className="wordmark" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="wordmark" onClick={() => setMenuOpen(false)}>
           <span className="wordmark-name">
             Hafeez <em>{isTutoringPage ? 'Tutor' : 'Studio'}</em>
           </span>
@@ -174,10 +175,10 @@ export default function Navbar({ onOpenContact: onOpenContactProp, isTutoringPag
               ))}
               {isTutoringPage && (
                 <li>
-                  <Link href="/" onClick={() => setMenuOpen(false)}>
+                  <a href={STUDIO_ORIGIN} onClick={() => setMenuOpen(false)}>
                     <span>Hafeez Studio (Web &amp; AI)</span>
                     <ArrowRight size={18} aria-hidden="true" style={{ color: 'var(--text-muted)' }} />
-                  </Link>
+                  </a>
                 </li>
               )}
             </ul>

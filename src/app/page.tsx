@@ -9,6 +9,7 @@ import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 import ContactButton from '@/components/ContactButton';
 import MobileActionBar from '@/components/MobileActionBar';
+import FloatingActions from '@/components/FloatingActions';
 import { ContactProvider } from '@/context/ContactContext';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import type { Viewport } from 'next';
@@ -30,6 +31,7 @@ const WHATSAPP_URL =
 export default function HomePage() {
   return (
     <ContactProvider>
+      <FloatingActions />
       <Navbar />
       <main>
         <Hero />

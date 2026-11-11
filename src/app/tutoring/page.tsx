@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import FloatingActions from '@/components/FloatingActions';
+import { TUITION_ORIGIN } from '@/lib/sites';
 import { 
   GraduationCap, 
   MapPin, 
@@ -78,8 +80,8 @@ export default function TutoringPage() {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: 'Hafeez Home Tutor',
-            image: 'https://hafeezstudio.com/tutoring_hero.jpg',
-            url: 'https://hafeezstudio.com/tutoring',
+            image: `${TUITION_ORIGIN}/tutoring_hero.jpg`,
+            url: `${TUITION_ORIGIN}/`,
             telephone: '+919902800693',
             address: {
               '@type': 'PostalAddress',
@@ -95,6 +97,7 @@ export default function TutoringPage() {
         }}
       />
 
+      <FloatingActions isTutoring />
       <Navbar onOpenContact={() => setIsContactOpen(true)} isTutoringPage={true} />
 
       {/* Hero Section */}

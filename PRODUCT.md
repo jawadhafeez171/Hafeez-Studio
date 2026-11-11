@@ -33,7 +33,7 @@ Websites and AI automation are equal-weight core offers, sold by the same people
 - Clients receive full source code and IP; hosting typically costs little or nothing on Vercel/Cloudflare.
 - Stack of this site: Next.js (App Router) on Vercel. Contact leads go through `src/app/api/contact/route.ts`.
 - Open: one consistent page-speed promise. The site currently says both "< 0.8s guarantee" and "< 1s"; pick one before repeating it.
-- `/tutoring` (Math & Physics home tutoring, Bangalore) is a **separate side business** sharing the domain, with its own WhatsApp number and lead type. It is not part of the studio's offer or positioning; keep studio work from leaking into it and vice versa.
+- The tutoring site (Math & Physics home tutoring, Bangalore) lives at `tuition.hafeezstudio.com` (since 2026-11-11; served from `/tutoring` via `src/proxy.ts`, and `hafeezstudio.com/tutoring` 301-redirects there). It is a **separate side business** sharing the codebase, with its own WhatsApp number and lead type. It is not part of the studio's offer or positioning; keep studio work from leaking into it and vice versa.
 
 ## Brand Commitments
 

@@ -1,16 +1,15 @@
 'use client';
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
 
 const STUDIO_URL =
   'https://wa.me/919886658462?text=' + encodeURIComponent("Hi Hafeez Studio, I'd like to discuss a project");
 const TUTOR_URL =
   'https://wa.me/919902800693?text=' + encodeURIComponent('Hi, I am interested in Math & Physics home tutoring');
 
-export default function FloatingActions() {
-  // The tutoring page is a separate business with its own WhatsApp number
-  const isTutoring = usePathname()?.startsWith('/tutoring');
+// The tutoring page is a separate business with its own WhatsApp number. Each page says which one it is,
+// because on tuition.hafeezstudio.com the browser path is '/', not '/tutoring'.
+export default function FloatingActions({ isTutoring = false }: { isTutoring?: boolean }) {
 
   return (
     <a

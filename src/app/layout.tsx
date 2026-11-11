@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Source_Serif_4, Hanken_Grotesk, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
-import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/context/ThemeContext';
 import MotionProvider from '@/components/MotionProvider';
 
@@ -96,7 +95,6 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <MotionProvider>
-            <FloatingActions />
             {children}
           </MotionProvider>
         </ThemeProvider>

@@ -32,7 +32,7 @@ export default function Footer({ onOpenContact: onOpenContactProp, isTutoring = 
       <div className="container-custom">
         <div className="footer-grid">
           <div>
-            <Link href={isTutoring ? '/tutoring' : '/'} className="wordmark">
+            <Link href="/" className="wordmark">
               <span className="wordmark-name">
                 Hafeez <em>{isTutoring ? 'Tutor' : 'Studio'}</em>
               </span>
