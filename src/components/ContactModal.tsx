@@ -2,6 +2,7 @@
 
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { X, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from 'lucide-react';
+import { TUTOR_WHATSAPP_TEXT } from '@/lib/tutor';
 import { AnimatePresence, motion } from 'motion/react';
 
 interface ContactModalProps {
@@ -43,7 +44,7 @@ export default function ContactModal({
 
   const whatsappNumber = isTutoring ? TUTOR_WHATSAPP : STUDIO_WHATSAPP;
   const whatsappText = isTutoring
-    ? 'Hi, I am interested in Math & Physics home tutoring'
+    ? TUTOR_WHATSAPP_TEXT
     : selectedPlan
     ? `Hi Hafeez Studio, I'm interested in the ${selectedPlan} website plan`
     : "Hi Hafeez Studio, I'd like to discuss a project";
@@ -143,12 +144,12 @@ export default function ContactModal({
   const descId = fieldId('desc');
 
   const title = isTutoring
-    ? 'Book a Free Trial Session'
+    ? 'Book a free trial class'
     : selectedPlan
     ? `Book a call about the ${selectedPlan} plan`
     : 'Book a Discovery Call';
   const intro = isTutoring
-    ? 'Tell us your location in Bangalore and curriculum to schedule a friendly trial class.'
+    ? "Leave your number with your child's class, board and area. We'll call or WhatsApp to fix a time."
     : "Leave your number and a line about your business. The founder who leads your project will get back to you within 24 hours.";
 
   const label = (htmlFor: string, text: string) => (
@@ -194,7 +195,7 @@ export default function ContactModal({
             </h2>
             <p id={descId} className="contact-intro">
               {isTutoring
-                ? "We've received your trial class request and will call you shortly to fix a time."
+                ? "We've got your request and will call or WhatsApp you to fix a time for the trial class."
                 : `We'll call or WhatsApp you within 24 hours${selectedPlan ? ` about the ${selectedPlan} plan` : ''}. No preparation needed — we'll ask the questions.`}
             </p>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary contact-wide-btn">
@@ -242,7 +243,7 @@ export default function ContactModal({
                     aria-invalid={Boolean(nameError)}
                     aria-describedby={nameError ? fieldId('name-error') : undefined}
                     className="form-input contact-input"
-                    placeholder={isTutoring ? "Parent / Student's Name" : 'e.g. Rajesh Kumar'}
+                    placeholder={isTutoring ? 'Parent or student name' : 'e.g. Rajesh Kumar'}
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({ ...formData, name: e.target.value });
@@ -294,7 +295,7 @@ export default function ContactModal({
                   type="email"
                   autoComplete="email"
                   className="form-input contact-input"
-                  placeholder="you@business.com"
+                  placeholder={isTutoring ? 'you@example.com' : 'you@business.com'}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -303,7 +304,7 @@ export default function ContactModal({
               <div>
                 {label(
                   fieldId('message'),
-                  isTutoring ? 'Class / Board / Location in Bangalore' : 'What does your business do? (optional)'
+                  isTutoring ? 'Class, board and area' : 'What does your business do? (optional)'
                 )}
                 <textarea
                   id={fieldId('message')}
@@ -312,7 +313,7 @@ export default function ContactModal({
                   style={{ resize: 'vertical', minHeight: '80px' }}
                   placeholder={
                     isTutoring
-                      ? 'e.g. Class 10 ICSE Math & Physics in Sadashivanagar / RT Nagar'
+                      ? 'e.g. Class 10, ICSE, Maths and Physics, RT Nagar'
                       : 'e.g. Dental clinic, want online appointment bookings'
                   }
                   value={formData.message}
@@ -323,7 +324,7 @@ export default function ContactModal({
               <button
                 type="submit"
                 disabled={loading}
-                className={isTutoring ? 'btn-emerald contact-wide-btn' : 'btn-primary contact-wide-btn'}
+                className="btn-primary contact-wide-btn"
               >
                 {loading ? (
                   <>
@@ -332,7 +333,7 @@ export default function ContactModal({
                   </>
                 ) : (
                   <>
-                    <span>{isTutoring ? 'Request Free Trial' : 'Request My Call'}</span>
+                    <span>{isTutoring ? 'Request a free trial class' : 'Request My Call'}</span>
                     <Send size={16} aria-hidden="true" />
                   </>
                 )}

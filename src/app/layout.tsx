@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Source_Serif_4, Hanken_Grotesk, Plus_Jakarta_Sans, Playfair_Display } from 'next/font/google';
+import { Source_Serif_4, Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import MotionProvider from '@/components/MotionProvider';
@@ -13,16 +13,6 @@ const sourceSerif = Source_Serif_4({
   display: 'swap',
 });
 const hanken = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-hanken', display: 'swap' });
-
-// Tutoring (separate business) keeps its own faces; not preloaded on studio pages
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap', preload: false });
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
-  display: 'swap',
-  preload: false,
-});
 
 // Applies a saved dark theme before first paint so returning visitors don't see a light flash
 const themeScript = `try{var t=localStorage.getItem('hafeez-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}`;
@@ -90,7 +80,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="light"
-      className={`${sourceSerif.variable} ${hanken.variable} ${jakarta.variable} ${playfair.variable}`}
+      className={`${sourceSerif.variable} ${hanken.variable}`}
       suppressHydrationWarning
     >
       <head>

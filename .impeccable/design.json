@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T00:00:00Z",
+  "title": "Design System: Hafeez Studio",
+  "note": "DESIGN.md carries no YAML frontmatter, so token primitives live here under `tokens`, one block per world. `studio` applies at / (globals.css :root and [data-theme='dark']); `tutor` applies only inside .tutor (src/app/tutoring/tutor.css) at tuition.hafeezstudio.com.",
+  "tokens": {
+    "studio": {
+      "colors": {
+        "bg-main": "#F8F8F6",
+        "bg-surface": "#EFEFEB",
+        "bg-card": "#FFFFFF",
+        "text-primary": "#141416",
+        "text-secondary": "#46464C",
+        "text-muted": "#67676D",
+        "accent": "#2E3BC9",
+        "accent-hover": "#1F2AA0",
+        "cta-bg": "#141416",
+        "cta-text": "#FFFFFF",
+        "border-subtle": "rgba(20, 20, 24, 0.12)",
+        "border-strong": "rgba(20, 20, 24, 0.26)",
+        "whatsapp": "#1F8F4E",
+        "dark-bg-main": "#111113",
+        "dark-bg-surface": "#18181B",
+        "dark-bg-card": "#1B1B1F",
+        "dark-text-primary": "#F3F3EF",
+        "dark-text-secondary": "#C2C2BD",
+        "dark-text-muted": "#96968F",
+        "dark-accent": "#AAB1FF",
+        "dark-whatsapp": "#25A35A"
+      },
+      "typography": {
+        "display": { "fontFamily": "Source Serif 4, Georgia, serif", "fontSize": "clamp(2.6rem, 6.4vw, 5.75rem)", "fontWeight": 400, "lineHeight": 1.04, "letterSpacing": "-0.022em" },
+        "headline": { "fontFamily": "Source Serif 4, Georgia, serif", "fontSize": "clamp(2.1rem, 4.2vw, 3.4rem)", "fontWeight": 400, "lineHeight": 1.08 },
+        "title": { "fontFamily": "Source Serif 4, Georgia, serif", "fontSize": "1.375rem", "fontWeight": 500 },
+        "body": { "fontFamily": "Hanken Grotesk, -apple-system, Segoe UI, sans-serif", "fontSize": "17px", "fontWeight": 400, "lineHeight": 1.6 },
+        "label": { "fontFamily": "Hanken Grotesk, -apple-system, Segoe UI, sans-serif", "fontSize": "14px", "fontWeight": 600 }
+      },
+      "rounded": { "input": "8px", "phone": "26px", "pill": "999px" },
+      "spacing": { "section-y": "clamp(72px, 11vw, 136px)", "head-gap": "clamp(32px, 5vw, 56px)", "gutter-sm": "20px", "gutter-md": "40px", "container": "1200px" },
+      "components": {
+        "button-primary": { "backgroundColor": "{colors.cta-bg}", "textColor": "{colors.cta-text}", "rounded": "{rounded.pill}", "padding": "13px 24px", "height": "48px" },
+        "button-primary-hover": { "backgroundColor": "{colors.accent}" }
+      }
+    },
+    "tutor": {
+      "colors": {
+        "board": "#1E3A2F",
+        "board-raised": "#24463A",
+        "chalk": "#EEEFE6",
+        "chalk-soft": "#B7C6BB",
+        "chalk-dim": "#8FA597",
+        "chalk-rule": "rgba(238, 239, 230, 0.2)",
+        "chalk-border-strong": "rgba(238, 239, 230, 0.36)",
+        "chalk-border-hover": "rgba(238, 239, 230, 0.6)",
+        "yellow": "#EBD56C",
+        "yellow-hover": "#F3E28F",
+        "dialog-error": "#FFB4A8"
+      },
+      "typography": {
+        "headline": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(2.5rem, 8.6vw, 4.4rem)", "fontWeight": 700, "lineHeight": 1.02, "letterSpacing": "-0.022em" },
+        "headline-wide": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(2.6rem, 3.1vw, 3.3rem)", "fontWeight": 700, "lineHeight": 1.02, "letterSpacing": "-0.022em" },
+        "answer-close": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(2.2rem, 6.2vw, 4.6rem)", "fontWeight": 700, "lineHeight": 1.04, "letterSpacing": "-0.02em" },
+        "section": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(1.75rem, 3.8vw, 2.9rem)", "fontWeight": 700, "lineHeight": 1.1, "letterSpacing": "-0.015em" },
+        "section-wide": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(1.9rem, 2.3vw, 2.3rem)", "fontWeight": 700, "lineHeight": 1.1, "letterSpacing": "-0.015em" },
+        "board-line": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(1.35rem, 3.4vw, 2.1rem)", "fontWeight": 500, "lineHeight": 1.45 },
+        "board-line-wide": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(1.6rem, 2vw, 2.1rem)", "fontWeight": 500, "lineHeight": 1.45 },
+        "lede": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "clamp(1.06rem, 1.7vw, 1.3rem)", "fontWeight": 400, "lineHeight": 1.55 },
+        "body": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "17px", "fontWeight": 400, "lineHeight": 1.6 },
+        "label": { "fontFamily": "Atkinson Hyperlegible Next, Segoe UI, system-ui, sans-serif", "fontSize": "0.98rem", "fontWeight": 400 }
+      },
+      "rounded": { "pill": "999px", "focus": "6px" },
+      "spacing": {
+        "container": "1120px",
+        "gutter-sm": "20px",
+        "gutter-md": "40px",
+        "phase-y": "clamp(48px, 7vw, 88px)",
+        "answer-bottom": "clamp(72px, 10vw, 128px)",
+        "hero-gap": "clamp(40px, 5vw, 72px)",
+        "lesson-inset": "clamp(32px, 4vw, 56px)"
+      },
+      "components": {
+        "book-button": { "backgroundColor": "{colors.yellow}", "textColor": "{colors.board}", "rounded": "{rounded.pill}", "padding": "0 28px", "height": "56px" },
+        "book-button-hover": { "backgroundColor": "{colors.yellow-hover}" },
+        "book-button-small": { "backgroundColor": "{colors.yellow}", "textColor": "{colors.board}", "rounded": "{rounded.pill}", "padding": "0 20px", "height": "48px" },
+        "chalk-button": { "textColor": "{colors.chalk}", "rounded": "{rounded.pill}", "padding": "0 20px", "height": "44px" },
+        "quiet-link": { "textColor": "{colors.chalk-soft}", "height": "44px" },
+        "board-line-current": { "textColor": "{colors.yellow}", "typography": "{typography.board-line}" },
+        "board-line-explained": { "textColor": "{colors.chalk-dim}", "typography": "{typography.board-line}" },
+        "sticky-bar": { "backgroundColor": "{colors.board}", "padding": "10px 16px" },
+        "dialog": { "backgroundColor": "{colors.board}", "textColor": "{colors.chalk}" }
+      }
+    }
+  },
+  "extensions": {
+    "colorMeta": {
+      "tutor.board": { "role": "neutral", "displayName": "Classroom Board Green", "canonical": "#1E3A2F", "contrast": "ground", "tonalRamp": ["#0c1a14", "#143027", "#1e3a2f", "#2c5243", "#3f6b5a", "#5c8a77", "#8fb3a3", "#d3e3db"] },
+      "tutor.board-raised": { "role": "neutral", "displayName": "Raised Board", "canonical": "#24463A", "purpose": "Shared dialog surfaces only", "tonalRamp": ["#0f1f19", "#183329", "#24463a", "#335a4b", "#47715f", "#66917e", "#97b7a8", "#d6e5de"] },
+      "tutor.chalk": { "role": "neutral", "displayName": "Chalk White", "canonical": "#EEEFE6", "contrastOnBoard": "10.65:1", "tonalRamp": ["#2a2b24", "#45463d", "#64655a", "#87887b", "#a9aa9d", "#c9cabe", "#e0e1d7", "#eeefe6"] },
+      "tutor.chalk-soft": { "role": "neutral", "displayName": "Soft Chalk", "canonical": "#B7C6BB", "contrastOnBoard": "6.94:1", "tonalRamp": ["#1f2722", "#344038", "#4c5b51", "#66776b", "#829487", "#9db0a2", "#b7c6bb", "#dfe7e1"] },
+      "tutor.chalk-dim": { "role": "neutral", "displayName": "Wiped Chalk", "canonical": "#8FA597", "contrastOnBoard": "4.70:1", "contrastOnBoardRaised": "3.97:1", "purpose": "Board lines already explained; never in the dialog", "tonalRamp": ["#1a231e", "#2d3b33", "#43564a", "#5b7163", "#758c7d", "#8fa597", "#b3c4b9", "#dde6e0"] },
+      "tutor.yellow": { "role": "primary", "displayName": "Chalk Yellow", "canonical": "#EBD56C", "contrastOnBoard": "8.38:1", "purpose": "Rationed: the book button and the current board line", "tonalRamp": ["#2e2808", "#4d4312", "#73641d", "#9c8a2b", "#c4ad40", "#ebd56c", "#f3e28f", "#faf3cf"] },
+      "tutor.yellow-hover": { "role": "primary", "displayName": "Chalk Yellow, lit", "canonical": "#F3E28F", "contrastOnBoard": "9.45:1" },
+      "tutor.dialog-error": { "role": "error", "displayName": "Chalk Coral", "canonical": "#FFB4A8", "contrastOnBoard": "7.26:1" },
+      "studio.accent": { "role": "primary", "displayName": "Ink Blue", "canonical": "#2E3BC9" },
+      "studio.text-primary": { "role": "neutral", "displayName": "Ink", "canonical": "#141416" },
+      "studio.bg-main": { "role": "neutral", "displayName": "Paper", "canonical": "#F8F8F6" }
+    },
+    "typographyMeta": {
+      "tutor.headline": { "displayName": "Headline", "purpose": "The page's single h1; max 13ch. Steps down to headline-wide from 1024px." },
+      "tutor.answer-close": { "displayName": "Answer close", "purpose": "The closing 'Answer:' heading; max 16ch." },
+      "tutor.section": { "displayName": "Phase heading", "purpose": "Given / To find / Solution headings, opened by an italic 400 soft-chalk phase word." },
+      "tutor.board-line": { "displayName": "Board line", "purpose": "Lines of the worked solution; variables in italic, terms never broken internally." },
+      "tutor.body": { "displayName": "Body", "purpose": "Running text. Atkinson Hyperlegible Next throughout; slashed zero kept; tabular lining numerals for prices and counts." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "tutor-write-on", "value": "clip-path inset wipe left to right, 0.9s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Each board line is chalked on; one line every 1900ms once the board is 45% in view. Off under reduced motion." },
+      { "name": "tutor-line-state", "value": "color 0.5s ease, opacity 0.5s ease", "purpose": "Board lines move from trace (9% opacity) to current (yellow) to explained (chalk-dim)." },
+      { "name": "tutor-sticky-slide", "value": "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Phone booking bar slides up from translateY(110%)." },
+      { "name": "tutor-press", "value": "transform scale(0.98), 0.2s cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Book button press feedback." }
+    ],
+    "breakpoints": [
+      { "name": "tutor-top-link-compact", "value": "max-width: 420px" },
+      { "name": "tutor-actions-row", "value": "640px" },
+      { "name": "tutor-gutter-and-ruled-columns", "value": "768px" },
+      { "name": "tutor-sticky-bar-hidden", "value": "900px" },
+      { "name": "tutor-hero-two-column", "value": "1024px" },
+      { "name": "studio-gutter", "value": "768px" },
+      { "name": "studio-nav-sheet", "value": "900px" },
+      { "name": "studio-section-head-split", "value": "1024px" },
+      { "name": "studio-hero-proof", "value": "1100px" }
+    ],
+    "focus": { "tutor": "outline: 3px solid #EEEFE6; outline-offset: 3px; border-radius: 6px" },
+    "favicons": {
+      "studio": ["public/favicon.svg", "public/favicon.ico", "public/apple-touch-icon.png"],
+      "tutor": ["public/tutoring-favicon.svg", "public/tutoring-apple-touch-icon.png"]
+    }
+  },
+  "components": [
+    {
+      "name": "Tutor Book Button",
+      "kind": "button",
+      "refersTo": "tutor.book-button",
+      "description": "The one primary action on the tutoring site: books a free trial on WhatsApp.",
+      "html": "<a class=\"ds-t-book\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89A11.82 11.82 0 0 0 12.05 0z\"/></svg><span>Book a free trial class</span></a>",
+      "css": ".ds-t-book { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #EBD56C; color: #1E3A2F; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; font-size: 1.06rem; font-weight: 700; white-space: nowrap; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-t-book:hover { background: #F3E28F; } .ds-t-book:active { transform: scale(0.98); } .ds-t-book:focus-visible { outline: 3px solid #EEEFE6; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tutor Quiet Link",
+      "kind": "button",
+      "refersTo": "tutor.quiet-link",
+      "description": "The quieter alternative beside the book button; opens the contact dialog. Never a second button.",
+      "html": "<div class=\"ds-t-ground\"><button type=\"button\" class=\"ds-t-quiet\">or leave your number</button></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; } .ds-t-quiet { min-height: 44px; padding: 0 4px; border: 0; background: none; color: #B7C6BB; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; font-size: 1rem; text-decoration: underline; text-underline-offset: 0.22em; cursor: pointer; } .ds-t-quiet:hover { color: #EEEFE6; } .ds-t-quiet:focus-visible { outline: 3px solid #EEEFE6; outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Tutor Chalk Button",
+      "kind": "button",
+      "refersTo": "tutor.chalk-button",
+      "description": "Board control: 'Next step' / 'Write it out again'.",
+      "html": "<div class=\"ds-t-ground\"><button type=\"button\" class=\"ds-t-chalk\">Next step</button></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; } .ds-t-chalk { min-height: 44px; padding: 0 20px; border: 1.5px solid rgba(238, 239, 230, 0.5); border-radius: 999px; background: none; color: #EEEFE6; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; font-size: 0.98rem; font-weight: 700; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; } .ds-t-chalk:hover { background: rgba(238, 239, 230, 0.08); border-color: #EEEFE6; } .ds-t-chalk:focus-visible { outline: 3px solid #EEEFE6; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tutor Subject Tabs",
+      "kind": "nav",
+      "refersTo": "tutor.tabs",
+      "description": "Plain-text tabs over the worked board; the selected one is bold with a 2px chalk underline.",
+      "html": "<div class=\"ds-t-ground\"><div class=\"ds-t-tabs\" role=\"tablist\"><button class=\"ds-t-tab\" role=\"tab\" aria-selected=\"true\">Physics, Class 9</button><button class=\"ds-t-tab\" role=\"tab\" aria-selected=\"false\">Maths, Class 10</button></div></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; } .ds-t-tabs { display: flex; flex-wrap: wrap; gap: 4px 24px; } .ds-t-tab { min-height: 44px; padding: 0; border: 0; border-bottom: 2px solid transparent; background: none; color: #B7C6BB; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; font-size: 1rem; cursor: pointer; } .ds-t-tab:hover { color: #EEEFE6; } .ds-t-tab[aria-selected='true'] { color: #EEEFE6; font-weight: 700; border-bottom-color: #EEEFE6; } .ds-t-tab:focus-visible { outline: 3px solid #EEEFE6; outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Tutor Worked Board",
+      "kind": "custom",
+      "refersTo": "tutor.board",
+      "description": "Signature: a problem written on a line at a time. Trace, explained, current (yellow) and double-underlined final answer.",
+      "html": "<div class=\"ds-t-ground\"><p class=\"ds-t-q\">A car starts from rest and speeds up at 2 m/s² for 5 seconds. How far does it travel?</p><ol class=\"ds-t-lines\"><li class=\"ds-t-line is-shown\">Given: <var>u</var> = 0, <var>a</var> = 2 m/s², <var>t</var> = 5 s</li><li class=\"ds-t-line is-shown\">To find: <var>s</var>, the distance</li><li class=\"ds-t-line is-shown is-current\"><var>s</var> = <var>ut</var> + ½<var>at</var>²</li><li class=\"ds-t-line\"><var>s</var> = 0 × 5 + ½ × 2 × 5²</li><li class=\"ds-t-line\"><var>s</var> = 25 m</li></ol><p class=\"ds-t-explain\">This equation links distance, time and acceleration, exactly the values we have.</p></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; color: #EEEFE6; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; } .ds-t-q { margin: 0 0 12px; max-width: 48ch; color: #B7C6BB; font-size: 1.05rem; } .ds-t-lines { margin: 0; padding: 0; list-style: none; font-size: clamp(1.35rem, 3.4vw, 2.1rem); line-height: 1.45; font-weight: 500; } .ds-t-line { width: fit-content; padding: 2px 0; color: #EEEFE6; opacity: 0.09; transition: color 0.5s ease, opacity 0.5s ease; } .ds-t-line.is-shown { color: #8FA597; opacity: 1; } .ds-t-line.is-current { color: #EBD56C; } .ds-t-line.is-final { text-decoration: underline double; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; } .ds-t-lines var { font-style: italic; } .ds-t-explain { margin: 16px 0 0; max-width: 46ch; font-size: clamp(1.06rem, 1.6vw, 1.22rem); line-height: 1.5; }"
+    },
+    {
+      "name": "Tutor Ruled Facts",
+      "kind": "card",
+      "refersTo": "tutor.facts",
+      "description": "The Given phase: the offer as a small closed set of hairline-ruled rows, never a card grid.",
+      "html": "<div class=\"ds-t-ground\"><dl class=\"ds-t-facts\"><div><dt>Subjects</dt><dd>Maths and Physics</dd></div><div><dt>Classes</dt><dd>8, 9 and 10</dd></div><div><dt>Fee</dt><dd>₹600 an hour. The trial class is free.</dd></div></dl></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; color: #EEEFE6; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; } .ds-t-facts { margin: 0; border-bottom: 1px solid rgba(238, 239, 230, 0.2); } .ds-t-facts > div { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid rgba(238, 239, 230, 0.2); } .ds-t-facts dt { color: #B7C6BB; font-size: 0.98rem; } .ds-t-facts dd { margin: 0; font-size: clamp(1.15rem, 1.9vw, 1.4rem); line-height: 1.4; }"
+    },
+    {
+      "name": "Tutor Phase Heading",
+      "kind": "custom",
+      "refersTo": "tutor.section",
+      "description": "Section heading opened by the solution phase word in italic soft chalk.",
+      "html": "<div class=\"ds-t-ground\"><h2 class=\"ds-t-h2\"><span class=\"ds-t-phase\">Given:</span> what is taught, and where</h2></div>",
+      "css": ".ds-t-ground { background: #1E3A2F; padding: 24px; color: #EEEFE6; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif; } .ds-t-h2 { margin: 0; max-width: 24ch; font-size: clamp(1.75rem, 3.8vw, 2.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; } .ds-t-phase { color: #B7C6BB; font-weight: 400; font-style: italic; }"
+    },
+    {
+      "name": "Studio Primary Button",
+      "kind": "button",
+      "refersTo": "studio.button-primary",
+      "description": "Studio site: solid ink pill, 'Book a discovery call'; hover turns ink blue.",
+      "html": "<button class=\"ds-s-btn\">Book a discovery call</button>",
+      "css": ".ds-s-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 13px 24px; border: 1px solid transparent; border-radius: 999px; background: #141416; color: #FFFFFF; font-family: 'Hanken Grotesk', -apple-system, 'Segoe UI', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; } .ds-s-btn:hover { background: #2E3BC9; } .ds-s-btn:focus-visible { outline: 2px solid #2E3BC9; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Studio: minimal and typographic. Tutor: the page is the classroom board.",
+    "overview": "Minimal and typographic. Well-set words, real client screens and honest prices do the persuading. Applies to the studio site (/). The tutoring site is a separate business with its own board world: one board-green field, chalk-white type, and a real problem worked out line by line. Sections are the phases of a written solution: Given, To find, Solution, Answer.",
+    "keyCharacteristics": [
+      "Studio: type carries the page; hairlines separate content; one ink-blue accent; one primary action per view.",
+      "Tutor: board green and chalk only; chalk yellow rationed to the book button and the current board line; hairline-ruled phases; one authored motion moment."
+    ],
+    "rules": [
+      { "name": "The Two-Tone Rule", "body": "Board and chalk carry the whole page. Secondary text is a softer chalk, never a second hue.", "section": "colors" },
+      { "name": "The Rationed Chalk Rule", "body": "Chalk yellow marks exactly two things: the primary action (the WhatsApp book button) and the line on the board currently being explained. It is not used for links, headings, rules or decoration. (Text selection and the shared dialog's accent also resolve to yellow through the token mapping.)", "section": "colors" },
+      { "name": "The Bare Board Rule", "body": "No cards, shadows, gradients, photos or textures. Separation comes from hairline chalk rules and whitespace.", "section": "elevation" }
+    ],
+    "dos": [],
+    "donts": []
+  }
+}

@@ -1,9 +1,27 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Atkinson_Hyperlegible_Next } from 'next/font/google';
 import { TUITION_ORIGIN } from '@/lib/sites';
+import './tutor.css';
 
-const title = 'Hafeez Tutor — Math & Physics Home Tuition in Bangalore';
+// Designed for legibility (Braille Institute): clear figures and unambiguous l/I/1, which matters in worked maths
+const atkinson = Atkinson_Hyperlegible_Next({
+  subsets: ['latin', 'latin-ext'],
+  style: ['normal', 'italic'],
+  variable: '--font-atkinson',
+  display: 'swap',
+});
+
+const title = 'Hafeez Tutor — Maths & Physics Home Tuition in Bangalore';
 const description =
-  'Patient, one-on-one Math and Physics home tuition for CBSE, ICSE and IGCSE students across Bangalore North and Central. Book a free trial class.';
+  'One-to-one Maths and Physics home tuition for Classes 8, 9 and 10 (CBSE, ICSE, IGCSE) across Bangalore North and Central. ₹600 an hour; the first trial class is free.';
+
+// The browser bar matches the board
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#1E3A2F',
+};
 
 // The tutoring business has its own identity and lives at tuition.hafeezstudio.com
 export const metadata: Metadata = {
@@ -23,7 +41,7 @@ export const metadata: Metadata = {
   creator: 'Hafeez Tutor',
   publisher: 'Hafeez Tutor',
   alternates: { canonical: '/' },
-  // Keeps the tutoring business's own teal mark, separate from the studio's
+  // Keeps the tutoring business's own mark, separate from the studio's
   icons: {
     icon: [{ url: '/tutoring-favicon.svg', type: 'image/svg+xml' }],
     apple: '/tutoring-apple-touch-icon.png',
@@ -34,11 +52,10 @@ export const metadata: Metadata = {
     siteName: 'Hafeez Tutor',
     title,
     description,
-    images: ['/tutoring_hero.jpg'],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/tutoring_hero.jpg'] },
+  twitter: { card: 'summary_large_image', title, description },
 };
 
 export default function TutoringLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <div className={`tutor ${atkinson.variable}`}>{children}</div>;
 }

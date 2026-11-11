@@ -8,7 +8,7 @@ const STUDIO_HOSTS = new Set(['hafeezstudio.com', 'www.hafeezstudio.com']);
 export function proxy(request: NextRequest) {
   const host = (request.headers.get('host') ?? '').split(':')[0].toLowerCase();
   const { pathname } = request.nextUrl;
-  const isTutoringPath = pathname === '/tutoring' || pathname.startsWith('/tutoring/');
+  const isTutoringPath = pathname === '/tutoring' || pathname === '/tutoring/';
 
   if (host.startsWith(TUITION_HOST_PREFIX)) {
     if (pathname === '/') {
@@ -16,6 +16,8 @@ export function proxy(request: NextRequest) {
       url.pathname = '/tutoring';
       return NextResponse.rewrite(url);
     }
+    // Generated files under the route (e.g. its share image) are served as they are
+    if (pathname.startsWith('/tutoring/')) return NextResponse.next();
     if (isTutoringPath) {
       // Build from the Host header so the visitor stays on the hostname they used
       const origin = `${request.nextUrl.protocol}//${request.headers.get('host')}`;
