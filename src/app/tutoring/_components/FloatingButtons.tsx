@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
-import { TUTOR_WHATSAPP_URL } from '@/lib/tutor';
+import { ArrowUp, Phone } from 'lucide-react';
+import { TUTOR_PHONE_DISPLAY, TUTOR_PHONE_TEL, TUTOR_WHATSAPP_URL } from '@/lib/tutor';
 import { WhatsAppIcon } from './contact';
 
-// Bottom-right corner on every tuition page: WhatsApp always in reach, and a back-to-top button
+// Bottom-right corner on every tuition page: WhatsApp and a call button always in reach, and a back-to-top button
 // that appears once the visitor has scrolled past the first screen.
 export default function FloatingButtons({ whatsappHref = TUTOR_WHATSAPP_URL }: { whatsappHref?: string }) {
   const [showTop, setShowTop] = useState(false);
@@ -50,6 +50,13 @@ export default function FloatingButtons({ whatsappHref = TUTOR_WHATSAPP_URL }: {
       >
         <ArrowUp size={20} aria-hidden="true" />
       </button>
+      <a
+        href={TUTOR_PHONE_TEL}
+        className={`t-float-call${bookingInView ? ' is-aside' : ''}`}
+        aria-label={`Call ${TUTOR_PHONE_DISPLAY}`}
+      >
+        <Phone size={22} aria-hidden="true" />
+      </a>
       <a
         href={whatsappHref}
         target="_blank"

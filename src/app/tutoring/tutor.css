@@ -501,7 +501,25 @@ body:has(.tutor) {
   background: var(--green-hover);
   transform: translateY(-2px);
 }
+/* Call: secondary to WhatsApp, so white with a green icon */
+.t-float-call {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--border-hover);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--green) !important;
+  box-shadow: 0 4px 12px -4px rgba(22, 33, 28, 0.25);
+  transition: border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+.t-float-call:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
 @media (max-width: 639px) {
+  .t-float-call.is-aside,
   .t-float-wa.is-aside {
     opacity: 0;
     transform: scale(0.85);
@@ -542,10 +560,12 @@ body:has(.tutor) {
 }
 @media (prefers-reduced-motion: reduce) {
   .t-float-wa,
+  .t-float-call,
   .t-float-top {
     transition: none;
   }
-  .t-float-wa:hover {
+  .t-float-wa:hover,
+  .t-float-call:hover {
     transform: none;
   }
 }
