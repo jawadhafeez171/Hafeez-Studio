@@ -501,21 +501,21 @@ body:has(.tutor) {
   background: var(--green-hover);
   transform: translateY(-2px);
 }
-/* Call: secondary to WhatsApp, so white with a green icon */
+/* Call: a warm amber that echoes the yellow top band, distinct from the WhatsApp green */
 .t-float-call {
   display: grid;
   place-items: center;
   width: 50px;
   height: 50px;
-  border: 1px solid var(--border-hover);
+  border: 0;
   border-radius: 50%;
-  background: var(--paper);
-  color: var(--green) !important;
+  background: #e8b13a;
+  color: var(--ink) !important; /* icon 8.5:1 on the amber */
   box-shadow: 0 4px 12px -4px rgba(22, 33, 28, 0.25);
-  transition: border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 .t-float-call:hover {
-  border-color: var(--green);
+  background: #d9a02a;
   transform: translateY(-2px);
 }
 @media (max-width: 639px) {
