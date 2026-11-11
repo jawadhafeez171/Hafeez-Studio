@@ -79,7 +79,7 @@ A separate business with its own world. Everything below applies only inside `.t
 
 - **The One Green Rule.** Deep green marks the book button, the list markers and step numbers, the WhatsApp glyph in the top line and the focus ring. Text is ink or soft ink, never green.
 - **The Bare Page Rule.** No images, cards, shadows or colour gradients. Sections are separated by a hairline and whitespace only.
-- **The Top Band.** The header and hero sit on one pale green band (`--band` #F1F6F3; ink 15.15:1, soft ink 6.62:1 on it) that ends in a hairline. Its top-right corner carries a faint graph-paper grid (24px cells, green at 9%, faded out by a radial mask toward the text), chosen by the user on 2026-11-11 as the page's one subject cue: maths graph paper. The hero band slides up under the transparent header (-72px), so a single grid covers both without a seam. The grid stays in this corner only; it is never repeated elsewhere. The phone browser bar matches the band (`themeColor` #F1F6F3).
+- **The Top Band.** The header and hero sit on one very pale yellow band (`--band` #FDF9EC, changed from pale green at the user's request on 2026-11-11; ink 15.72:1, soft ink 6.87:1 on it) that ends in a hairline. Its top-right corner carries a faint graph-paper grid (24px cells, green at 9%, faded out by a radial mask toward the text), chosen by the user on 2026-11-11 as the page's one subject cue: maths graph paper. The hero band slides up under the transparent header (-72px), so a single grid covers both without a seam. The grid stays in this corner only; it is never repeated elsewhere. The phone browser bar matches the band (`themeColor` #FDF9EC).
 
 ### Colour (tokens on `.tutor`)
 

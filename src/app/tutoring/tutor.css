@@ -8,7 +8,7 @@
   --rule: #dde3df;
   --green: #1f6b48; /* white text on it 6.5:1 */
   --green-hover: #17563a;
-  --band: #f1f6f3; /* pale green behind the top of the page */
+  --band: #fdf9ec; /* very pale yellow behind the top of the page */
   --pill: #dcebe2;
   --t-font: var(--font-atkinson), 'Segoe UI', system-ui, sans-serif;
 
@@ -120,7 +120,7 @@ body:has(.tutor) {
   }
 }
 
-/* ── Top band: a pale green field behind the header and hero ──
+/* ── Top band: a very pale yellow field behind the header and hero ──
    The hero band slides up under the transparent header, so one grid covers both without a seam. */
 .t-top-band {
   position: relative;
