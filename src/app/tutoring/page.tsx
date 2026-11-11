@@ -10,6 +10,13 @@ const included = [
   'Board-exam answer writing and time management',
 ];
 
+// Header links to the page's sections
+const navLinks = [
+  { href: '#included', label: "What's included" },
+  { href: '#how', label: 'How it starts' },
+  { href: '#areas', label: 'Areas' },
+];
+
 const steps = [
   "Message on WhatsApp with your child's class, board and area.",
   'We fix a free trial class at your home.',
@@ -68,11 +75,18 @@ export default function TutoringPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
-      <header className="t-top-band">
+      <header className="t-header">
         <div className="t-wrap t-top">
           <a href="/" className="t-wordmark">
             Hafeez Tutor
           </a>
+          <nav className="t-nav" aria-label="Sections">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
           <a
             href={TUTOR_WHATSAPP_URL}
             target="_blank"

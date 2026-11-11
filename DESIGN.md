@@ -127,6 +127,7 @@ Flat: no shadows anywhere. The only shapes are the fully rounded button (999px),
 - **Book button:** the one primary action, used in the hero and in the closing section. A green pill with white text and the WhatsApp glyph, 54px tall, 26px side padding, bold; it opens WhatsApp in a new tab.
 - **Quiet link:** "or leave your number", underlined soft-ink text (44px tap height) that opens the shared contact dialog; it turns ink on hover. It is never styled as a second button.
 - **Price pill:** "₹600 an hour · First class free" in a fully rounded pill (`--pill` #DCEBE2, text `--green-hover` #17563A at 7.01:1, bold, 8px 16px padding) directly above the book button, so the price and free trial are seen first.
+- **Header:** on the band colour with a bottom hairline; bold wordmark, section links (What's included, How it starts, Areas) in soft ink, and the WhatsApp link. Sticky from 640px up (sections land 88px below the top); on phones it scrolls away and the links take a second row.
 - **Top line:** bold wordmark "Hafeez Tutor" on the left; on the right a soft-ink link with a green WhatsApp glyph and the number, which becomes the word "WhatsApp" at 420px and below.
 - **Bulleted list** ("What's included"): rows padded 10px with a 28px indent and an 8px green dot.
 - **Numbered list** ("How it starts"): the same rows with a bold green tabular numeral in a 36px indent, because the order matters.

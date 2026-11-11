@@ -84,17 +84,48 @@ body:has(.tutor) {
   padding-right: 20px;
 }
 
+/* ── Header: wordmark, section links, WhatsApp ───────────── */
+.t-header {
+  position: relative;
+  z-index: 20;
+  background: var(--band);
+  border-bottom: 1px solid var(--rule);
+}
+/* On wider screens it stays in reach while reading */
+@media (min-width: 640px) {
+  .t-header {
+    position: sticky;
+    top: 0;
+  }
+}
 .t-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  min-height: 72px;
+  gap: 0 24px;
+  min-height: 64px;
 }
 .t-wordmark {
   font-size: 1.1rem;
   font-weight: 700;
   text-decoration: none;
+}
+.t-nav {
+  display: flex;
+  gap: 4px 22px;
+}
+.t-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.t-nav a:hover {
+  color: var(--ink);
+  text-decoration: underline;
 }
 .t-top-link {
   display: inline-flex;
@@ -111,6 +142,22 @@ body:has(.tutor) {
 .t-top-link:hover {
   color: var(--ink) !important;
 }
+/* Phones: the section links move to their own short row under the wordmark */
+@media (max-width: 639px) {
+  .t-top {
+    padding-top: 8px;
+  }
+  .t-nav {
+    order: 3;
+    width: 100%;
+    gap: 0 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .t-nav a {
+    white-space: nowrap;
+  }
+}
 @media (max-width: 420px) {
   .t-top-link .num {
     display: none;
@@ -119,21 +166,29 @@ body:has(.tutor) {
     content: 'WhatsApp';
   }
 }
-
-/* ── Top band: a very pale yellow field behind the header and hero ──
-   The hero band slides up under the transparent header, so one grid covers both without a seam. */
-.t-top-band {
-  position: relative;
-  z-index: 2;
+/* Section links land with the heading clear of the sticky header */
+.t-h2 {
+  scroll-margin-top: 88px;
 }
+@media (max-width: 639px) {
+  /* The phone header scrolls away, so headings only need a little room */
+  .t-h2 {
+    scroll-margin-top: 16px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  :root:has(.tutor) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Top band: a very pale yellow field behind the header and hero ── */
 .t-band {
   position: relative;
   background: var(--band);
 }
 .t-hero-band {
   overflow: hidden;
-  margin-top: -72px;
-  padding-top: 72px;
   border-bottom: 1px solid var(--rule);
 }
 /* A faint graph-paper grid in the top-right corner, fading out toward the text */
