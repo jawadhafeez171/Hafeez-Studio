@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   creator: 'Hafeez Tutor',
   publisher: 'Hafeez Tutor',
   alternates: { canonical: '/' },
+  // Keeps the tutoring business's own teal mark, separate from the studio's
+  icons: {
+    icon: [{ url: '/tutoring-favicon.svg', type: 'image/svg+xml' }],
+    apple: '/tutoring-apple-touch-icon.png',
+  },
   openGraph: {
     type: 'website',
     url: TUITION_ORIGIN,

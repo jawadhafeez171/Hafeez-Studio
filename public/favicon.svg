@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-    <defs>
-        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0D9488" />
-            <stop offset="100%" stop-color="#06B6D4" />
-        </linearGradient>
-    </defs>
-    <g transform="translate(2, 2)">
-        <path d="M2 24V4C2 4 8 0 14 4C14 4 20 0 26 4V24C26 24 20 28 14 24C14 24 8 28 2 24Z" fill="url(#logoGrad)" />
-        <path d="M14 4V24" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <path d="M7 10H19 L11 14.5 L19 19 H7" stroke="white" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#141416"/><path fill="#F8F8F6" d="M13.53 48V47.18L18.52 46.56H20.39L25.38 47.18V48ZM17.18 48Q17.27 46.08 17.32 43.51Q17.37 40.95 17.37 38.19Q17.37 35.43 17.37 32.89V30.78Q17.37 28.33 17.37 25.62Q17.37 22.91 17.32 20.41Q17.27 17.92 17.18 16H21.74Q21.64 17.92 21.59 20.41Q21.54 22.91 21.54 25.62Q21.54 28.33 21.54 30.78V32.89Q21.54 35.43 21.54 38.19Q21.54 40.95 21.59 43.51Q21.64 46.08 21.74 48ZM19.34 32.26V31.06H37.71V32.26ZM31.57 48V47.18L36.56 46.56H38.48L43.47 47.18V48ZM35.22 48Q35.31 46.08 35.36 43.51Q35.41 40.95 35.41 38.19Q35.41 35.43 35.41 32.89V30.78Q35.41 28.33 35.41 25.62Q35.41 22.91 35.36 20.41Q35.31 17.92 35.22 16H39.82Q39.73 17.92 39.68 20.41Q39.63 22.91 39.63 25.62Q39.63 28.33 39.63 30.78V32.89Q39.63 35.43 39.63 38.19Q39.63 40.95 39.68 43.51Q39.73 46.08 39.82 48ZM13.53 16.82V16H25.38V16.82L20.39 17.44H18.52ZM31.57 16.82V16H43.47V16.82L38.48 17.44H36.56Z"/><circle cx="48.07" cy="45.40" r="2.9" fill="#AAB1FF"/></svg>

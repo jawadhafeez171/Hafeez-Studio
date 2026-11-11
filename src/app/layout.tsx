@@ -71,8 +71,13 @@ export const metadata: Metadata = {
   verification: {
     google: 'SJ9BIXHBoNu5rQA6pQyKAHZ333ZRQQhAGWjnwElAOUI',
   },
+  // Serif H with a periwinkle full stop on ink; tutoring sets its own icons in tutoring/layout.tsx
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '48x48' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -90,7 +95,6 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
         <ThemeProvider>

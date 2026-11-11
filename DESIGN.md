@@ -41,6 +41,10 @@ The closing band (`.closing`) is ink (#141416) and inverts the text tokens local
 - Container max 1200px, with 20px gutters on phones and 40px from 768px up.
 - Buttons are fully rounded pills, at least 48px tall. Inputs use an 8px radius and 16px text (stops iOS zooming in). Phone frames use a 26px radius.
 
+## Favicon
+
+A Source Serif 4 "H" (weight 600, opsz 20, outlined so no font loads) in paper #F8F8F6 with a periwinkle #AAB1FF full stop, on an ink #141416 tile. It echoes the full stops that end the headlines. Files: `public/favicon.svg`, `favicon.ico` (16/32/48) and `apple-touch-icon.png` (180, square; iOS rounds it). The tutoring site keeps its own teal mark (`tutoring-favicon.svg`, `tutoring-apple-touch-icon.png`).
+
 ## Components
 
 - **Hero** (`.hero-grid`): from 1100px it puts the copy on the left and two overlapping live client phones on the right (`.hero-proof`, tilted ±3–4°). Below 1100px the phones are hidden, because the client row follows right after.
