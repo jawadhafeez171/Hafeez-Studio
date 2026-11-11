@@ -43,7 +43,7 @@ Websites and AI automation are equal-weight core offers, sold by the same people
 
 ## Evidence on Hand
 
-- Live client sites, linkable, with logos in `public/clients/` and phone screenshots in `public/clients/shots/`: Dstellar (enterprise SAP consulting, global; added 2026-11-11), JointXperts (orthopaedic practice, Bengaluru), Encourage India IAS Academy (UPSC/KPSC coaching), Construction Buddy (turnkey home construction, Bangalore), India Job Notice (national government job portal).
+- Live client sites, linkable, with logos in `public/clients/` and phone screenshots in `public/clients/shots/`: Dstellar (enterprise SAP consulting, global; added 2026-11-11), Cambridge English School (English-medium State Board school, Pre-Nursery to Class 10, English and Kannada; added 2026-11-11), JointXperts (orthopaedic practice, Bengaluru), Encourage India IAS Academy (UPSC/KPSC coaching), Construction Buddy (turnkey home construction, Bangalore), India Job Notice (national government job portal).
 - Client testimonials: available with permission (not yet collected on the site).
 - Real AI/automation project examples: available to show or describe (not yet on the site).
 - **Not available, do not fabricate:** verified client performance metrics. Figures currently on the site ("3x lead inflow", "5 clinics synced", "< 0.8s" per client) are unverified and should not be extended or repeated as proof. No founder photo or bio is to be published. No invented case studies, industry statistics, or benchmark claims.

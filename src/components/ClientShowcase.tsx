@@ -27,6 +27,16 @@ export const clientsData: ClientItem[] = [
     shotAlt: 'Dstellar industries page on a phone, headed "Deep in the verticals that matter to you"',
   },
   {
+    name: 'Cambridge English School',
+    url: 'https://www.cambridgeschooldbp.com/en',
+    domain: 'cambridgeschooldbp.com',
+    category: 'English-medium school',
+    summary:
+      "A school site in English and Kannada, from Pre-Nursery to Class 10, with admissions front and centre, parents' words, and school life in photos and video.",
+    shot: '/clients/shots/cambridgeschool.jpg',
+    shotAlt: 'Cambridge English School home screen on a phone',
+  },
+  {
     name: 'JointXperts',
     url: 'https://www.jointxperts.in/',
     domain: 'jointxperts.in',
@@ -77,7 +87,7 @@ export default function ClientShowcase() {
             Sites we&apos;ve built, <em>live right now.</em>
           </h2>
           <p className="section-lede">
-            An SAP consulting firm, an orthopaedic practice, an exam academy, a construction firm and a national job portal.
+            An SAP consulting firm, a school, an orthopaedic practice, an exam academy, a construction firm and a national job portal.
             Every one is live, so open them on your phone and judge the work for yourself.
           </p>
         </div>
@@ -109,7 +119,7 @@ export default function ClientShowcase() {
             </li>
           ))}
         </ul>
-        <p className="label work-swipe-hint">Swipe to see all five sites</p>
+        <p className="label work-swipe-hint">Swipe to see all six sites</p>
       </div>
     </section>
   );

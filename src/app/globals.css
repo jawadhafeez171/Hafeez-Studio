@@ -781,8 +781,13 @@ textarea {
   position: relative;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(20px, 2.2vw, 32px);
+  /* Six sites: three per row, phones capped so two rows stay a comfortable height */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px clamp(20px, 2.2vw, 32px);
+}
+
+.work-row .work-shot {
+  max-width: 280px;
 }
 
 .work-item h3 {

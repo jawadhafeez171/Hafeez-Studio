@@ -52,7 +52,7 @@ A Source Serif 4 "H" (weight 600, opsz 20, outlined so no font loads) in paper #
 - **Nav active state**: the link for the section in view is underlined (`aria-current="location"`).
 
 - **Nav** (`.site-nav`): transparent until scrolled, then paper with blur and a hairline. Serif wordmark "Hafeez *Studio*" with a "Web & AI" tag. Below 900px, a menu button opens a sheet whose links are set in the serif.
-- **Client work** (`.work-row`): four phone frames with real screenshots. On phones it becomes a horizontal snap row. The row must stay `position: relative` so screen-reader-only labels don't widen the page.
+- **Client work** (`.work-row`): six phone frames with real screenshots, three per row with each phone capped at 280px wide (`.work-shot`). On phones it becomes a horizontal snap row. The row must stay `position: relative` so screen-reader-only labels don't widen the page.
 - **Pricing** (`.plans`): three columns divided by hairlines. The popular plan gets a 3px accent top rule and a "Most chosen" note. Feature lists collapse to 5 items on phones.
 - **Process** (`.process`): rows of days | title | description.
 - **FAQ**: native `<details>`, with a serif question and a plus icon that rotates into an ×.

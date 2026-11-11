@@ -82,7 +82,7 @@ export default function HeroProof() {
       </motion.a>
       <figcaption className="hero-proof-caption">
         <a href="#work" className="text-link">
-          <span>Both live today. See all five</span>
+          <span>Both live today. See all six</span>
           <ArrowDown size={15} aria-hidden="true" />
         </a>
       </figcaption>
