@@ -1,6 +1,7 @@
 import React from 'react';
 import { TUTOR_PHONE_DISPLAY, TUTOR_WHATSAPP_URL } from '@/lib/tutor';
 import { WhatsAppIcon } from './contact';
+import FloatingButtons from './FloatingButtons';
 
 // Shared by the main tuition page and every area page
 export const included = [
@@ -39,10 +40,14 @@ export function TutorHeader({ links }: { links: { href: string; label: string }[
   );
 }
 
-export function TutorFooter() {
+// The footer also carries the floating WhatsApp and back-to-top buttons; area pages pass their own WhatsApp link
+export function TutorFooter({ whatsappHref }: { whatsappHref?: string }) {
   return (
-    <footer className="t-wrap t-foot">
-      <p>© {new Date().getFullYear()} Hafeez Tutor. Maths and Physics home tuition, Bangalore.</p>
-    </footer>
+    <>
+      <footer className="t-wrap t-foot">
+        <p>© {new Date().getFullYear()} Hafeez Tutor. Maths and Physics home tuition, Bangalore.</p>
+      </footer>
+      <FloatingButtons whatsappHref={whatsappHref} />
+    </>
   );
 }

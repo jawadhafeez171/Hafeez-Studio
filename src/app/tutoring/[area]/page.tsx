@@ -197,7 +197,7 @@ export default async function AreaPage({ params }: Props) {
         </div>
       </main>
 
-      <TutorFooter />
+      <TutorFooter whatsappHref={whatsapp} />
     </>
   );
 }

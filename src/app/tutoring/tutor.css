@@ -475,6 +475,81 @@ body:has(.tutor) {
   margin: 0;
 }
 
+/* ── Floating buttons: WhatsApp, with back-to-top above it ── */
+.t-float {
+  position: fixed;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.t-float-wa {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #ffffff !important; /* icon 6.45:1 on the green */
+  box-shadow: 0 6px 18px -6px rgba(22, 33, 28, 0.45), 0 2px 4px rgba(22, 33, 28, 0.12);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.t-float-wa:hover {
+  background: var(--green-hover);
+  transform: translateY(-2px);
+}
+@media (max-width: 639px) {
+  .t-float-wa.is-aside {
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+  }
+}
+.t-float-wa {
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+.t-float-top {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border-hover);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 4px 12px -4px rgba(22, 33, 28, 0.25);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.t-float-top.is-on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.t-float-top:hover {
+  border-color: var(--green);
+  color: var(--green-hover);
+}
+/* The footer's last line stays clear of the buttons */
+.t-foot {
+  padding-right: 92px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-float-wa,
+  .t-float-top {
+    transition: none;
+  }
+  .t-float-wa:hover {
+    transform: none;
+  }
+}
+
 /* The shared dialog's errors stay dark red on white even if a dark theme is ever set on this origin */
 :root .tutor .contact-field-error {
   color: #b42323;
