@@ -12,7 +12,7 @@ const atkinson = Atkinson_Hyperlegible_Next({
 });
 
 // Written for search results: what, where, who, then the brand
-const title = 'Maths & Physics Home Tutor in Bangalore, Classes 8–10';
+const title = 'Maths & Physics Home Tutor, Classes 8–10 | Bangalore | Free Trial';
 const description =
   'One-to-one Maths and Physics home tuition for Classes 8–10 (CBSE, ICSE, IGCSE) in Indiranagar, Sadashivanagar, Koramangala & nearby. ₹600/hr, first class free.';
 
