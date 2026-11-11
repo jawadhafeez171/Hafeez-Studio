@@ -68,89 +68,97 @@ export default function TutoringPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
-      <header className="t-wrap t-top">
-        <a href="/" className="t-wordmark">
-          Hafeez Tutor
-        </a>
-        <a
-          href={TUTOR_WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="t-top-link"
-          aria-label={`WhatsApp ${TUTOR_PHONE_DISPLAY} (opens in a new tab)`}
-        >
-          <WhatsAppIcon size={18} />
-          <span className="num">{TUTOR_PHONE_DISPLAY}</span>
-        </a>
+      <header className="t-top-band">
+        <div className="t-wrap t-top">
+          <a href="/" className="t-wordmark">
+            Hafeez Tutor
+          </a>
+          <a
+            href={TUTOR_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="t-top-link"
+            aria-label={`WhatsApp ${TUTOR_PHONE_DISPLAY} (opens in a new tab)`}
+          >
+            <WhatsAppIcon size={18} />
+            <span className="num">{TUTOR_PHONE_DISPLAY}</span>
+          </a>
+        </div>
       </header>
 
-      <main className="t-wrap">
-        <section className="t-hero" aria-labelledby="t-title">
-          <h1 id="t-title" className="t-title">
-            Maths and Physics home tuition for Classes 8 to 10.
-          </h1>
-          <p className="t-lede">
-            One-to-one lessons at your home in Bangalore North and Central, for CBSE, ICSE and IGCSE students.
-          </p>
-          <p className="t-price">
-            <strong className="num">₹600</strong> an hour. The first class is a free trial.
-          </p>
-          <div className="t-actions">
-            <BookButton />
-            <LeaveNumber />
+      <main>
+        <section className="t-band t-hero-band" aria-labelledby="t-title">
+          <div className="t-wrap t-hero">
+            <h1 id="t-title" className="t-title">
+              Maths and Physics home tuition for Classes 8 to 10.
+            </h1>
+            <p className="t-lede">
+              One-to-one lessons at your home in Bangalore North and Central, for CBSE, ICSE and IGCSE students.
+            </p>
+            <p className="t-price">
+              <span className="t-pill">
+                <strong className="num">₹600</strong> an hour · First class free
+              </span>
+            </p>
+            <div className="t-actions">
+              <BookButton />
+              <LeaveNumber />
+            </div>
           </div>
         </section>
 
-        <section className="t-section" aria-labelledby="included">
-          <h2 id="included" className="t-h2">
-            What&apos;s included
-          </h2>
-          <ul className="t-list">
-            {included.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
+        <div className="t-wrap">
+          <section className="t-section" aria-labelledby="included">
+            <h2 id="included" className="t-h2">
+              What&apos;s included
+            </h2>
+            <ul className="t-list">
+              {included.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
 
-        <section className="t-section" aria-labelledby="how">
-          <h2 id="how" className="t-h2">
-            How it starts
-          </h2>
-          <ol className="t-list t-steps">
-            {steps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </section>
+          <section className="t-section" aria-labelledby="how">
+            <h2 id="how" className="t-h2">
+              How it starts
+            </h2>
+            <ol className="t-list t-steps">
+              {steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </section>
 
-        <section className="t-section" aria-labelledby="areas">
-          <h2 id="areas" className="t-h2">
-            Areas covered
-          </h2>
-          <dl className="t-areas">
-            {areaGroups.map((g) => (
-              <div key={g.name}>
-                <dt>{g.name}</dt>
-                <dd>{g.areas.join(', ')}.</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="t-areas-note">Nearby but not listed? Ask on WhatsApp.</p>
-        </section>
+          <section className="t-section" aria-labelledby="areas">
+            <h2 id="areas" className="t-h2">
+              Areas covered
+            </h2>
+            <dl className="t-areas">
+              {areaGroups.map((g) => (
+                <div key={g.name}>
+                  <dt>{g.name}</dt>
+                  <dd>{g.areas.join(', ')}.</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="t-areas-note">Nearby but not listed? Ask on WhatsApp.</p>
+          </section>
 
-        <section className="t-section t-close" aria-labelledby="book">
-          <h2 id="book" className="t-h2">
-            Book a free trial class
-          </h2>
-          <p className="t-close-text">
-            Message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp, or leave your number and we&apos;ll
-            call you.
-          </p>
-          <div className="t-actions">
-            <BookButton />
-            <LeaveNumber />
-          </div>
-        </section>
+          <section className="t-section t-close" aria-labelledby="book">
+            <h2 id="book" className="t-h2">
+              Book a free trial class
+            </h2>
+            <p className="t-close-text">
+              Message <span className="num">{TUTOR_PHONE_DISPLAY}</span> on WhatsApp, or leave your number and
+              we&apos;ll call you.
+            </p>
+            <div className="t-actions">
+              <BookButton />
+              <LeaveNumber />
+            </div>
+          </section>
+        </div>
       </main>
 
       <footer className="t-wrap t-foot">

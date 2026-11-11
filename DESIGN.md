@@ -78,7 +78,8 @@ A separate business with its own world. Everything below applies only inside `.t
 **One plain white page, one green button.** It says what is offered, to whom, where and for how much, in one short column. Nothing is decorated.
 
 - **The One Green Rule.** Deep green marks the book button, the list markers and step numbers, the WhatsApp glyph in the top line and the focus ring. Text is ink or soft ink, never green.
-- **The Bare Page Rule.** No images, cards, shadows or gradients. Sections are separated by a hairline and whitespace only.
+- **The Bare Page Rule.** No images, cards, shadows or colour gradients. Sections are separated by a hairline and whitespace only.
+- **The Top Band.** The header and hero sit on one pale green band (`--band` #F1F6F3; ink 15.15:1, soft ink 6.62:1 on it) that ends in a hairline. Its top-right corner carries a faint graph-paper grid (24px cells, green at 9%, faded out by a radial mask toward the text), chosen by the user on 2026-11-11 as the page's one subject cue: maths graph paper. The hero band slides up under the transparent header (-72px), so a single grid covers both without a seam. The grid stays in this corner only; it is never repeated elsewhere. The phone browser bar matches the band (`themeColor` #F1F6F3).
 
 ### Colour (tokens on `.tutor`)
 
@@ -125,6 +126,7 @@ Flat: no shadows anywhere. The only shapes are the fully rounded button (999px),
 
 - **Book button:** the one primary action, used in the hero and in the closing section. A green pill with white text and the WhatsApp glyph, 54px tall, 26px side padding, bold; it opens WhatsApp in a new tab.
 - **Quiet link:** "or leave your number", underlined soft-ink text (44px tap height) that opens the shared contact dialog; it turns ink on hover. It is never styled as a second button.
+- **Price pill:** "₹600 an hour · First class free" in a fully rounded pill (`--pill` #DCEBE2, text `--green-hover` #17563A at 7.01:1, bold, 8px 16px padding) directly above the book button, so the price and free trial are seen first.
 - **Top line:** bold wordmark "Hafeez Tutor" on the left; on the right a soft-ink link with a green WhatsApp glyph and the number, which becomes the word "WhatsApp" at 420px and below.
 - **Bulleted list** ("What's included"): rows padded 10px with a 28px indent and an 8px green dot.
 - **Numbered list** ("How it starts"): the same rows with a bold green tabular numeral in a 36px indent, because the order matters.

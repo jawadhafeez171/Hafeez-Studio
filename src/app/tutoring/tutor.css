@@ -8,6 +8,8 @@
   --rule: #dde3df;
   --green: #1f6b48; /* white text on it 6.5:1 */
   --green-hover: #17563a;
+  --band: #f1f6f3; /* pale green behind the top of the page */
+  --pill: #dcebe2;
   --t-font: var(--font-atkinson), 'Segoe UI', system-ui, sans-serif;
 
   /* Tokens the shared contact dialog reads */
@@ -118,9 +120,47 @@ body:has(.tutor) {
   }
 }
 
+/* ── Top band: a pale green field behind the header and hero ──
+   The hero band slides up under the transparent header, so one grid covers both without a seam. */
+.t-top-band {
+  position: relative;
+  z-index: 2;
+}
+.t-band {
+  position: relative;
+  background: var(--band);
+}
+.t-hero-band {
+  overflow: hidden;
+  margin-top: -72px;
+  padding-top: 72px;
+  border-bottom: 1px solid var(--rule);
+}
+/* A faint graph-paper grid in the top-right corner, fading out toward the text */
+.t-hero-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(560px, 70%);
+  height: 100%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(31, 107, 72, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 107, 72, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: right top;
+  -webkit-mask-image: radial-gradient(ellipse 100% 90% at 100% 0%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 100% 90% at 100% 0%, #000 25%, transparent 75%);
+}
+.t-band > .t-wrap {
+  position: relative;
+}
+
 /* ── Hero ───────────────────────────────────────────────── */
 .t-hero {
-  padding: clamp(40px, 9vh, 96px) 0 clamp(48px, 8vw, 72px);
+  padding-top: clamp(32px, 8vh, 88px);
+  padding-bottom: clamp(48px, 8vw, 72px);
 }
 .t-title {
   margin: 0 0 20px;
@@ -139,11 +179,22 @@ body:has(.tutor) {
   line-height: 1.55;
 }
 .t-price {
-  margin: 0 0 28px;
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  margin: 0 0 24px;
 }
-.t-price strong {
+/* The price and free trial, set apart so a parent sees them first */
+.t-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: var(--green-hover); /* 7:1 on the pill */
+  font-size: clamp(1.02rem, 1.8vw, 1.12rem);
   font-weight: 700;
+}
+.t-pill strong {
+  font-size: 1.15em;
 }
 
 /* ── Actions ────────────────────────────────────────────── */
@@ -198,6 +249,10 @@ body:has(.tutor) {
 .t-section {
   padding: clamp(36px, 6vw, 56px) 0;
   border-top: 1px solid var(--rule);
+}
+/* The band's own edge already separates the first section */
+.t-section:first-child {
+  border-top: 0;
 }
 .t-h2 {
   margin: 0 0 16px;
