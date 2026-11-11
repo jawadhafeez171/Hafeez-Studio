@@ -24,7 +24,7 @@ export const clientsData: ClientItem[] = [
     summary:
       'A site for an SAP consulting firm that walks visitors through its industries, services and own software products, with assessment booking and WhatsApp always in reach.',
     shot: '/clients/shots/dstellarss.jpg',
-    shotAlt: 'Dstellar SAP consulting home screen on a phone',
+    shotAlt: 'Dstellar industries page on a phone, headed "Deep in the verticals that matter to you"',
   },
   {
     name: 'JointXperts',
