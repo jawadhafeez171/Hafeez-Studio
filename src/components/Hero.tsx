@@ -14,13 +14,13 @@ export default function Hero() {
       <div className="container-custom hero-grid">
         <div className="hero-copy">
           <h1 className="display hero-title">
-            <span className="line">Websites that bring in customers.</span>{' '}
-            <em className="line">Automation that handles the follow-up.</em>
+            <span className="line">Websites that bring in enquiries.</span>{' '}
+            <em className="line">AI that answers them.</em>
           </h1>
 
           <p className="hero-lede">
-            We build fast, custom websites for clinics, academies, and growing businesses wherever they are, and the AI tools
-            that answer enquiries and book appointments while you work.
+            Custom-coded sites for clinics, academies and service businesses, with an assistant that replies on WhatsApp and
+            books appointments for you.
           </p>
 
           <div className="hero-actions">
@@ -30,7 +30,7 @@ export default function Hero() {
             </ContactButton>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="whatsapp-link">
               <MessageCircle size={18} aria-hidden="true" />
-              <span>Or message us on WhatsApp</span>
+              <span>Or WhatsApp us</span>
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
@@ -44,7 +44,7 @@ export default function Hero() {
             ))}
           </ul>
           <p className="footnote">
-            *Starter sites, within 48 hours of receiving your content. Larger builds take 10 days to 3 weeks.
+            *Starter sites, 48 hours after we receive your content. Larger builds: 10 days to 3 weeks.
           </p>
         </div>
 
