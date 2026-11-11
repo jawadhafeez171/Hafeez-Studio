@@ -30,9 +30,11 @@ const areaGroups = [
     areas: [
       'Sadashivanagar',
       'Palace Orchards',
+      'Vyalikaval',
       'Jayamahal',
       'Malleshwaram',
       'Kumara Park',
+      'Seshadripuram',
       'High Grounds',
       'Vasant Nagar',
       'Cunningham Road',
@@ -44,6 +46,8 @@ const areaGroups = [
       'Ashok Nagar',
       'Ulsoor',
       'Indiranagar',
+      'HAL 2nd Stage',
+      'Defence Colony',
       'Domlur',
       'Benson Town',
       'Frazer Town',
@@ -53,7 +57,27 @@ const areaGroups = [
   },
   {
     name: 'North',
-    areas: ['Dollars Colony', 'RMV Extension', 'Sanjay Nagar', 'Sahakar Nagar', 'RT Nagar', 'Hebbal', 'HBR Layout'],
+    areas: [
+      'Dollars Colony',
+      'RMV Extension',
+      'Sanjay Nagar',
+      'Sahakar Nagar',
+      'RT Nagar',
+      'Hebbal',
+      'HBR Layout',
+      'HRBR Layout',
+      'Kalyan Nagar',
+      'Jakkur',
+      'Thanisandra',
+    ],
+  },
+  {
+    name: 'South',
+    areas: ['Koramangala', 'Jayanagar', 'Basavanagudi'],
+  },
+  {
+    name: 'West',
+    areas: ['Rajajinagar'],
   },
 ];
 const areas = areaGroups.flatMap((g) => g.areas);
@@ -107,7 +131,7 @@ export default function TutoringPage() {
               Maths and Physics home tuition for Classes 8 to 10.
             </h1>
             <p className="t-lede">
-              One-to-one lessons at your home in Bangalore North and Central, for CBSE, ICSE and IGCSE students.
+              One-to-one lessons at your home in central Bangalore and nearby areas, for CBSE, ICSE and IGCSE students.
             </p>
             <p className="t-price">
               <span className="t-pill">

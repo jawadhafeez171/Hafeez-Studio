@@ -131,7 +131,7 @@ Flat: no shadows anywhere. The only shapes are the fully rounded button (999px),
 - **Top line:** bold wordmark "Hafeez Tutor" on the left; on the right a soft-ink link with a green WhatsApp glyph and the number, which becomes the word "WhatsApp" at 420px and below.
 - **Bulleted list** ("What's included"): rows padded 10px with a 28px indent and an 8px green dot.
 - **Numbered list** ("How it starts"): the same rows with a bold green tabular numeral in a 36px indent, because the order matters.
-- **Areas covered:** grouped as a definition list, **Central** then **North**, each a bold label over one comma-separated sentence in soft ink (line-height 1.7), not chips. A closing line invites nearby areas to ask on WhatsApp.
+- **Areas covered:** grouped as a definition list, **Central**, **North**, **South** then **West**, each a bold label over one comma-separated sentence in soft ink (line-height 1.7), not chips. A closing line invites nearby areas to ask on WhatsApp.
 - **Contact dialog:** the shared `ContactModal` is themed by mapping its tokens onto the page: `--modal-bg`, `--bg-main` and `--bg-card` white, `--bg-surface` #F4F7F5, text ink / soft ink, muted #6B7770 for placeholders, borders `--rule` / #B9C4BE / #8D9A93 on hover, accent and CTA green with hover #17563A and white CTA text, accent tints green at 8% / 22% and a 40% accent border, both font tokens Atkinson. Its title is set at 700 like the page headings, the phone placeholder reads "10-digit mobile number" (no sample digits), and its primary button is green with white text. Field errors are pinned to #B42323 (6.55:1) on white.
 - **Focus:** a 3px green outline at 3px offset with a 6px radius.
 

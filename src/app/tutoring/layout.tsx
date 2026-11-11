@@ -13,7 +13,7 @@ const atkinson = Atkinson_Hyperlegible_Next({
 
 const title = 'Hafeez Tutor — Maths & Physics Home Tuition in Bangalore';
 const description =
-  'One-to-one Maths and Physics home tuition for Classes 8, 9 and 10 (CBSE, ICSE, IGCSE) across Bangalore North and Central. ₹600 an hour; the first trial class is free.';
+  'One-to-one Maths and Physics home tuition for Classes 8, 9 and 10 (CBSE, ICSE, IGCSE) at your home in central Bangalore and nearby areas. ₹600 an hour; the first trial class is free.';
 
 // The browser bar matches the pale yellow top band
 export const viewport: Viewport = {
