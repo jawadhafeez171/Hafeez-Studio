@@ -1,7 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { STUDIO_ORIGIN, TUITION_HOST_PREFIX, TUITION_ORIGIN } from '@/lib/sites';
+import { TUITION_HOST_PREFIX, TUITION_ORIGIN } from '@/lib/sites';
+import { areaPages } from '@/app/tutoring/areas';
 
 const STUDIO_HOSTS = new Set(['hafeezstudio.com', 'www.hafeezstudio.com']);
+const AREA_SLUGS = new Set(areaPages.map((a) => a.slug));
 
 // tuition.<host> serves the tutoring page at its root; the old /tutoring path on the studio domain redirects there.
 // Hosts like localhost and Vercel previews keep /tutoring working, and tuition.localhost:<port> mimics the subdomain locally.
@@ -16,19 +18,32 @@ export function proxy(request: NextRequest) {
       url.pathname = '/tutoring';
       return NextResponse.rewrite(url);
     }
-    // Generated files under the route (e.g. its share image) are served as they are
+    // Area pages live at /<area> on the subdomain
+    if (AREA_SLUGS.has(pathname.slice(1))) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/tutoring${pathname}`;
+      return NextResponse.rewrite(url);
+    }
+    // Generated files under the route (e.g. its share images) are served as they are
     if (pathname.startsWith('/tutoring/')) return NextResponse.next();
     if (isTutoringPath) {
       // Build from the Host header so the visitor stays on the hostname they used
       const origin = `${request.nextUrl.protocol}//${request.headers.get('host')}`;
       return NextResponse.redirect(new URL('/' + request.nextUrl.search, origin), 301);
     }
-    // Studio pages don't live on the tuition subdomain
-    return NextResponse.redirect(new URL(pathname + request.nextUrl.search, STUDIO_ORIGIN), 301);
+    // Anything else is not a tuition page: let the tutoring route answer it with its own 404
+    const url = request.nextUrl.clone();
+    url.pathname = `/tutoring${pathname}`;
+    return NextResponse.rewrite(url);
   }
 
   if (STUDIO_HOSTS.has(host) && isTutoringPath) {
     return NextResponse.redirect(new URL('/' + request.nextUrl.search, TUITION_ORIGIN), 301);
+  }
+  // An area page reached through the studio domain moves to its address on the subdomain
+  const studioAreaSlug = pathname.startsWith('/tutoring/') ? pathname.slice('/tutoring/'.length) : '';
+  if (STUDIO_HOSTS.has(host) && AREA_SLUGS.has(studioAreaSlug)) {
+    return NextResponse.redirect(new URL(`/${studioAreaSlug}${request.nextUrl.search}`, TUITION_ORIGIN), 301);
   }
 
   return NextResponse.next();

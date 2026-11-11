@@ -13,9 +13,9 @@ export function WhatsAppIcon({ size = 20 }: { size?: number }) {
 }
 
 // The one primary action: WhatsApp with a message the parent only has to fill in
-export function BookButton({ className = '' }: { className?: string }) {
+export function BookButton({ className = '', href = TUTOR_WHATSAPP_URL }: { className?: string; href?: string }) {
   return (
-    <a href={TUTOR_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`t-book ${className}`}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={`t-book ${className}`}>
       <WhatsAppIcon />
       <span>Book a free trial class</span>
       <span className="t-sr"> on WhatsApp (opens in a new tab)</span>

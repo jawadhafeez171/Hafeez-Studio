@@ -369,6 +369,41 @@ body:has(.tutor) {
   color: var(--ink-soft);
   line-height: 1.7;
 }
+/* Area names with their own page are links */
+.t-areas dd a {
+  color: var(--ink);
+}
+.t-areas dd a:hover {
+  color: var(--green-hover);
+}
+
+/* ── Area pages ─────────────────────────────────────────── */
+.t-crumbs {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.t-crumbs a {
+  color: var(--ink-soft);
+}
+.t-crumbs a:hover {
+  color: var(--ink);
+}
+.t-body {
+  margin: 0 0 16px;
+  max-width: 60ch;
+}
+.t-body a {
+  color: var(--green-hover);
+  font-weight: 700;
+}
+/* Localities as a short wrapped row rather than a tall list */
+.t-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
 .t-areas-note {
   margin: 16px 0 0;
   color: var(--ink-soft);
