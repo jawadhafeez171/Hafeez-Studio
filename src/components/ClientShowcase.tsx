@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import WorkShot from './WorkShot';
 
 export interface ClientItem {
   name: string;
@@ -75,25 +75,7 @@ export default function ClientShowcase() {
         <ul className="work-row">
           {clientsData.map((client, i) => (
             <li key={client.name} className="work-item">
-              <a
-                href={client.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="phone-frame work-shot"
-                aria-label={`Open ${client.name} live website in a new tab`}
-              >
-                <div className="phone-frame-screen">
-                  <Image
-                    src={client.shot}
-                    alt={client.shotAlt}
-                    fill
-                    priority={i < 2}
-                    loading="eager"
-                    sizes="(min-width: 1024px) 260px, (min-width: 640px) 45vw, 72vw"
-                    style={{ objectFit: 'cover', objectPosition: 'top' }}
-                  />
-                </div>
-              </a>
+              <WorkShot href={client.url} name={client.name} src={client.shot} alt={client.shotAlt} index={i} />
               <h3>
                 <a href={client.url} target="_blank" rel="noopener noreferrer">
                   {client.name}

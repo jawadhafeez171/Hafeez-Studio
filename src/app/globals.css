@@ -470,11 +470,23 @@ textarea {
   color: var(--text-primary);
 }
 
+.nav-link {
+  position: relative;
+}
+
 .nav-link[aria-current] {
   color: var(--text-primary);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 8px;
+}
+
+/* One underline shared by every link; Motion slides it to the section in view */
+.nav-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--text-primary);
 }
 
 .nav-controls {
@@ -544,7 +556,6 @@ textarea {
   inset: 0;
   z-index: 48;
   background: rgba(17, 17, 19, 0.28);
-  animation: fadeIn 0.2s ease both;
 }
 
 .nav-sheet {
@@ -560,7 +571,7 @@ textarea {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--card-shadow);
-  animation: menuIn 0.25s var(--ease-out) both;
+  transform-origin: top right;
 }
 
 .nav-sheet ul {
@@ -598,16 +609,6 @@ textarea {
   }
 }
 
-@keyframes menuIn {
-  from {
-    transform: translateY(-6px);
-    opacity: 0.6;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 /* ══════════════════════════════════════════════════════════════
    HERO
@@ -650,34 +651,22 @@ textarea {
     height: 668px;
   }
 
+  /* Transforms (entrance, tilt toward the cursor, hover) are driven by Motion in HeroProof.tsx */
   .hero-proof .hero-phone {
     position: absolute;
     display: block;
-    transition: transform 0.5s var(--ease-out);
   }
 
   .hero-phone--back {
     top: 0;
     right: 0;
     width: 220px;
-    transform: rotate(4deg);
-    animation: phoneBack 1.2s var(--ease-out) backwards 0.15s;
   }
 
   .hero-phone--front {
     left: 0;
     top: 56px;
     width: 250px;
-    transform: rotate(-3deg);
-    animation: phoneFront 1.2s var(--ease-out) backwards;
-  }
-
-  .hero-phone--back:hover {
-    transform: rotate(4deg) translateY(-6px);
-  }
-
-  .hero-phone--front:hover {
-    transform: rotate(-3deg) translateY(-6px);
   }
 
   .hero-proof-caption {
@@ -687,24 +676,6 @@ textarea {
     bottom: 0;
     text-align: center;
     font-size: 0.9375rem;
-  }
-}
-
-@keyframes phoneFront {
-  from {
-    transform: translateY(24px) rotate(0deg);
-  }
-  to {
-    transform: rotate(-3deg);
-  }
-}
-
-@keyframes phoneBack {
-  from {
-    transform: translateY(32px) rotate(0deg);
-  }
-  to {
-    transform: rotate(4deg);
   }
 }
 
@@ -832,14 +803,10 @@ textarea {
   margin-bottom: 4px;
 }
 
+/* Hover spring is driven by Motion in WorkShot.tsx */
 .work-shot {
   display: block;
   text-decoration: none;
-  transition: transform 0.4s var(--ease-out);
-}
-
-.work-shot:hover {
-  transform: translateY(-6px);
 }
 
 @media (max-width: 1023px) {
@@ -1305,15 +1272,76 @@ textarea {
   color: var(--accent);
 }
 
+.ai-timeline-wrap {
+  position: relative;
+}
+
 .ai-timeline {
   list-style: none;
 }
 
+/* Accent rail that fills as the conversation plays out */
+.ai-timeline-rail {
+  position: absolute;
+  left: 82px;
+  top: 18px;
+  bottom: 18px;
+  width: 1.5px;
+  background: var(--accent);
+  opacity: 0.55;
+  transform-origin: top;
+}
+
 .ai-timeline li {
+  position: relative;
   display: grid;
   grid-template-columns: 76px 1fr;
   gap: 16px;
-  padding: 14px 0;
+  padding: 14px 0 14px 0;
+}
+
+.ai-timeline li p {
+  padding-left: 8px;
+}
+
+.typing-dots {
+  position: absolute;
+  left: 100px;
+  top: 18px;
+  display: inline-flex;
+  gap: 5px;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background: var(--bg-surface);
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typingDot 1s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
 }
 
 .ai-timeline li + li {
@@ -1645,7 +1673,6 @@ textarea {
   padding: 16px;
   background: rgba(17, 17, 19, 0.5);
   overflow-y: auto;
-  animation: fadeIn 0.2s ease both;
 }
 
 .contact-dialog {
@@ -1659,18 +1686,6 @@ textarea {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.45);
-  animation: dialogIn 0.3s var(--ease-out) both;
-}
-
-@keyframes dialogIn {
-  from {
-    transform: translateY(10px) scale(0.985);
-    opacity: 0.4;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
 }
 
 .contact-close {
@@ -1886,7 +1901,6 @@ textarea {
     max-height: 92dvh;
     border-radius: 20px 20px 0 0;
     padding: 28px 20px calc(24px + env(safe-area-inset-bottom));
-    animation: sheetUp 0.35s var(--ease-out) both;
   }
 
   .contact-dialog::before {
@@ -1909,14 +1923,6 @@ textarea {
   }
 }
 
-@keyframes sheetUp {
-  from {
-    transform: translateY(40px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
 
 /* ══════════════════════════════════════════════════════════════
    ACCESSIBILITY & INPUT

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { X, Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -100,8 +101,6 @@ export default function ContactModal({
     if (status?.type === 'success') dialogRef.current?.querySelector<HTMLElement>('[data-autofocus]')?.focus();
   }, [status]);
 
-  if (!isOpen) return null;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const missingName = !formData.name.trim();
@@ -159,8 +158,18 @@ export default function ContactModal({
   );
 
   return (
-    <div className="contact-backdrop" onClick={onClose}>
-      <div
+    <AnimatePresence>
+      {isOpen && (
+    <motion.div
+      key="contact-backdrop"
+      className="contact-backdrop"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.18, delay: 0.05 } }}
+      transition={{ duration: 0.2 }}
+    >
+      <motion.div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
@@ -168,6 +177,10 @@ export default function ContactModal({
         aria-describedby={descId}
         className="contact-dialog"
         onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, y: 36, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 24, scale: 0.98, transition: { duration: 0.18 } }}
+        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
       >
         <button type="button" onClick={onClose} className="contact-close" aria-label="Close">
           <X size={18} />
@@ -334,7 +347,9 @@ export default function ContactModal({
             </form>
           </>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

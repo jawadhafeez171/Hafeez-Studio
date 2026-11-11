@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import ContactButton from './ContactButton';
+import EnquiryTimeline from './EnquiryTimeline';
 
 // How a lead moves through one Hafeez Studio build: the website and the automation, designed together
 const flow = [
@@ -74,14 +75,7 @@ export default function AiCapabilities() {
         <div className="ai-grid">
           <figure className="example">
             <figcaption className="example-title">A clinic enquiry at 10pm, handled before morning</figcaption>
-            <ol className="ai-timeline">
-              {example.map((step, i) => (
-                <li key={i}>
-                  <span className="ai-time">{step.time}</span>
-                  <p>{step.text}</p>
-                </li>
-              ))}
-            </ol>
+            <EnquiryTimeline steps={example} />
             <p className="example-note">
               <ShieldCheck size={18} aria-hidden="true" />
               <span>Patient and customer details stay in your accounts and are never used to train public AI models.</span>

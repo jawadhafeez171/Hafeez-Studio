@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import ThemeToggle from './ThemeToggle';
 import { useContact } from '@/context/ContactContext';
 
@@ -98,6 +99,14 @@ export default function Navbar({ onOpenContact: onOpenContactProp, isTutoringPag
                   aria-current={activeHref === item.href ? 'location' : undefined}
                 >
                   {item.label}
+                  {activeHref === item.href && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="nav-underline"
+                      aria-hidden="true"
+                      transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                    />
+                  )}
                 </Link>
               </li>
             ))}
@@ -126,18 +135,42 @@ export default function Navbar({ onOpenContact: onOpenContactProp, isTutoringPag
         </div>
       </div>
 
+      <AnimatePresence>
       {menuOpen && (
-        <>
-          <div className="nav-backdrop" onClick={() => setMenuOpen(false)} aria-hidden="true" />
-          <div id="site-menu" className="nav-sheet">
+          <motion.div
+            key="nav-backdrop"
+            className="nav-backdrop"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          />
+      )}
+      {menuOpen && (
+          <motion.div
+            key="nav-sheet"
+            id="site-menu"
+            className="nav-sheet"
+            initial={{ opacity: 0, y: -10, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.98, transition: { duration: 0.15 } }}
+            transition={{ type: 'spring', stiffness: 460, damping: 34 }}
+          >
             <ul>
-              {items.map((item) => (
-                <li key={item.href}>
+              {items.map((item, i) => (
+                <motion.li
+                  key={item.href}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.03 + i * 0.035, type: 'spring', stiffness: 420, damping: 32 }}
+                >
                   <Link href={item.href} onClick={() => setMenuOpen(false)}>
                     <span>{item.label}</span>
                     <ArrowRight size={18} aria-hidden="true" style={{ color: 'var(--text-muted)' }} />
                   </Link>
-                </li>
+                </motion.li>
               ))}
               {isTutoringPage && (
                 <li>
@@ -158,9 +191,9 @@ export default function Navbar({ onOpenContact: onOpenContactProp, isTutoringPag
             >
               {isTutoringPage ? 'Book Free Trial Class' : 'Book a discovery call'}
             </button>
-          </div>
-        </>
+          </motion.div>
       )}
+      </AnimatePresence>
     </header>
   );
 }

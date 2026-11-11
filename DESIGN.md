@@ -56,4 +56,11 @@ The closing band (`.closing`) is ink (#141416) and inverts the text tokens local
 
 ## Motion
 
-One authored moment: the two hero headline lines rise into place on load (1.1s, staggered 120ms, expo ease-out). Otherwise there are only hover lifts on client phones and button arrows. Everything respects `prefers-reduced-motion`.
+Built with Motion (`motion/react`, the successor to Framer Motion). `MotionProvider` sets `reducedMotion="user"`, so movement drops out for visitors who ask for less motion while fades stay. Content is always visible in the server HTML, so nothing depends on JavaScript to appear.
+
+- **Signature: the 10pm enquiry** (`EnquiryTimeline.tsx`). When the card scrolls into view, each step shows a typing indicator, then arrives with a fade, rise and focus-in from a blur. An ink-blue rail fills as the story plays out. It only arms itself if the card starts below the fold.
+- **Hero:** headline lines rise in with CSS on load (so they don't wait for JavaScript). The two client phones spring into place, then lean toward the cursor in 3D on mouse devices (`HeroProof.tsx`).
+- **Continuity:** a shared nav underline (`layoutId`) slides to the section in view. The phone menu and the contact dialog animate in and out (`AnimatePresence`), with exits faster than entrances.
+- **Feedback:** client phones spring up and lean on hover (`WorkShot.tsx`). Buttons nudge their arrow and press in slightly.
+
+No section gets a generic fade-in on scroll.

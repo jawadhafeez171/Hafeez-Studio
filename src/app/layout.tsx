@@ -3,6 +3,7 @@ import { Source_Serif_4, Hanken_Grotesk, Plus_Jakarta_Sans, Playfair_Display } f
 import './globals.css';
 import FloatingActions from '@/components/FloatingActions';
 import { ThemeProvider } from '@/context/ThemeContext';
+import MotionProvider from '@/components/MotionProvider';
 
 // Studio type: a book serif with optical sizes for headlines, a quiet grotesque for text
 const sourceSerif = Source_Serif_4({
@@ -94,8 +95,10 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <FloatingActions />
-          {children}
+          <MotionProvider>
+            <FloatingActions />
+            {children}
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>
